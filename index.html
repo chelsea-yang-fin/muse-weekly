@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUSE 宏观周报 · 归档</title>
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --bg-paper: #fbfaf6;
+    --ink: #1c1a17;
+    --ink-soft: #4a4640;
+    --ink-mute: #7a746a;
+    --rule: #e3ded3;
+    --accent: #8a2f1f;
+    --accent-deep: #5c1f14;
+    --accent-soft: #f3e3df;
+    --gold: #b8893b;
+    --gold-soft: #faf3e6;
+    --blue: #2c4a66;
+    --shadow: 0 1px 3px rgba(28,26,23,.04), 0 4px 16px rgba(28,26,23,.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .topbar {
+    background: var(--bg-paper);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-inner {
+    max-width: 900px; margin: 0 auto;
+    padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand-mark {
+    width: 32px; height: 32px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), #c34a2d);
+    display: grid; place-items: center;
+    color: #fff; font-size: 14px; font-weight: 700;
+  }
+  .brand-text {
+    font-size: 15px; font-weight: 600;
+    color: var(--ink);
+    letter-spacing: .02em;
+  }
+  .brand-text small {
+    display: block;
+    font-size: 10.5px;
+    color: var(--ink-mute);
+    letter-spacing: .12em;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .topbar-meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: .06em;
+  }
+  .shell {
+    max-width: 900px; margin: 0 auto;
+    padding: 56px 28px 80px;
+  }
+  .hero {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-kicker {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: .22em;
+    color: var(--accent);
+    font-weight: 700;
+    padding: 5px 11px;
+    background: var(--accent-soft);
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+  h1.hero-title {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin: 0 0 18px;
+    letter-spacing: -.01em;
+    color: var(--ink);
+  }
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    max-width: 640px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-meta strong {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  /* 期号列表 */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-head h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -.005em;
+  }
+  .section-count {
+    font-size: 12px;
+    letter-spacing: .12em;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+  .issue-list {
+    display: grid;
+    gap: 14px;
+  }
+  .issue {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: all .18s ease;
+    box-shadow: var(--shadow);
+  }
+  .issue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(28,26,23,.10);
+    border-color: var(--accent);
+  }
+  .issue.latest {
+    border-left: 4px solid var(--accent);
+    background: linear-gradient(to right, var(--accent-soft) 0%, #fff 20%);
+  }
+  .issue-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .issue-vol {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -.005em;
+  }
+  .issue-date {
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .issue-tag {
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .issue-tag.latest {
+    background: var(--accent);
+    color: #fff;
+  }
+  .issue-tag.archive {
+    background: rgba(122,116,106,0.15);
+    color: var(--ink-mute);
+  }
+  .issue-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 10px;
+    line-height: 1.45;
+    letter-spacing: -.003em;
+  }
+  .issue-title em {
+    font-style: normal;
+    background: linear-gradient(180deg, transparent 62%, #ffe9a8 62%);
+    padding: 0 2px;
+  }
+  .issue-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .issue-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .issue-tag-mini {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: var(--bg-paper);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    color: var(--ink-soft);
+  }
+  .issue-cta {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 20px;
+    color: var(--ink-mute);
+    transition: all .18s ease;
+  }
+  .issue:hover .issue-cta {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  /* ===== A/B 双版本卡片 ===== */
+  .dual-section {
+    margin-bottom: 48px;
+  }
+  .dual-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .dual-head h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -.005em;
+  }
+  .dual-head .dual-label {
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .dual-sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin: 10px 0 20px;
+    line-height: 1.6;
+  }
+  .dual-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 700px) {
+    .dual-cards { grid-template-columns: 1fr; }
+  }
+  .dual-card {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 22px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: all .18s ease;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .dual-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(28,26,23,.12);
+  }
+  .dual-card.version-a {
+    border-top: 4px solid var(--accent);
+  }
+  .dual-card.version-a:hover {
+    border-color: var(--accent);
+  }
+  .dual-card.version-b {
+    border-top: 4px solid var(--gold);
+  }
+  .dual-card.version-b:hover {
+    border-color: var(--gold);
+  }
+  .dual-card-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: .16em;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .version-a .dual-card-badge {
+    background: var(--accent);
+    color: #fff;
+  }
+  .version-b .dual-card-badge {
+    background: var(--gold);
+    color: #fff;
+  }
+  .dual-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  .dual-card-desc {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+  .dual-card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+  .dual-card-features li {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    padding: 4px 0 4px 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .dual-card-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .version-a .dual-card-features li::before { color: var(--accent); }
+  .version-b .dual-card-features li::before { color: var(--gold); }
+  .dual-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    width: 100%;
+    transition: all .18s ease;
+  }
+  .version-a .dual-card-cta { color: var(--accent); }
+  .version-b .dual-card-cta { color: var(--gold); }
+  .dual-card:hover .dual-card-cta {
+    gap: 10px;
+  }
+
+  /* 说明区 */
+  .about {
+    margin-top: 56px;
+    padding: 28px 30px;
+    background: var(--bg-paper);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+  }
+  .about-title {
+    font-size: 11px;
+    letter-spacing: .22em;
+    color: var(--ink-mute);
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .about p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .about p:last-child { margin-bottom: 0; }
+  .about strong { color: var(--ink); font-weight: 600; }
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--rule);
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    letter-spacing: .04em;
+  }
+  @media (max-width: 640px) {
+    .shell { padding: 32px 20px 60px; }
+    h1.hero-title { font-size: 28px; }
+    .hero-sub { font-size: 15px; }
+    .issue { padding: 18px 20px; }
+    .issue-title { font-size: 16px; }
+    .issue-cta { display: none; }
+    .about { padding: 22px 20px; }
+    .dual-card { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        MUSE 宏观周报
+        <small>MUSE MACRO WEEKLY · ARCHIVE</small>
+      </div>
+    </div>
+    <div class="topbar-meta">往期归档</div>
+  </div>
+</header>
+<main class="shell">
+  <section class="hero">
+    <span class="hero-kicker">MUSE MACRO WEEKLY</span>
+    <h1 class="hero-title">跨时段跟踪<br>市场定价逻辑的变化</h1>
+    <p class="hero-sub">每周一份宏观周报,回答三件事:市场在交易什么、变化为什么发生、接下来验证什么。<br>不是行情汇总,是定价逻辑的连续跟踪。</p>
+    <div class="hero-meta">
+      <span>📅 每周一刊</span>
+      <span>🎯 面向 MUSE 种子用户</span>
+      <span>⏱ 单期阅读约 10 分钟</span>
+    </div>
+  </section>
+
+  <!-- ===== 最新一期：A/B 双版本 ===== -->
+  <div class="dual-section">
+    <div class="dual-head">
+      <h2>最新一期 · VOL.35</h2>
+      <span class="dual-label">双版本</span>
+    </div>
+    <p class="dual-sub">2026-08-31 · 沃什放鹰与 AI 利率约束 · 两个版本任选，内容一致，表达风格不同</p>
+    <div class="dual-cards">
+      <!-- A 版 -->
+      <a class="dual-card version-a" href="w35.html">
+        <span class="dual-card-badge">A 版 · 交互版</span>
+        <h3 class="dual-card-title">团队交互版</h3>
+        <p class="dual-card-desc">结构化呈现，适合想快速扫重点、按需展开细节的读者。</p>
+        <ul class="dual-card-features">
+          <li>左侧目录导航，快速跳转</li>
+          <li>术语点一下展开解释</li>
+          <li>两张核心图可视化主要判断</li>
+          <li>四个验证点表格，跟踪信号</li>
+        </ul>
+        <span class="dual-card-cta">阅读 A 版 →</span>
+      </a>
+      <!-- B 版 -->
+      <a class="dual-card version-b" href="w35-b.html">
+        <span class="dual-card-badge">B 版 · 个人版</span>
+        <h3 class="dual-card-title">个人叙事版</h3>
+        <p class="dual-card-desc">第一人称写作，适合想跟着推理过程走一遍、看"怎么想"的读者。</p>
+        <ul class="dual-card-features">
+          <li>第一人称推理，有观点有态度</li>
+          <li>上期追踪：哪里对了哪里要修正</li>
+          <li>本周该配什么：直接给配置方向</li>
+          <li>结尾互动：抛问题邀请讨论</li>
+        </ul>
+        <span class="dual-card-cta">阅读 B 版 →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== 往期归档 ===== -->
+  <div class="section-head">
+    <h2>往期归档</h2>
+    <span class="section-count">共 2 期 · 持续更新</span>
+  </div>
+  <div class="issue-list">
+    <!-- VOL.34 -->
+    <a class="issue" href="w34.html">
+      <div class="issue-head">
+        <span class="issue-vol">VOL.34</span>
+        <span class="issue-date">2026-08-24 · 周一</span>
+        <span class="issue-tag archive">往期</span>
+      </div>
+      <h3 class="issue-title">债市风险<em>换性质</em>:从利率问题升级为货币信用与财政危机</h3>
+      <p class="issue-desc">全球长端利率共振上行,美债突破 40 万亿触发主权债务连环抛售。黄金、比特币加速突破,利率升但美元弱,Sell America 升级到"法币信用崩溃"叙事。Citadel 已减仓 80% AI 抄底筹码,滞胀苗头初现。</p>
+      <div class="issue-tags">
+        <span class="issue-tag-mini"># 全球长端利率共振</span>
+        <span class="issue-tag-mini"># Sell America 升级</span>
+        <span class="issue-tag-mini"># 比特币新叙事</span>
+        <span class="issue-tag-mini"># 贵金属首选</span>
+        <span class="issue-tag-mini"># A 股避风港</span>
+      </div>
+      <div class="issue-cta">→</div>
+    </a>
+  </div>
+
+  <div class="about">
+    <div class="about-title">关于 MUSE 宏观周报</div>
+    <p>MUSE 是金融一站式投研平台 Mira 的市场动态分析助手,负责跨时段跟踪市场定价逻辑的变化。每周一发布,不是行情汇总,而是<strong>定价逻辑的连续跟踪</strong> —— 每期的核心价值在于"相比上一时段,定价逻辑发生了什么边际变化"。</p>
+    <p>从 VOL.35 起推出双版本：<strong>A 版交互版</strong>结构化呈现，适合快速扫重点；<strong>B 版个人版</strong>第一人称叙事，适合跟着推理走一遍。内容一致，表达风格不同，任选其一即可。</p>
+    <p>内部参考,不构成投资建议。</p>
+  </div>
+  <div class="footer">
+    <div>MUSE MACRO WEEKLY · INTERNAL REFERENCE</div>
+    <div>© 2026 · 内部参考</div>
+  </div>
+</main>
+</body>
+</html>
