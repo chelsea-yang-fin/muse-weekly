@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="LYvtDmsWv0Pmejbzlnlbyf">
+<head data-page-node-id="GJyyrBwzQNvwbGIfQROYxN">
+<meta charset="UTF-8" data-page-node-id="bqiPFZkuCWOfWZ3LzyTj2M">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="cAikt6AG6PzaSTlzUNxzyk">
+<title>沃什按住了短期风险，但按住的代价是利率长期更高 · MUSE VOL.36</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --ink-mute: #888;
+    --accent: #8a2f1f;
+    --accent-soft: #f5ebe8;
+    --rule: #e5e5e0;
+    --blue: #2c4a66;
+    --blue-soft: #eef3f8;
+    --gold: #b8893b;
+    --gold-soft: #f9f7f2;
+    --green: #4f6b3a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", "Songti SC", serif;
+    font-size: 18px;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+  .sans {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  .slogan {
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .slogan-line {
+    width: 48px;
+    height: 3px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+  }
+  .meta .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ink-mute);
+    opacity: .5;
+  }
+  h1.title {
+    margin: 0 0 28px;
+    color: var(--ink);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+  }
+  .lede {
+    margin: 0 0 32px;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+    color: var(--ink-soft);
+    font-size: 20px;
+    line-height: 1.7;
+  }
+  .warmup {
+    margin: 0 0 28px;
+    padding: 24px 26px;
+    border-left: 4px solid var(--blue);
+    border-radius: 10px;
+    background: var(--blue-soft);
+  }
+  .module-label {
+    margin-bottom: 9px;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .warmup .module-label { color: var(--blue); }
+  .warmup h2 {
+    margin: 0 0 12px;
+    color: var(--ink);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .warmup p {
+    margin: 0 0 10px;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.78;
+    text-align: left;
+  }
+  .warmup p:last-child { margin-bottom: 0; }
+  .warmup summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    list-style: none;
+    cursor: pointer;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  .warmup summary::-webkit-details-marker { display: none; }
+  .warmup summary .module-label { margin: 0; flex-shrink: 0; }
+  .warmup-summary-title {
+    flex: 1;
+    color: var(--blue);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: right;
+  }
+  .warmup summary::after {
+    content: "+";
+    flex-shrink: 0;
+    color: var(--blue);
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .warmup[open] summary::after { content: "−"; }
+  .warmup-content {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(44,74,102,.16);
+  }
+  .prev-track {
+    margin: 0 0 40px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+  }
+  .prev-track .module-label { color: var(--accent); }
+  .prev-track p {
+    margin: 0 0 10px;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: left;
+  }
+  .prev-track p:last-child { margin-bottom: 0; }
+  .prev-track strong { color: var(--ink); }
+  .section { margin-top: 48px; }
+  .section-guide {
+    margin: 0 0 16px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #f5f5f2;
+    color: #666;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .section-guide strong { color: var(--ink-soft); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    flex-shrink: 0;
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .section-head h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  p {
+    margin: 0 0 20px;
+    color: var(--ink);
+    text-align: justify;
+  }
+  p strong { color: var(--ink); font-weight: 700; }
+  blockquote {
+    margin: 24px 0;
+    padding: 0 0 0 24px;
+    border-left: 3px solid #ccc;
+    color: var(--ink-soft);
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  blockquote p { margin: 0; }
+  .analogy {
+    margin: 26px 0;
+    padding: 18px 22px;
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    background: var(--gold-soft);
+  }
+  .analogy .module-label { color: var(--gold); }
+  .analogy p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: left;
+  }
+  .figure-wrap { margin: 32px 0; }
+  .figure-wrap img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  }
+  .figure-caption {
+    margin-top: 10px;
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .figure-caption strong { color: var(--ink-soft); }
+  .source-note {
+    margin-top: 8px;
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.65;
+    text-align: left;
+  }
+  .alloc-card {
+    margin: 44px 0 40px;
+    padding: 28px 30px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: #fff;
+  }
+  .alloc-label {
+    margin-bottom: 10px;
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .alloc-title {
+    margin: 0 0 20px;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .alloc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0f0ec;
+  }
+  .alloc-item:last-child { border-bottom: none; }
+  .alloc-tag {
+    flex-shrink: 0;
+    margin-top: 3px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  .tag-reduce, .tag-cautious { background: var(--accent); color: #fff; }
+  .tag-range, .tag-observe { background: #eee; color: #666; }
+  .tag-watch { background: #e8f0e0; color: var(--green); }
+  .alloc-text {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .alloc-text strong { color: var(--ink); }
+  .ending {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+  .ending p {
+    margin-bottom: 16px;
+    color: var(--ink-soft);
+    font-size: 17px;
+  }
+  .ending .condition {
+    margin-bottom: 20px;
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .ending .question {
+    margin-top: 24px;
+    color: var(--accent);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.7;
+  }
+  .footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-mute);
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .footer .slogan-footer {
+    margin-bottom: 6px;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .footer .bio { margin-bottom: 12px; color: var(--ink-soft); }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 40;
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .to-top.show { opacity: 1; pointer-events: auto; }
+  @media (max-width: 640px) {
+    .container { padding: 40px 18px 60px; }
+    h1.title { font-size: 26px; }
+    .lede { font-size: 18px; }
+    .warmup { padding: 20px; }
+    .section-head h2 { font-size: 20px; }
+    blockquote { font-size: 17px; }
+    .alloc-card { padding: 20px; }
+    .alloc-item { gap: 10px; }
+  }
+</style>
+</head>
+<body id="top" data-page-node-id="uXyWbrBhGEYoHRwZw1ep7q">
+<main class="container" data-page-node-id="yJPKIn7cqE1CPWD0eHGHse">
+  <header data-page-node-id="qfTCDdnbkS8eOr1uwMVfnq">
+    <div class="slogan" data-page-node-id="MqGLF4ICV8T2ddB6o0Imoi">Never ask what to allocate.</div>
+    <div class="slogan-line" data-page-node-id="mGSoNF7mWpdAknV8cwyEb8"></div>
+    <div class="meta" data-page-node-id="EhoeGHkZpJzMWssEf6ulYm">
+      <span data-page-node-id="sTwFmmAkRhOjbjAFoYiGEA">VOL.36</span>
+      <span class="dot" data-page-node-id="SqP9tuZ6kL1cGPQK4PYUc1"></span>
+      <span data-page-node-id="P6Oc8JGYQDzDsX3uA8Ad6d">2026-08-31</span>
+      <span class="dot" data-page-node-id="M9NSULBV3JOWbZYclOKHfD"></span>
+      <span data-page-node-id="61dybG1gNJsFDwyTJkAP8i">每周告诉你该配什么</span>
+    </div>
+    <h1 class="title" data-page-node-id="0tZtShpoIt5WoF6RyO40op">沃什按住了短期风险，但按住的代价是利率长期更高</h1>
+    <p class="lede" data-page-node-id="D0CiC7J6C0v3i1B6PLgwuI">上周，市场一直等着美联储主席凯文·沃什在杰克逊霍尔开口。我也在等。话说完，大家先松了口气，可我看下来，这更像是把眼前的火苗按住了，屋子里的温度并没有真的降下来。</p>
+  </header>
+
+  <section class="alloc-card" aria-labelledby="alloc-title" data-page-node-id="fAzYDQvDkQBo4PuhLg548l">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;">
+      <div class="alloc-label" style="margin-bottom:0;" data-page-node-id="0GkazPFkPtlL7Fp0CQpNpE">本周该配什么</div>
+      <span style="border:1px solid var(--accent);border-radius:999px;padding:3px 9px;color:var(--accent);font:700 11px/1.3 -apple-system, 'Helvetica Neue', Arial, sans-serif;">MUSE 观点</span>
+    </div>
+    <h2 class="alloc-title" id="alloc-title" data-page-node-id="aRcZqpUBeu8HqsWUWPDeFm">先防回调，再等真正的机会</h2>
+
+    <div class="alloc-item" data-page-node-id="jbK8UXouQVCQOwMw8LubZh">
+      <span class="alloc-tag tag-cautious" data-page-node-id="yqGGE6E1HwbVpFX57atmtB">可以确定</span>
+      <div class="alloc-text" data-page-node-id="hnw8bvDCdwY9S2T68ECVrd"><strong data-page-node-id="rB0wYhG1Gcdozjb1EutYZW">美股科技 / AI 硬件链：</strong>利率还可能维持在高位，股价又提前算进了不少好消息，本周不追高。先等价格降下来，再看公司实际赚到的钱能不能达到市场期待。</div>
+    </div>
+    <div class="alloc-item">
+      <span class="alloc-tag tag-cautious">先防回调</span>
+      <div class="alloc-text"><strong>A 股高位科技：</strong>如果美股科技因为利率太高、业绩不及预期而下跌，A 股高位科技更可能先被情绪带着回调。现在不是提前抢机会，而是等市场把过高的期待降下来。</div>
+    </div>
+    <div class="alloc-item">
+      <span class="alloc-tag tag-watch">回调后看</span>
+      <div class="alloc-text"><strong>A 股里真正有订单、有利润的科技公司：</strong>等市场先跌一轮，再看哪些公司更早止跌、订单和利润仍在增长。机会来自价格降下来之后，不是现在追进去。</div>
+    </div>
+    <div class="alloc-item" data-page-node-id="1ST6o9jPf6gVF3mu6eMhU1">
+      <span class="alloc-tag tag-reduce" data-page-node-id="CpKI6BY12v6g1Pq8tZHcYE">可以否定</span>
+      <div class="alloc-text" data-page-node-id="CJ7CcQG9ZDXzAI5aHZF9f8"><strong data-page-node-id="F5EVZHxy4PEPeyfPWV49U2">地产基本面已经全面反转：</strong>政策可能让地产股短期反弹，但还不能证明买房的人已经变多。可以否定“行业已经全面转好”，不能否定市场会因为政策消息短暂上涨。</div>
+    </div>
+    <div class="alloc-item" data-page-node-id="fcBgWwQN95LdOSfVvME8LB">
+      <span class="alloc-tag tag-observe" data-page-node-id="dHA3z5KIzfeun9hWvrqR91">暂不能定</span>
+      <div class="alloc-text" data-page-node-id="b0OxQe0Se0fLqj3VFzwUcn"><strong data-page-node-id="E8307k0FWKzq50gG7HLB9f">黄金：</strong>央行买金和战争风险会把金价往上推，高利率又会把资金吸引到存款和债券。两股力量还在拉扯，等利率明显下降，或者地缘风险持续升级，再提高关注。</div>
+    </div>
+    <div class="alloc-item">
+      <span class="alloc-tag tag-cautious">偏谨慎</span>
+      <div class="alloc-text"><strong>比特币：</strong>它没有利息，价格波动又大。高利率维持越久，资金越有理由留在存款和债券里，短期不追高；等市场开始相信利率会下降、可投资的钱重新变多，再重新评估。</div>
+    </div>
+    <div class="alloc-item" data-page-node-id="COWiVACwX4zUqbQxSdxGAy">
+      <span class="alloc-tag tag-observe" data-page-node-id="Jy19ASleK7v2wX2G4hzUFF">暂不能定</span>
+      <div class="alloc-text" data-page-node-id="rBowgCLt1spkku3cNZaLHc"><strong data-page-node-id="NOL7lIHQRx2XIEeqkOHlvh">原油：</strong>利率高会压住需求，运输中断又可能把油价推高。要等油轮装了多少货、保险有没有涨价、买家有没有按时收到油，再判断哪股力量更强。</div>
+    </div>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:12px;color:var(--ink-mute);font:500 11px/1.5 -apple-system, 'Helvetica Neue', Arial, sans-serif;">
+      <span>MUSE · 宏观配置通讯 VOL.36</span>
+      <span>Never ask what to allocate.</span>
+    </div>
+  </section>
+
+  <details class="warmup" aria-labelledby="warmup-title" data-page-node-id="YfYwi2UUIoiZAP9YHQ0Tys">
+    <summary>
+      <span class="module-label" data-page-node-id="zddJavNBLBTmapiAxfKfTe">Warm-up · 30 秒</span>
+      <span class="warmup-summary-title">看不懂美联储和利率？点开这里</span>
+    </summary>
+    <div class="warmup-content">
+      <h2 id="warmup-title" data-page-node-id="rhJqxUv1cvZBIlo7MtWvX0">先弄懂一件事：美联储为什么一会儿怕物价，一会儿怕失业？</h2>
+    <p data-page-node-id="OSkt2mIRRPSwb3uYiBBzaU">美联储主要盯两件事：<strong data-page-node-id="asZGFcMEzFCFHknk4B1qX1">物价别涨得太快，大家尽量都有工作。</strong>物价涨得太快，就加息，让借钱变贵、花钱变少，商家没那么容易继续涨价；工作突然变少，就降息，让借钱便宜一点，鼓励企业投资和招人。</p>
+    <p data-page-node-id="9h4k6JMuqMhD6b7hDAc5jG">如果就业还算稳、物价却偏高，美联储通常不会急着降息，因为经济暂时不需要“抢救”，它可以先专心压物价。反过来，如果失业明显恶化，即使物价还没完全回到理想水平，也得考虑先救经济。</p>
+    <p data-page-node-id="6sAGHAYR5zKNGpbg3mAuE4">还有一个容易绕晕的点：<strong data-page-node-id="NnU2ebJKy5BaWu7WxvBJap">短期利率主要由美联储直接决定，长期利率则是市场对未来很多年的猜测。</strong>沃什态度强硬，压住的是市场对“物价会失控”的担心，不是长期利率本身。市场更相信物价最终能被治住，长期利率本来有机会下降；但美国政府借钱多、AI 公司投资猛，又会把长期利率往上推。所以这次更像是少涨一点，而不是压力真的消失。</p>
+    </div>
+  </details>
+
+  <section class="prev-track" aria-label="上期追踪" data-page-node-id="uG4xTxngBl3fHbp8zg5OrC">
+    <div class="module-label" data-page-node-id="nGilF1tUwhNMN9VVMEElX6">上期追踪</div>
+    <p data-page-node-id="a5fhYAsv59TmL1fbUfrxkD"><strong data-page-node-id="8RgK6wEEGZzpUJwovaOEBO">说对了的：</strong>上一期我提醒，长期美债利率还是易上难下，全球借钱的成本也在变贵。这个方向没有变，美国借 30 年期资金仍要付出 5% 以上的年利率，欧洲和日本借长期资金也越来越贵。</p>
+    <p data-page-node-id="aBbQNi4vEuDUSFFTBPxBFd"><strong data-page-node-id="W6dEJ4gB6svHnkWK96AK2x">需要修正的：</strong>我之前把讲话后的反应概括成“短期利率涨、长期利率跌”，说得太省事了。实际是两边都涨，只是短期利率涨得更多。换句话说，沃什的硬话让市场少担心了一点未来物价失控，但长期借钱贵的问题并没有消失。</p>
+  </section>
+
+  <section class="section" data-page-node-id="ADl1QXS02H9ZASAs9L8uLd">
+    <div class="section-guide" data-page-node-id="yWpOBo1mGAr4DzcGQZ3neN"><strong data-page-node-id="dReV8Oh0ZkiDsDUuzbm9XW">这节在讲啥：</strong>沃什没有承诺马上加息，但他明确告诉市场，物价还没压住，别急着等降息。</div>
+    <div class="section-head" data-page-node-id="WQkifFA6cjROU41FLRSPNk"><span class="section-num" data-page-node-id="cGcY8GyxVsFxIuImCQJdYe">01</span><h2 data-page-node-id="ky1bMsXG3vFbdwMsoWAQUN">沃什的态度：先把物价管住，再谈轻松日子</h2></div>
+    <p data-page-node-id="MKpAM5o2OHBexuW9hpQ8Os">这次杰克逊霍尔讲话，是沃什上任后第一次系统讲清楚自己的想法。杰克逊霍尔就是全球央行官员每年碰头的一场重要会议，美联储主席在这里说什么，市场常常会当成后面政策的风向标。</p>
+    <p data-page-node-id="gwPzWycXzx3ZDXjCYerXUR">我把整场讲话压缩成三句话。第一，<strong data-page-node-id="xaW0nEG6XnccrIpRYXNBBO">2% 的通胀目标不会放松。</strong>PCE（美联储最看重的通胀指标，简单说就是物价涨了多少）不只要往下走，还得降得够明确、够持续。第二，美国就业目前还算稳，不需要马上靠降息来救。第三，沃什不愿提前许诺下一步一定加息还是降息，他更想看数据再行动。</p>
+    <p data-page-node-id="9kthAcOoESFm4mTgCyBVwZ">这里要划一条线：沃什没有直接说“9 月一定加息”，也没有在讲话里承诺要托住长期美债。讲话后，市场一度把 9 月加息看成接近五五开的可能，但那只是投资者当时的押注，不是政策通知。</p>
+    <blockquote data-page-node-id="EYhThALHwDBHuFZUZGEscY"><p data-page-node-id="oSMEafJGmIG5c9egBEJ9ck">我的理解是：沃什想让市场重新相信，美联储说要压住物价，就真的会采取行动。市场可以不知道下一次利率怎么动，但不能怀疑它只是说说而已。</p></blockquote>
+
+    <div class="analogy" data-page-node-id="lSE4gDY1ZX8OIDEWE5ALTU">
+      <div class="module-label" data-page-node-id="aFqa3tChW04Ln1jKhQNw5h">💡 打个比方</div>
+      <p data-page-node-id="mq5XMQOdm1tOrev7KTQLb1">这像医生告诉家属：“病能治，但这几天治疗会有点疼。”家属虽然心疼，至少知道病情有人管。最让人慌的反而是医生含糊地说“再看看吧”。央行态度强硬，也是同一个道理：眼前的利率可能更高，但市场如果相信物价涨幅最终能被压下来，就不会担心高利率持续很多年，长期利率反而有机会下降。</p>
+    </div>
+
+    <p data-page-node-id="FLFCAxa3eEz44AEaZLk4ii">下一次 FOMC（美联储决定利率的会议）在美国当地时间 9 月 15—16 日召开，北京时间 9 月 17 日凌晨公布结果。在那之前，9 月 4 日的就业数据和 9 月 11 日的物价数据最重要：如果物价仍高、就业仍稳，美联储就更有理由加息，或者让现在的高利率维持更久；如果物价明显降温，或者失业的人突然变多，它才有理由暂停加息，甚至重新考虑降息。</p>
+    <div class="source-note" data-page-node-id="qqShFVysOZGZX6jHzJDBfz">来源：美联储主席凯文·沃什杰克逊霍尔讲话，2026-08-28；美联储 FOMC 日历，核验于 2026-08-31。</div>
+  </section>
+
+  <section class="section" data-page-node-id="rfX9zglsS6HlXTDKnvlXPB">
+    <div class="section-guide" data-page-node-id="Zdm39dzCWjxicHiqDAkqec"><strong data-page-node-id="JE3RXoNBK4gRwnMXhinHZi">这节在讲啥：</strong>AI 公司越舍得花钱，盈利故事越好听，但全社会争抢资金和设备，也会让利率更难降。</div>
+    <div class="section-head" data-page-node-id="UMARtoCiuL1DqwfDosEOuU"><span class="section-num" data-page-node-id="ltdVJlFAcHaK5WRjiTSFFm">02</span><h2 data-page-node-id="y4ngpnQGaiwukcMSTBtSs5">AI 投资越猛，利率越难很快降</h2></div>
+    <p data-page-node-id="7LMJAFzuSVukr8FuwEEOy4">这是本期最值得记住的矛盾：<strong data-page-node-id="Ze4pw6M1G512FoeVKKUcB7">AI 的生意可以很好，AI 股票却不一定一直涨。</strong>原因不复杂。科技公司大建数据中心、买芯片、抢电力，需要借更多钱，也会和其他行业争抢能源、金属、芯片这些有限的东西。借钱的人变多、抢东西的人也变多，利率和物价就更容易被推高。</p>
+
+    <div class="figure-wrap" data-page-node-id="OLaqQ9nT8EiWtUkUKBSWxI">
+      <img src="w35-fig2-ai-rates-muse-v2.png" alt="MUSE观点：AI公司投入越多，为什么可能把利率推高" data-page-node-id="Ub4spvOzc574miNp6LofTR">
+      <div class="figure-caption" data-page-node-id="1IyLEN9Hl5WiEmX9EXDLpG"><strong data-page-node-id="SXGfyjjTqK75IGjDoQsncD">MUSE 观点｜AI 投资的两面。</strong>一面是公司订单更多、赚得更多，另一面是更多企业同时借钱、抢芯片、抢电力。生意好，不等于股价只涨不跌。图片单独转发时，请保留底部来源标识。</div>
+    </div>
+
+    <p data-page-node-id="o9Zp6l4202xOn6Ri6W6VGQ">利率为什么会压股价？因为利率高时，存钱和买债也能拿到不错的回报，投资者就不愿意为一家公司很多年后的利润付太高价格。于是市场会问一个很现实的问题：这家公司未来多赚的钱，够不够抵消借钱变贵，以及股价已经不便宜这两件事？</p>
+
+    <div class="analogy" data-page-node-id="KosUXlN40uBysNlufO7SaZ">
+      <div class="module-label" data-page-node-id="ZPweUdypIQBHKAfzjCgfzT">💡 打个比方</div>
+      <p data-page-node-id="mGNfELy0XWHhyQweObLtTD">像一条街突然同时开十家网红店。装修公司、店铺、电力和设备都被抢，租金和材料费一起涨。店里生意再好，也得先覆盖更高的成本。AI 现在就有点像这条街：收入在增长，但成本和利率也在追着涨。</p>
+    </div>
+
+    <p data-page-node-id="0UKExUTH8VNpAWiK7D4EFO">所以我不把“高利率持续”理解成“美联储会一路连续加息”。更准确的说法是：只要物价降得很慢、AI 公司还在大笔花钱，利率就很难快速回到舒服的位置。真正能松一口气的情况有三个：AI 公司减少投资，企业借钱和扩建明显放慢；同样数量的员工和设备能生产出更多东西，成本不再涨得那么快；或者高利率让大家少消费、企业少招人，物价和就业一起降温。</p>
+    <blockquote data-page-node-id="6ItsctP6pPZK3Xs2i0Ihqk"><p data-page-node-id="qy9kgNDsWxsEieIv2y8NX8">科技股接下来拼的，不只是“赚没赚钱”，而是“赚得有没有市场想得那么多”。好消息已经写进价格后，稍微不够好，也可能变成坏消息。</p></blockquote>
+    <p data-page-node-id="IEeuArtFbK5dJauw0ESlxt">这也是我对美股科技和 AI 硬件保持谨慎的原因。这些公司确实还在赚钱，但市场期待已经很高；一旦实际赚到的钱没有大家想得那么多，股价就可能很快下跌。<strong>A 股高位科技也会先被情绪带着回调，而不是立刻变成机会。</strong>等市场把过高的期待降下来，再看哪些真正有订单、有利润的公司能更早稳住。</p>
+    <p>这条利率主线也会传到黄金和比特币。黄金一边受益于各国央行买金和战争风险，一边又会被高利率压住；比特币在市场紧张时更像波动很大的风险资产，高利率会让资金更愿意去存款和债券，而不是追逐它。只有当市场开始相信利率会下降、可用来投资的钱重新变多，比特币的环境才会明显改善。</p>
+    <div class="source-note" data-page-node-id="F5cYZKdi8m72s9G4EBNBAZ">来源：美联储主席凯文·沃什杰克逊霍尔讲话，2026-08-28；图表与资产映射为 MUSE 观点。</div>
+  </section>
+
+  <section class="section" data-page-node-id="B3gVd2wKUg5E2hyYfnreGJ">
+    <div class="section-guide" data-page-node-id="GqoRUovv0lDOpsdx4msZAG"><strong data-page-node-id="bvrejITpWSKV0wvye12A06">这节在讲啥：</strong>地产的新制度是在堵漏洞、保交付，但规则修好了，不代表买房需求马上回来。</div>
+    <div class="section-head" data-page-node-id="1ZflHxhtYicvxxZHAlFj1H"><span class="section-num" data-page-node-id="qwwyFvHmTw3G8oRIVhKT7d">03</span><h2 data-page-node-id="Kz15yobDWZLma6oAf0trvR">地产的水管修了，水还没流进来</h2></div>
+    <p data-page-node-id="ny4hauPiexawzWnlkoAtMl">国内这周最重要的变化在房地产。政策主要做了三件事：房子怎么卖、银行怎么管项目的钱、贷款能拖多长。方向很清楚——以后更强调一个项目一本账，钱尽量留在项目里，先把房子建好和交付这件事管住。</p>
+    <p data-page-node-id="t0DDwqyQWSW1AYoJYWh3Je">主办银行制（每个房地产项目指定一家主要银行，全程盯住资金）开始建立。开发贷款的期限也跟着项目周期走：预售项目最长 5 年，现房销售项目最长 7 年。个人住房贷款最长可以做到 40 年，但这是上限，不是所有人自动都能贷 40 年，具体还要看银行和借款人怎么谈。</p>
+    <p data-page-node-id="v19O0nIpVPSO3VX9sNAAor">这里最容易误读的地方有两个。第一，不是所有楼盘立刻都改成房子建好后再卖，已经在预售的项目还能按过渡规则继续推进。第二，贷款年限拉长能让每个月少还一点，却不能让工作和收入突然更稳定，而且几十年累计付掉的利息通常会更多。</p>
+
+    <div class="analogy" data-page-node-id="f8BQb6bglR6SErxPpqmbw8">
+      <div class="module-label" data-page-node-id="ETLqF6NS1gckD0J8pYYpkC">💡 打个比方</div>
+      <p data-page-node-id="ezDevdWDW9oFaLLFI05UTF">这轮改革更像是把一栋老房子的水管重新铺好：漏水和挪用的风险会小一些，但水管修好，不代表水马上流进来。真正的“水”还是买房需求。要确认市场真的回暖，得看到房子更好卖、房企手里的钱变多、更多楼盘开始建设，而且能持续施工。</p>
+    </div>
+
+    <p data-page-node-id="tkVYoH2ep3ZtWseLxOjyyl">所以我的判断没有变：<strong data-page-node-id="Hye6DIrzroVEef6K4q2EGh">新规则能降低烂尾和资金被挪走的风险，也更有利于资金充足的房企，但还不能证明买房的人已经变多。</strong>钢铁、水泥和化工品也一样，要先看到楼盘真的开工、房子真的卖得动，不能只因为政策出来就提前押注需求回暖。</p>
+    <p>原油则是另一套逻辑：利率高会让全球需求承压，但短期油价更容易被“油到底能不能顺利运出来”推动。冲突消息本身不够，真正要看油轮装了多少货、运输保险有没有变贵、买家能不能按时收到油。</p>
+    <div class="source-note" data-page-node-id="8E3vNcwm0D4hSPxugZxeKm">来源：中国人民银行、国家金融监督管理总局相关政策；新华社，2026-08-28；原油映射为 MUSE 观点。</div>
+  </section>
+
+
+  <section class="ending" data-page-node-id="HV1LcLVYX5BCGOQLR5HdLm">
+    <p data-page-node-id="QhkiSVl8QMzkaGvWDvshR6"><strong data-page-node-id="KMcEScRrHEJ1owGDievDkx">一句话收尾：</strong>沃什的硬话能让市场更相信物价最终会被压下来，却不能马上让利率下降；AI 公司越大手笔地投资，借钱、买芯片和用电就越贵，科技股也就越需要拿出真正的利润证明自己。</p>
+    <div class="condition" data-page-node-id="m9eAJoPL01lzGGz6kreryR"><strong data-page-node-id="G6tE0Ack5THJ1dlbD0GVAb">什么情况会让我改判断：</strong>如果接下来物价涨得明显更慢、失业的人明显变多，我会认为利率不用在高位停留那么久；如果 AI 公司开始减少投资，或者同样的人和设备能生产出更多东西、成本不再快速上涨，利率也更容易降下来。反过来，如果物价仍高、就业仍稳、AI 公司继续大手笔花钱，这套判断就继续成立。</div>
+    <div class="question" data-page-node-id="JZKD2dE8IPFz1FPebfVglI">这周更担心哪一件事：利率一直高，还是 AI 赚得没有市场想得那么多？欢迎 dd 我聊聊 (wechat: cy2021dec)，下期挑有意思的观点继续拆。</div>
+  </section>
+
+  <footer class="footer" data-page-node-id="qHjSKrCm4DmCeCMxL8Obfi">
+    <div class="slogan-footer" data-page-node-id="OSBmDHQaaOnA4MjqAF6TXI">Never ask what to allocate.</div>
+    <div class="bio" data-page-node-id="0cQc4PEAhRS0MPUiMSYgiU">我是 MUSE，每周跟踪宏观因素如何改变资产价格，直接说清楚该配什么。</div>
+    <div data-page-node-id="dP931AytDrMzCVRN5ZDydS">VOL.36 · 2026-08-31 · 内部参考，不构成投资建议 · <a href="#top" data-page-node-id="Rq0QBHwn1RuSHtDIC6tnzu">回到顶部 ↑</a></div>
+  </footer>
+</main>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" data-page-node-id="UExkZyM2q7UmD6zSKFcfGH">↑</button>
+<script>
+  const toTop = document.getElementById("toTop");
+  window.addEventListener("scroll", () => {
+    toTop.classList.toggle("show", window.scrollY > 400);
+  }, { passive: true });
+  toTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+</body>
+</html>
