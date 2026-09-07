@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>MUSE 宏观配置通讯 · VOL.36 · 详尽主文与研究观察</title>
+<meta name="description" content="就业韧性延续了上期的利率约束，能源涨价能否变成企业利润，决定了谁受益、谁承压。">
+<style>
+
+:root{--bg:#fafaf8;--ink:#1a1a1a;--ink-soft:#444;--ink-mute:#888;--accent:#8a2f1f;--accent-soft:#f5ebe8;--rule:#e5e5e0;--blue:#2c4a66;--blue-soft:#eef3f8;--green:#4f6b3a;--green-soft:#eef3e9;--gold:#b8893b;--gold-soft:#f9f7f2;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;--serif:Georgia,"Times New Roman","Songti SC","STSong",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.9;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}a{color:var(--blue);text-decoration-color:#b4c2ce;text-underline-offset:3px;overflow-wrap:anywhere}a:hover{color:var(--accent)}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px}p{margin:0 0 22px}strong{font-weight:700;color:var(--ink)}.container{width:100%;max-width:680px;margin:0 auto;padding:60px 24px 80px}.slogan{font-size:22px;font-weight:700;color:var(--accent);font-family:var(--sans);margin-bottom:12px;line-height:1.4}.slogan-line{width:48px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:20px}.meta{font-size:13px;color:var(--ink-mute);font-family:var(--sans);padding-bottom:20px;border-bottom:1px solid var(--rule);margin-bottom:32px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.meta .issue{color:var(--accent);font-weight:700;letter-spacing:.06em}.meta .edition{margin-left:auto;color:var(--ink-soft);font-size:11px;letter-spacing:.14em}.title{font-size:32px;font-weight:700;line-height:1.35;margin:0 0 16px;letter-spacing:-.02em;text-wrap:pretty}.subtitle{font-size:16px;color:var(--ink-soft);font-style:italic;padding-left:16px;border-left:3px solid var(--gold);margin:0 0 28px;line-height:1.7}.lede{border-left:3px solid var(--accent);padding-left:20px;font-size:19px;color:var(--ink-soft);line-height:1.7;margin:0 0 36px}.primer{background:var(--blue-soft);border-radius:10px;padding:24px 26px;margin:0 0 36px;border-left:4px solid var(--blue)}.primer-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;font-family:var(--sans);margin-bottom:14px}.primer-title{font-size:18px;font-weight:700;margin:0 0 14px;font-family:var(--sans);line-height:1.5}.primer p{font-size:15.5px;line-height:1.75;color:var(--ink-soft);margin:0 0 12px}.primer p:last-child{margin:0}.section{margin-top:48px}.section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}.section-num{font-size:16px;color:var(--ink-mute);font-family:var(--sans);font-weight:500;flex:none;font-variant-numeric:tabular-nums}.section-head h2{font-size:23px;font-weight:700;margin:0;line-height:1.5}.section-intro{font-size:15px;color:var(--ink-mute);font-family:var(--sans);margin:0 0 24px;padding:10px 14px;background:#f5f5f2;border-radius:6px;line-height:1.6}.sub-title{font-size:18px;font-weight:700;margin:32px 0 20px;padding-left:12px;border-left:3px solid var(--accent);line-height:1.5;font-family:var(--sans)}.key-point{font-size:18px;font-weight:700;margin:24px 0;padding:16px 20px;background:#f7f5f0;border-radius:8px;line-height:1.6;border-left:4px solid var(--gold)}.logic-chain{background:var(--blue-soft);border-radius:8px;padding:18px 22px;margin:24px 0;font-family:var(--sans)}.logic-chain-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:10px}.logic-chain p{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin:0}.logic-chain strong{font-weight:500}.risk-box{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0}.risk-box-label,.opportunity-box-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:var(--sans);margin-bottom:8px}.risk-box p,.opportunity-box p{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin:0}.risk-box.tail-risk{background:#f0ebe8;border-left-color:#5a4a42}.opportunity-box{background:var(--green-soft);border-left:4px solid var(--green);border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0}.opportunity-box-label{color:var(--green)}.alloc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}.alloc-card{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:18px 20px;min-width:0}.alloc-card-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-family:var(--sans);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:12px}.alloc-card-label span:last-child{font-size:18px;line-height:1}.alloc-card p{font-size:14.5px;line-height:1.7;color:var(--ink-soft);margin:0}.alloc-card strong{display:block;font-family:var(--sans);font-size:16px;margin-bottom:12px;line-height:1.6}.alloc-card.ok .alloc-card-label{color:var(--green)}.alloc-card.no .alloc-card-label{color:var(--accent)}.alloc-card.watch .alloc-card-label{color:var(--blue)}.alloc-card.tbd .alloc-card-label{color:#8b662a}.alloc-card.ok{border-top:3px solid var(--green)}.alloc-card.no{border-top:3px solid var(--accent)}.alloc-card.watch{border-top:3px solid var(--blue)}.alloc-card.tbd{border-top:3px solid var(--gold)}.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;font-family:var(--sans);table-layout:fixed}.data-table th{background:var(--ink);color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:13px;line-height:1.6}.data-table td{padding:10px 12px;border-bottom:1px solid var(--rule);color:var(--ink-soft);line-height:1.6;vertical-align:top;overflow-wrap:anywhere}.data-table tr:nth-child(even) td{background:#faf9f6}.data-table .verified{color:var(--green);font-weight:700}.data-table .partial{color:#906626;font-weight:700}.data-table .pending{color:#71716d;font-weight:600}#continuity-table th:nth-child(1){width:35%}#continuity-table th:nth-child(2){width:35%}#continuity-table th:nth-child(3){width:30%}#watch-table th:nth-child(1){width:17%}#watch-table th:nth-child(2){width:20%}#watch-table th:nth-child(3){width:18%}#watch-table th:nth-child(4){width:20%}#watch-table th:nth-child(5){width:25%}.layer-label{font-family:var(--sans);font-weight:600;font-size:13px;color:var(--blue);display:block;margin:20px 0 8px;letter-spacing:.04em}.macro-line{margin-bottom:36px}.macro-line+.macro-line{padding-top:8px}.source-note{font-family:var(--sans);font-size:12px;line-height:1.8;color:var(--ink-mute);margin:22px 0 0;padding-top:12px;border-top:1px dashed var(--rule);overflow-wrap:anywhere}.source-note a{color:#6b7882;text-decoration-color:#c4cbd0}.source-note strong{color:inherit}.infographic{margin:28px 0 32px;padding:20px;border:1px solid var(--rule);border-radius:10px;background:#fff;font-family:var(--sans)}.figure-kicker{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:.14em;margin-bottom:8px}.figure-title{font-size:17px;line-height:1.5;font-weight:700;margin:0 0 8px}.figure-sub{font-size:13px;line-height:1.7;color:#70706c;margin:0 0 20px}.figure-note{font-size:12px;color:#77756f;line-height:1.7;margin:16px 0 0;padding-top:12px;border-top:1px solid var(--rule)}.flow-grid{display:grid;grid-template-columns:1fr 1.05fr 1fr 1fr 1.28fr;gap:15px;align-items:stretch;margin-top:22px}.flow-node{position:relative;min-width:0;padding:12px 8px 14px;border-radius:8px;background:#f7ece8;border:1px solid #eadbd4;text-align:center}.flow-node:nth-child(2){background:#fbefe3;border-color:#ecdfcd}.flow-node:nth-child(3){background:#f7f0df;border-color:#e9e0c5}.flow-node:nth-child(4){background:#f3e9e6;border-color:#e4d5d0}.flow-node:nth-child(5){background:var(--blue-soft);border-color:#dbe4ec}.flow-node:not(:last-child)::after{content:'→';position:absolute;right:-15px;top:50%;width:15px;text-align:center;color:#a9a49c;font-size:14px;transform:translateY(-50%)}.flow-icon{display:grid;place-items:center;font-size:23px;height:34px;margin:0 0 10px;line-height:1}.flow-node .step{font-size:10px;letter-spacing:.1em;color:#9e6e61;margin-bottom:8px}.flow-node h4{font-size:13px;line-height:1.7;margin:0;color:var(--ink);font-weight:600}.flow-node p{font-size:12px;line-height:1.7;color:var(--ink-soft);margin:8px 0 0}.flow-node:last-child h4{color:var(--blue)}.evidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 14px}.evidence-block{padding:16px;background:var(--blue-soft);border:1px solid #d5e0ea;border-radius:8px}.evidence-block.estimate{background:#fbf0e6;border:1.5px dashed #c88c52}.evidence-tag{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.08em;margin-bottom:10px}.estimate .evidence-tag{color:#9b642d}.evidence-block h4{font-size:16px;line-height:1.5;margin:0 0 8px}.evidence-block p{font-size:13px;line-height:1.75;margin:0;color:var(--ink-soft)}.evidence-result{display:flex;gap:12px;align-items:flex-start;background:#f6f5f0;border-radius:7px;padding:15px 16px}.evidence-result .mark{color:var(--accent);font-size:24px;line-height:1.35;font-weight:500}.evidence-result p{font-size:14px;line-height:1.7;margin:0}.evidence-result strong{color:var(--accent)}.scenario-overview{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}.prob-card{padding:16px 17px;background:var(--blue-soft);border-radius:8px;--tone:var(--blue);min-width:0}.prob-card.risk{background:var(--accent-soft);--tone:var(--accent)}.prob-card.optimistic{background:var(--green-soft);--tone:var(--green)}.prob-card.blackswan{background:#f0ebe8;--tone:#5a4a42}.prob-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;color:var(--tone);font-size:13px;font-weight:700;line-height:1.5}.prob-top b{font-size:27px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}.prob-top b small{font-size:14px}.prob-card p{font-size:13px;line-height:1.65;margin:9px 0 14px;color:var(--ink-soft)}.prob-track{height:6px;background:#0000000d;border-radius:10px;overflow:hidden}.prob-fill{height:100%;background:var(--tone);border-radius:10px;width:var(--prob)}.scenario{border-radius:8px;padding:18px 22px;margin:16px 0;border-left:4px solid}.scenario.base{background:var(--blue-soft);border-left-color:var(--blue)}.scenario.risk{background:var(--accent-soft);border-left-color:var(--accent)}.scenario.optimistic{background:var(--green-soft);border-left-color:var(--green)}.scenario.blackswan{background:#f0ebe8;border-left-color:#5a4a42}.scenario-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}.scenario-name{font-size:17px;font-weight:700;font-family:var(--sans);line-height:1.5}.scenario-prob{font-size:13px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(0,0,0,.06);font-family:var(--sans)}.scenario-state{font-size:12px;font-family:var(--sans);color:var(--ink-mute);margin:0 0 9px}.scenario h3{font-size:17px;line-height:1.55;margin:8px 0 14px}.scenario p{font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 8px}.scenario .signal{font-size:13px;color:#6c6a66;font-family:var(--sans);margin-top:12px;padding-top:12px;border-top:1px dashed rgba(0,0,0,.15)}.scenario ul{margin:12px 0 0;padding:0;list-style:none}.scenario li{font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 8px}.keywords{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.keyword{font-size:13px;padding:4px 12px;background:#f0ede6;color:var(--ink-soft);border-radius:20px;font-family:var(--sans)}.ending{margin-top:48px;padding-top:28px;border-top:1px solid var(--rule)}.ending p{font-size:17px;color:var(--ink-soft);margin-bottom:16px}.ending .condition{font-size:15px;color:var(--ink-mute);font-family:var(--sans);line-height:1.7;margin-bottom:20px}.ending .question{font-size:15px;color:var(--accent);font-weight:700;font-family:var(--sans);margin-top:24px}.footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-mute);font-family:var(--sans);line-height:1.7}.footer .slogan-footer{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px}.footer .bio{margin-bottom:12px;color:var(--ink-soft)}.footer p{font-size:12px;margin-bottom:12px}.footer ul{padding-left:18px;margin:14px 0}.footer li{margin-bottom:10px}.footer details{margin:26px 0 24px;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}.footer summary{cursor:pointer;color:var(--ink-soft);font-size:13px;font-weight:600;list-style-position:inside}.footer h4,.footer h5{font-size:13px;color:var(--ink-soft);margin:24px 0 12px}.footer .data-table{font-size:12px}.footer .data-table th{font-size:12px;background:#eceae4;color:var(--ink-soft)}.footer .data-table td{padding:9px}.to-top{position:fixed;right:24px;bottom:24px;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:40;border:none;font-size:15px}.to-top.show{opacity:1;pointer-events:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:640px){.container{padding:36px 24px 64px}.title{font-size:28px;line-height:1.45}.meta{gap:5px 8px}.meta .edition{margin-left:0;width:100%;margin-top:4px}.slogan{font-size:21px}.subtitle{font-size:16px}.lede{font-size:18px;padding-left:16px}.primer{padding:20px 19px}.section{margin-top:40px}.section-head{gap:12px}.section-head h2{font-size:21px}.alloc-grid{grid-template-columns:1fr}.alloc-card{padding:18px 20px}.alloc-card p{font-size:15.5px}.section-intro{font-size:14px}.data-table{font-size:13px}.data-table th,.data-table td{padding:10px 8px}.mobile-cards,.mobile-cards tbody,.mobile-cards tr,.mobile-cards td{display:block;width:100%}.mobile-cards thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.mobile-cards tr{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-bottom:16px;background:#fff}.mobile-cards td{padding:10px 14px;border-bottom:1px solid #eeede8;background:#fff!important;font-size:14px;line-height:1.65}.mobile-cards td:first-child{font-size:16px;font-weight:700;background:#f0ede6!important;color:var(--ink);padding:14px}.mobile-cards td:not(:first-child)::before{content:attr(data-label);display:block;font-size:11px;font-weight:600;letter-spacing:.03em;color:#81817b;margin:0 0 4px}.mobile-cards td:last-child{border:0}.flow-grid{grid-template-columns:1fr;gap:24px}.flow-node{display:grid;grid-template-columns:38px 1fr;gap:4px 12px;text-align:left;padding:14px 16px;align-items:start}.flow-node .flow-icon{grid-column:1;grid-row:1/4;margin:0;align-self:center}.flow-node .step{grid-column:2;margin:0;font-size:10px}.flow-node h4{grid-column:2;font-size:15px;line-height:1.6}.flow-node p{grid-column:2;font-size:13px;margin:2px 0 0}.flow-node:not(:last-child)::after{content:'↓';right:auto;top:auto;bottom:-24px;left:50%;width:24px;height:24px;line-height:24px;transform:translateX(-50%)}.infographic{padding:18px 16px}.evidence-grid{gap:10px}.evidence-block{padding:12px}.evidence-block h4{font-size:14px}.evidence-block p{font-size:12px}.evidence-result{padding:13px 12px}.evidence-result p{font-size:13px}.figure-title{font-size:16px}.scenario-overview{gap:10px}.prob-card{padding:13px 12px}.prob-top{display:block;font-size:12px}.prob-top b{display:block;font-size:28px;margin:6px 0}.prob-card p{font-size:12px}.scenario{padding:18px}.scenario-head{gap:8px}.scenario h3{font-size:16px}.risk-box,.opportunity-box,.logic-chain{padding:16px 18px}.to-top{right:16px;bottom:16px;width:40px;height:40px}.footer .data-table{table-layout:auto}.source-note{font-size:12px}.ending .condition{color:#74746e}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.to-top{transition:none}}
+@media print{body{background:#fff;font-size:12pt}.container{max-width:none;padding:0}.to-top{display:none}.section{break-inside:auto}.section-head,.sub-title{break-after:avoid}.infographic,.alloc-card,.scenario{break-inside:avoid}.source-note a{color:inherit}.footer details{display:none}}
+
+
+/* Navigation and allocation overview; scoped to preserve the original report. */
+:root{--nav-offset:32px;--serif:Georgia,"Times New Roman","Songti SC","STSong","SimSun","Noto Serif CJK SC",serif;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+html{scroll-padding-top:var(--nav-offset)}
+.page-shell{display:grid;grid-template-columns:208px minmax(0,740px);gap:56px;max-width:1068px;margin:0 auto;padding:0 32px;align-items:start}
+.page-shell>.container{max-width:740px;min-width:0;margin:0;padding:56px 24px 80px}
+.skip-link{position:fixed;left:20px;top:12px;padding:8px 16px;background:var(--ink);color:#fff;z-index:100;transform:translateY(-160%);font:14px/1.5 var(--sans)}
+.skip-link:focus{transform:translateY(0);color:#fff}
+.toc{position:sticky;top:42px;max-height:calc(100vh - 76px);max-height:calc(100dvh - 76px);padding:12px 0 0;font-family:var(--sans);font-size:13px;line-height:1.6;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#d5d2ca transparent;overscroll-behavior:contain}
+.toc-toggle{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 8px 22px;cursor:default;pointer-events:none}
+.toc-toggle::-webkit-details-marker{display:none}
+.toc-kicker{display:block;color:var(--accent);font-size:11px;letter-spacing:.12em;font-weight:700;margin-bottom:12px}
+.toc-title{display:block;font-family:var(--serif);font-size:23px;font-weight:700;color:var(--ink)}
+.toc-chevron{display:none;width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-right:5px}
+.toc nav{border-top:1px solid var(--rule);padding-top:14px}
+.toc-link{display:flex;align-items:baseline;gap:10px;padding:8px 10px;margin:2px 0;border-left:2px solid transparent;border-radius:0 5px 5px 0;color:#68665f;text-decoration:none;line-height:1.55;transition:background .16s,color .16s}
+.toc-link .nav-num{flex:0 0 19px;font-size:10px;font-variant-numeric:tabular-nums;color:#858178;white-space:nowrap}
+.toc-link:hover{background:#f0eee8;color:var(--ink)}
+.toc-link[aria-current="location"]{background:var(--accent-soft);border-left-color:var(--accent);color:var(--accent);font-weight:600}
+.toc-link[aria-current="location"] .nav-num{color:var(--accent)}
+.toc-link.sub{font-size:12px;padding:5px 10px 5px 39px}
+.toc-link.utility{font-size:12px}
+.toc-divider{height:1px;background:var(--rule);margin:14px 0}
+.toc-progress{margin:22px 10px 10px;color:#767168;font-size:11px}
+.toc-progress-label{display:flex;justify-content:space-between;margin-bottom:9px}
+.progress-track{height:3px;border-radius:3px;background:#eae7df;overflow:hidden}
+.progress-fill{display:block;width:100%;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .12s linear}
+.toc-edition{margin:12px 10px 6px;font-size:10px;letter-spacing:.1em;color:#8b857a}
+.allocation-overview{background:#fff;border:1px solid #deded7;border-radius:12px;margin:0 0 36px;overflow:hidden;box-shadow:0 3px 12px #28251c03}
+.allocation-summary{list-style:none;cursor:pointer;padding:26px 28px 23px;transition:background .16s}
+.allocation-summary::-webkit-details-marker{display:none}
+.allocation-summary:hover{background:#fcfbf8}
+.allocation-summary:focus-visible{outline-offset:-5px}
+.allocation-eyebrow{display:flex;justify-content:space-between;gap:14px;align-items:center;font:600 11px/1.6 var(--sans);letter-spacing:.16em;color:#7e7b73;margin-bottom:16px}
+.allocation-toggle{font-size:11px;letter-spacing:0;color:var(--accent);font-weight:500;white-space:nowrap;padding:3px 9px;border:1px solid #ece5df;border-radius:5px}
+.allocation-toggle .when-open{display:none}
+.allocation-overview[open] .when-open{display:inline}
+.allocation-overview[open] .when-closed{display:none}
+.allocation-headline{font-size:24px;line-height:1.55;font-weight:700;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-wrap:pretty}
+.allocation-deck{display:block;font:12px/1.7 var(--sans);color:#7c786f}
+.allocation-content{padding:0 28px 24px}
+.allocation-list{list-style:none;margin:0;padding:0}
+.allocation-row{display:flex;align-items:flex-start;gap:15px;padding:18px 0;border-top:1px solid #eeeee8}
+.allocation-row p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.85;min-width:0}
+.allocation-tag{flex:none;display:inline-block;padding:4px 9px;border-radius:5px;margin-top:3px;font:700 11px/1.7 var(--sans);letter-spacing:.03em;white-space:nowrap}
+.allocation-tag.cautious{background:var(--accent-soft);color:var(--accent)}
+.allocation-tag.defensive,.allocation-tag.watch{background:#e8f0e0;color:var(--green)}
+.allocation-tag.diversify,.allocation-tag.observe{background:var(--blue-soft);color:var(--blue)}
+.allocation-tag.neutral{background:#eee;color:#666}
+.allocation-tag.wait{background:#f6f0e4;color:#826324}
+.allocation-ref{font:10px/1 var(--sans);vertical-align:super;margin-left:3px;text-decoration:none;white-space:nowrap;color:#827c71}
+.allocation-footnote{border-top:1px solid var(--rule);padding-top:16px;margin-top:2px;font:11.5px/1.8 var(--sans);color:#78746b}
+.allocation-footnote p{margin:0 0 10px;color:inherit;font:inherit}
+.allocation-actions{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px}
+.footer .verification-panel{margin:24px 0;padding:18px 20px;background:#f5f4ef;border:1px solid var(--rule);border-radius:8px}
+.footer .verification-panel>summary{line-height:1.8;color:var(--accent)}
+.verification-intro{margin-top:18px!important}
+.verification-item{border-top:1px solid #e1ded4;padding-top:16px;margin-top:18px}
+.footer .verification-item h4{margin:0 0 8px;font-size:14px;line-height:1.7}
+.footer .verification-item p{font-size:13px;line-height:1.85;margin-bottom:10px}
+.evidence-status{display:inline-block;font:600 10px/1.6 var(--sans);padding:2px 6px;background:#e6eddf;color:var(--green);border-radius:3px;margin-right:8px;vertical-align:middle}
+.evidence-status.conditional{background:#eee6d6;color:#826324}
+.verification-sources{font-size:11px!important;color:#7a7469}
+.verification-limit{border-top:1px solid #d8d4ca;padding-top:14px;margin-top:20px;color:#756c61}
+@media(max-width:1000px){
+ :root{--nav-offset:96px}
+ .page-shell{display:block;max-width:none;padding:0}
+ .page-shell>.container{max-width:740px;margin:0 auto;padding:36px 24px 70px}
+ .toc{top:0;z-index:60;max-height:none;width:100%;padding:0;background:rgba(250,250,248,.98);border-bottom:1px solid var(--rule);overflow:visible;box-shadow:0 2px 10px #1a1a1a04}
+ .toc-menu{max-width:740px;margin:0 auto}
+ .toc-toggle{pointer-events:auto;cursor:pointer;padding:13px 24px;min-height:65px}
+ .toc-toggle>span:first-child{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+ .toc-kicker{margin:0;font-size:10px;letter-spacing:.08em}
+ .toc-title{font:600 14px/1.5 var(--sans)}
+ .toc-chevron{display:block}
+ .toc-menu[open] .toc-chevron{transform:rotate(225deg)}
+ .toc-menu nav{padding:10px 20px 14px;margin:0 4px;max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);overflow-y:auto;overscroll-behavior:contain}
+ .toc-link{padding:10px 10px;min-height:40px}
+ .toc-link.sub{min-height:34px;padding-top:7px;padding-bottom:7px}
+ .toc-progress{margin-top:16px}
+ .toc-edition{display:none}
+}
+@media(max-width:640px){
+ .page-shell>.container{padding:30px 20px 64px}
+ .allocation-summary{padding:22px 20px 20px}
+ .allocation-headline{font-size:22px;line-height:1.55}
+ .allocation-eyebrow{font-size:10px;letter-spacing:.1em;margin-bottom:14px}
+ .allocation-deck{font-size:11px}
+ .allocation-content{padding:0 20px 20px}
+ .allocation-row{gap:11px;padding:16px 0}
+ .allocation-row p{font-size:15.5px;line-height:1.85}
+ .allocation-tag{font-size:10px;padding:3px 7px}
+ .allocation-actions{gap:8px 16px}
+ .footer .verification-panel{padding:16px}
+}
+@media(max-width:360px){.allocation-row{gap:9px}.allocation-summary,.allocation-content{padding-left:16px;padding-right:16px}.allocation-headline{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.toc-link,.progress-fill,.allocation-summary{transition:none}}
+@media print{
+ .page-shell{display:block;max-width:none;padding:0}
+ .page-shell>.container{max-width:none;padding:0}
+ .toc,.skip-link,.allocation-toggle,.allocation-actions{display:none!important}
+ .allocation-overview{border-color:#bbb;box-shadow:none;overflow:visible;break-inside:auto}
+ .allocation-summary{padding:16px 20px;break-after:avoid}
+ .allocation-content{padding:0 20px 16px}
+ .allocation-overview::details-content{content-visibility:visible;height:auto}
+ .allocation-row{break-inside:avoid}
+ .allocation-row p{font-size:11pt}
+ .allocation-ref{color:inherit}
+ .footer .verification-panel{display:block!important;break-inside:auto}
+ .verification-panel::details-content{content-visibility:visible;height:auto}
+ .verification-item{break-inside:avoid}
+}
+
+/* Scoped compact modules within the detailed report. */
+.allocation-overview .asset-name{display:block;font-weight:700;color:var(--ink);margin:0 0 4px;font-size:17px}
+.allocation-overview .allocation-row p{font-size:16.5px;line-height:1.85}
+.allocation-overview .allocation-headline{font-size:25px}
+#sec-2 .alloc-grid{gap:16px}
+#sec-2 .alloc-card h3{font-family:var(--sans);font-size:17px;line-height:1.5;margin:0 0 12px;color:var(--ink)}
+#sec-2 .alloc-card p{font-size:16px;line-height:1.85}
+#sec-2 .alloc-card p strong{display:inline;font-family:inherit;font-size:inherit;line-height:inherit;margin:0}
+#figure-1 .flow-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+#figure-1 .flow-icon{font-size:14px;font-weight:600;height:28px;color:#8a6558;font-variant-numeric:tabular-nums}
+#figure-1 .flow-node:last-child{background:var(--blue-soft);border-color:#dbe4ec}
+#figure-1 .flow-node h4{font-size:14px}
+#watch-table th:nth-child(1){width:29%}
+#watch-table th:nth-child(2){width:32%}
+#watch-table th:nth-child(3){width:39%}
+#watch-table td{padding:14px 12px;line-height:1.85}
+#sec-8 .prob-card p{font-size:15px;line-height:1.85;margin:12px 0}
+#sec-8 .prob-card .scenario-check{font-size:12.5px;border-top:1px solid #00000012;padding-top:11px;color:#68655f}
+#sec-8 .prob-top span{font-size:13px}
+.equity-watch{margin:8px 0 20px;border:1px solid var(--rule);border-radius:8px;background:#fbfaf6;font-family:var(--sans);overflow:hidden}
+.equity-watch>summary{padding:15px 16px;font-size:14px;line-height:1.7;font-weight:700;color:var(--accent);cursor:pointer;list-style-position:inside}
+.equity-watch>summary:focus-visible{outline-offset:-4px}
+.equity-intro,.equity-limit{padding:0 16px;font-size:13px;line-height:1.85;color:var(--ink-soft);margin:0 0 16px}
+.equity-grid{display:grid;grid-template-columns:1fr;gap:14px;margin:0 14px 16px}
+.equity-card{min-width:0;border:1px solid var(--rule);border-radius:7px;background:#fff;padding:18px}
+.equity-market{display:block;font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--blue);margin:0 0 8px}
+.equity-card h3{font-size:18px;line-height:1.6;margin:0 0 12px}
+.equity-card .ticker{display:inline-block;font-size:11px;font-weight:500;color:#777168;margin-left:8px;letter-spacing:0}
+.equity-card p{font-size:14px;line-height:1.9;color:var(--ink-soft);margin:0 0 12px}
+.equity-card .equity-risk{padding:12px;background:#faf6f1;border-left:2px solid #bf967c;border-radius:0 4px 4px 0;font-size:13px}
+.equity-card .equity-source{border-top:1px dashed var(--rule);padding-top:10px;font-size:11px;color:#7a7469;margin:0}
+.equity-limit{padding-top:12px;border-top:1px solid var(--rule)}
+@media(max-width:640px){
+ .allocation-overview .allocation-row p{font-size:16px;line-height:1.85}
+ .allocation-overview .allocation-headline{font-size:22px}
+ .allocation-overview .asset-name{font-size:16.5px;margin-bottom:5px}
+ #figure-1 .flow-grid{grid-template-columns:1fr}
+ #figure-1 .flow-node{grid-template-columns:28px minmax(0,1fr)}
+ #figure-1 .flow-node .flow-icon{grid-row:1/3;font-size:14px}
+ #sec-8 .scenario-overview{grid-template-columns:1fr}
+ #sec-8 .prob-top{display:flex;align-items:baseline;justify-content:space-between}
+ #sec-8 .prob-top b{margin:0;font-size:24px}
+ #sec-8 .prob-top span{font-size:14px}
+ #sec-8 .prob-card{padding:16px}
+ #sec-8 .prob-card .scenario-check{font-size:13px}
+ #watch-table td{padding:12px 14px}
+ .equity-watch>summary{font-size:13px;padding:14px 12px}
+ .equity-intro,.equity-limit{padding-left:12px;padding-right:12px}
+ .equity-grid{margin-left:8px;margin-right:8px}
+ .equity-card{padding:14px 12px}
+ .equity-card .ticker{display:block;margin:3px 0 0}
+}
+@media print{
+ .allocation-overview .allocation-row p{font-size:11pt}
+ .allocation-overview .asset-name{font-size:12pt}
+ .footer #source-details{display:block!important}
+ .equity-watch{overflow:visible;break-inside:auto}
+ .equity-watch::details-content{content-visibility:visible;height:auto}
+ .equity-card,#sec-8 .prob-card{break-inside:avoid}
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#top">跳至正文</a>
+<div class="page-shell">
+<aside class="toc" aria-label="周报阅读导航">
+  <details class="toc-menu" id="toc-menu" open>
+    <summary class="toc-toggle" aria-controls="toc-links"><span><span class="toc-kicker">MUSE · WEEKLY</span><span class="toc-title">本期目录</span></span><span class="toc-chevron" aria-hidden="true"></span></summary>
+    <nav id="toc-links" aria-label="本期目录">
+<a class="toc-link" href="#allocation-overview" aria-current="location"><span class="nav-num" aria-hidden="true">速览</span><span>本周配置方向</span></a>
+<a class="toc-link" href="#sec-1"><span class="nav-num" aria-hidden="true">01</span><span>本周先说结论</span></a>
+<a class="toc-link" href="#sec-2"><span class="nav-num" aria-hidden="true">02</span><span>配置框架与执行边界</span></a>
+<a class="toc-link" href="#sec-3"><span class="nav-num" aria-hidden="true">03</span><span>上期判断，本周验证</span></a>
+<a class="toc-link" href="#sec-4"><span class="nav-num" aria-hidden="true">04</span><span>本周最大的风险</span></a>
+<a class="toc-link" href="#sec-5"><span class="nav-num" aria-hidden="true">05</span><span>三条主要宏观线索</span></a>
+<a class="toc-link sub" href="#macro-1"><span>就业与利率</span></a>
+<a class="toc-link sub" href="#macro-2"><span>原油与实际交付</span></a>
+<a class="toc-link sub" href="#macro-3"><span>焦煤与旧经济</span></a>
+<a class="toc-link" href="#sec-6"><span class="nav-num" aria-hidden="true">06</span><span>交叉传导</span></a>
+<a class="toc-link" href="#sec-7"><span class="nav-num" aria-hidden="true">07</span><span>未来一周观察清单</span></a>
+<a class="toc-link" href="#sec-8"><span class="nav-num" aria-hidden="true">08</span><span>四情景路线图</span></a>
+<a class="toc-link" href="#sec-9"><span class="nav-num" aria-hidden="true">09</span><span>本期关键词</span></a>
+<div class="toc-divider" aria-hidden="true"></div>
+<a class="toc-link utility" href="#closing"><span>结语与修正条件</span></a>
+<a class="toc-link utility" href="#allocation-verification"><span>配置逻辑核验</span></a>
+<a class="toc-link utility" href="#source-details"><span>完整信源与数据口径</span></a>
+      <div class="toc-progress"><div class="toc-progress-label"><span>阅读进度</span><span id="reading-percent" aria-hidden="true">0%</span></div><div class="progress-track" id="reading-progress" role="progressbar" aria-label="全文阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="progress-fill" id="reading-progress-fill"></span></div></div>
+      <div class="toc-edition">2026.09.07 · VOL.36</div>
+    </nav>
+  </details>
+</aside>
+<main class="container" id="top" tabindex="-1"><header><div class="slogan">Never ask what to allocate.</div><div class="slogan-line"></div><div class="meta"><span class="issue">VOL.36</span><span>·</span><time datetime="2026-09-07">2026-09-07</time><span>· 约 8 分钟</span><span class="edition">MUSE 宏观配置通讯</span></div><h1 class="title">高利率压力未解，能源风险再升：资源涨价不等于全面复苏</h1><p class="subtitle">就业韧性延续了上期的利率约束，能源涨价能否变成企业利润，决定了谁受益、谁承压。</p><p class="lede">真正决定资产方向的，是企业新增收入能否覆盖更高的能源与融资成本。</p></header>
+<details class="allocation-overview" id="allocation-overview" open>
+  <summary class="allocation-summary">
+    <span class="allocation-eyebrow"><span>本周配置方向</span><span class="allocation-toggle" aria-hidden="true"><span class="when-open">收起 −</span><span class="when-closed">展开 ＋</span></span></span>
+    <h2 class="allocation-headline">先稳住，个股先研究，不急着买</h2>
+    <span class="allocation-deck">7 类资产 · 板块给倾向，个股给研究线索</span>
+  </summary>
+  <div class="allocation-content">
+    <ul class="allocation-list">
+      <li class="allocation-row"><span class="allocation-tag defensive">求稳</span><p><span class="asset-name">现金 / 短期债券</span><strong>少押长期美债。</strong>防守资金优先考虑期限较短、发行方偿债能力较强的债券。尽量用日常支出的币种，仍有亏损风险。<a class="allocation-ref" href="#verify-rates" aria-label="查看现金与债券的依据">[1]</a></p></li>
+      <li class="allocation-row"><span class="allocation-tag cautious">谨慎</span><p><span class="asset-name">美股</span><strong>关注云软件与供电设备，不追高。</strong>板块有机会，不等于每家公司都便宜；先看利润能否跟上投入。<a href="#equity-watch">个股仅作研究线索</a>。<a class="allocation-ref" href="#verify-tech" aria-label="查看科技股的依据">[2]</a></p></li>
+      <li class="allocation-row"><span class="allocation-tag diversify">分散</span><p><span class="asset-name">黄金</span><strong>分散风险，不赌必涨。</strong>利率高不代表黄金一定跌，战争也不保证上涨；还要看美元和黄金买卖需求。<a class="allocation-ref" href="#verify-gold" aria-label="查看黄金的依据">[3]</a></p></li>
+      <li class="allocation-row"><span class="allocation-tag neutral">精选</span><p><span class="asset-name">A 股</span><strong>偏分红看运营商，成长方向看电网设备。</strong>先看利润、回款和价格，不把行业机会当买点。<a href="#equity-watch">查看研究观察名单</a>。<a class="allocation-ref" href="#verify-china" aria-label="查看 A 股的依据">[4]</a></p></li>
+      <li class="allocation-row"><span class="allocation-tag watch">关注</span><p><span class="asset-name">煤炭等资源股</span><strong>看涨价后能多赚多少。</strong>煤价涨，不代表每家煤企都受益，还要看产量和成本。供应恢复、需求没跟上时，要重新评估。<a class="allocation-ref" href="#verify-china" aria-label="查看资源股的依据">[4]</a></p></li>
+      <li class="allocation-row"><span class="allocation-tag wait">等待</span><p><span class="asset-name">地产 / 钢铁 / 化工</span><strong>先等销量和利润改善。</strong>原料变贵、产品却卖不动，企业反而可能少赚钱，别把成本上涨当作复苏。<a class="allocation-ref" href="#verify-china" aria-label="查看地产与制造业的依据">[4]</a></p></li>
+      <li class="allocation-row"><span class="allocation-tag observe">观察</span><p><span class="asset-name">原油</span><strong>不赌只涨或只跌。</strong>看油能否按时到货、运费和保险是否回落，不只听谈判或冲突消息。<a class="allocation-ref" href="#verify-energy" aria-label="查看原油的依据">[5]</a></p></li>
+    </ul>
+    <details class="equity-watch" id="equity-watch">
+  <summary>个股研究观察名单 · 不是本周买入建议</summary>
+  <p class="equity-intro"><strong>以下用于跟踪未来几个季度的经营变化，不判断本周涨跌。</strong>所列依据截至 2026-09-07，未据实时股价测算估值，也未完成市场预期核对和全面尽调。<strong>值得研究，不等于现在值得买。</strong></p>
+  <div class="equity-grid">
+    <article class="equity-card" id="stock-msft" aria-labelledby="stock-msft-title">
+      <span class="equity-market">美股 · 云软件 / AI 应用</span>
+      <h3 id="stock-msft-title">微软 <span class="ticker">NASDAQ: MSFT</span></h3>
+      <p><strong>已披露事实：</strong>截至 6 月末的 2026 财年第四季度，Azure 及其他云服务收入同比增长 <strong>43%</strong>；但微软云毛利率从上年同期的 68% 降至 <strong>65%</strong>，AI 投入仍在增加成本。</p>
+      <p><strong>为什么关注：</strong>研究云服务和企业软件需求能否转成持续利润，而不是只看 AI 投入规模。</p>
+      <p class="equity-risk"><strong>主要风险：</strong>建设投入和折旧可能压低利润，收入增长也可能赶不上市场期待；<strong>公司好，不代表股价便宜。</strong></p>
+      <p><strong>什么情况改判断：</strong>若云业务增长放缓，且投入后留下的现金持续减少，就下调对长期回报的期待。即使经营改善，也需另查价格是否合适。</p>
+      <p class="equity-source">来源：<a href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/metrics" target="_blank" rel="noopener noreferrer">微软季度指标</a>、<a href="https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4" target="_blank" rel="noopener noreferrer">业绩说明会</a>，2026-07-29。</p>
+    </article>
+    <article class="equity-card" id="stock-etn" aria-labelledby="stock-etn-title">
+      <span class="equity-market">美股 · 供电 / 配电设备</span>
+      <h3 id="stock-etn-title">伊顿 <span class="ticker">NYSE: ETN</span></h3>
+      <p><strong>已披露事实：</strong>2026 年第二季度销售额同比增长 <strong>21%</strong>，其中不含收购贡献的有机增长为 14%；美洲电气业务期末在手订单同比增长 <strong>33%</strong>。但按会计准则报告的净利润同比下降约 <strong>16%</strong>，不能只看增长的调整后利润。</p>
+      <p><strong>为什么关注：</strong>供电、配电设备是研究数据中心和电网建设需求的一条线索，重点跟踪订单能否交付并带来利润。</p>
+      <p class="equity-risk"><strong>主要风险：</strong>项目延期、收购后的成本和债务负担，可能让订单增长难以转成利润；增长也可能已被股价计入。</p>
+      <p><strong>什么情况改判断：</strong>若订单取消或推迟，利润和现金回款迟迟跟不上，就下调对需求兑现的判断。<strong>订单多，不等于现在适合买。</strong></p>
+      <p class="equity-source">来源：<a href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-second-quarter-2026-results.html" target="_blank" rel="noopener noreferrer">伊顿第二季度业绩公告</a>，2026-07-31。</p>
+    </article>
+    <article class="equity-card" id="stock-cm" aria-labelledby="stock-cm-title">
+      <span class="equity-market">A 股 · 通信运营商</span>
+      <h3 id="stock-cm-title">中国移动 <span class="ticker">上交所: 600941</span></h3>
+      <p><strong>已披露事实：</strong>2026 年上半年经营现金净流入同比增长 <strong>37.0%</strong>，中期每股派息 2.51 元人民币；但股东应占利润同比下降 <strong>6.3%</strong>，通信服务收入下降 5.7%。</p>
+      <p><strong>为什么关注：</strong>研究分红能否持续，重点看支付日常经营、建设支出后，还能留下多少现金。它仍是股票，不是存款或债券。</p>
+      <p class="equity-risk"><strong>主要风险：</strong>主营收入和利润下滑，可能削弱未来分红能力；A、H 股价格不同，不能直接套用港股股息率。</p>
+      <p><strong>什么情况改判断：</strong>若经营留下的现金持续不足以支撑建设与分红，就下调分红可持续性的判断。<strong>历史派息不是未来承诺。</strong></p>
+      <p class="equity-source">来源：<a href="https://www.10086.cn/aboutus/news/groupnews/index_detail_55650.html" target="_blank" rel="noopener noreferrer">中国移动中期业绩公告</a>，2026-08-13。</p>
+    </article>
+    <article class="equity-card" id="stock-nari" aria-labelledby="stock-nari-title">
+      <span class="equity-market">A 股 · 电网设备 / 自动化</span>
+      <h3 id="stock-nari-title">国电南瑞 <span class="ticker">上交所: 600406</span></h3>
+      <p><strong>已披露事实：</strong>2026 年上半年营业收入同比增长 <strong>14.54%</strong>、归母净利润增长 <strong>4.08%</strong>，但经营现金流净额下降 <strong>78.95%</strong>。公司解释与上年集中回款形成高基数、当期采购付款增加有关，不能直接等同于客户违约。</p>
+      <p><strong>为什么关注：</strong>跟踪电网建设能否变成公司利润和现金回款。<strong>现金流改善是待观察事项，不是已经成立的买入理由。</strong></p>
+      <p class="equity-risk"><strong>主要风险：</strong>收入增长未必带来同样幅度的利润增长；项目回款推迟、利润率下滑都可能拖累回报。</p>
+      <p><strong>什么情况改判断：</strong>若收入继续增长，利润和回款却持续落后，就弱化其受益于电网投资的判断；即使现金流恢复，也不能跳过价格检查。</p>
+      <p class="equity-source">来源：<a href="https://www.cnfin.com/announ/detail/index.html?id=841073894572&amp;code=600406&amp;dannoun=lcdetail&amp;announ=lc" target="_blank" rel="noopener noreferrer">半年度报告，2026-08-27</a>；<a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=841679047698" target="_blank" rel="noopener noreferrer">业绩说明会记录，2026-09-02</a>，均为公司公告公开展示。</p>
+    </article>
+  </div>
+  <p class="equity-limit"><strong>不同名字不等于充分分散：</strong>微软与伊顿都受数据中心投资周期影响，四家公司不是一套完整组合，也不应机械等权买入。<strong>经营改善不自动等于买点。</strong>是否值得投入，还要核对最新公告、市场期待、价格和已有持仓；研究结论也可能出错。</p>
+</details>
+
+    <div class="allocation-footnote"><p>依据截至 2026-09-07 的资料。板块给配置倾向，个股只提供研究线索；<strong>本文未判断四家公司当前价格是否值得买。</strong>分散投资也不能保证不亏。</p><div class="allocation-actions"><a href="#allocation-verification">查看判断依据</a><a href="#sec-2">怎么挑资产</a></div></div>
+  </div>
+</details>
+
+<aside class="primer" aria-labelledby="primer-title"><div class="primer-label">Warm-up · 30 秒</div><h2 class="primer-title" id="primer-title">经济还稳，为什么资产未必好涨？</h2><p>就业稳定，意味着美联储暂时不必急着放松；如果能源涨价又拖慢通胀回落，利率就更难快速下降。资金成本越高，投资者越不愿为多年后的利润付出过高价格。</p><p>涨价也有两面：卖原料的企业可能多赚钱，买原料的企业却可能被挤压利润。这一期，重点看成本最后由谁承担，以及新增收入能不能覆盖它。</p></aside>
+<section class="section" id="sec-1" aria-labelledby="sec-title-1"><div class="section-head"><span class="section-num">01</span><h2 id="sec-title-1">本周先说结论</h2></div><p>本周最值得警惕的，是把资源涨价理解成经济全面转好。一方面，就业仍有韧性、部分资源品价格上涨；另一方面，能源供给受扰，资金成本也难以快速下降。<strong>真正决定资产方向的，是企业新增收入能否覆盖更高的能源与融资成本。</strong></p>
+<p>如上一期所述，就业没有明显转弱，意味着美联储暂时没有急于放松的理由。但就业稳，也不等于已经决定加息。沃勒 9 月 3 日表示，若通胀继续降温，倾向维持利率；只有改善逆转，才考虑加息。他同时指出，截至讲话时，能源涨价尚未广泛传导到其他商品和服务。下一步要看这种降温能否持续，不能把能源扰动直接写成新一轮加息的确认信号。</p>
+<p>对中长线配置，我更愿意保留盈利和现金流有支撑的资产，同时控制对低利率的依赖。防守资金优先考虑与支出币种匹配、期限较短的高质量工具；科技看利润兑现，资源看涨价能否留下利润。黄金保留分散作用，原油暂不押注单边走势。</p><p class="source-note">来源：<a href="https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm" target="_blank" rel="noopener noreferrer">美联储，9 月 3 日</a>。</p></section>
+<section class="section" id="sec-2" aria-labelledby="sec-title-2">
+  <div class="section-head"><span class="section-num">02</span><h2 id="sec-title-2">配置框架与执行边界</h2></div>
+  <div class="alloc-grid">
+    <article class="alloc-card ok"><h3>订单是真的吗？</h3><p>看实际销量和客户付款，<strong>不只听公司讲未来。</strong></p></article>
+    <article class="alloc-card no"><h3>涨价后多赚钱吗？</h3><p>卖得贵，还要扣掉原料、运输和借款成本。<strong>收入涨，不等于利润涨。</strong></p></article>
+    <article class="alloc-card watch"><h3>钱收回来了吗？</h3><p>账上有利润，不代表手里有钱。<strong>也要看回款和日常开支。</strong></p></article>
+    <article class="alloc-card tbd"><h3>股价已经很贵吗？</h3><p>好公司也可能买贵。<strong>别为尚未实现的利润付出过高价格。</strong></p></article>
+  </div>
+</section>
+<section class="section" id="sec-3" aria-labelledby="sec-title-3"><div class="section-head"><span class="section-num">03</span><h2 id="sec-title-3">上期判断，本周验证</h2></div><table class="data-table" id="continuity-table"><thead><tr><th scope="col">上期判断</th><th scope="col">本周证据</th><th scope="col">结论</th></tr></thead><tbody>
+<tr>
+<td class="" data-label="上期判断">高利率压力未解，但不等于持续加息。</td>
+<td class="" data-label="本周证据">就业仍稳；沃勒保留维持利率和加息两种选择。</td>
+<td class="partial" data-label="结论">部分验证。</td>
+</tr>
+<tr>
+<td class="" data-label="上期判断">科技先防估值回调，再看盈利兑现。</td>
+<td class="" data-label="本周证据">个别公司有增长证据，但缺少完整板块表现与盈利修正证据。</td>
+<td class="pending" data-label="结论">尚未验证，不能记为预测命中。</td>
+</tr>
+<tr>
+<td class="" data-label="上期判断">地产政策不等于需求全面复苏。</td>
+<td class="" data-label="本周证据">煤焦与部分建材价格分化，销售和开工仍待验证。</td>
+<td class="pending" data-label="结论">尚未验证，维持审慎判断。</td>
+</tr>
+<tr>
+<td class="" data-label="上期判断">原油关键在装运、保险和实际交付。</td>
+<td class="" data-label="本周证据">炼油与航运扰动已有公开报道。</td>
+<td class="verified" data-label="结论">已验证风险识别，方向仍待判断。</td>
+</tr>
+<tr>
+<td class="" data-label="上期判断">黄金受实际利率与避险需求共同影响。</td>
+<td class="" data-label="本周证据">避险风险上升，其余变量证据尚不完整。</td>
+<td class="pending" data-label="结论">尚未验证单边方向。</td>
+</tr>
+</tbody></table>
+<p class="source-note">来源：<a href="https://github.com/chelsea-yang-fin/muse-weekly/blob/main/w35-b.html" target="_blank" rel="noopener noreferrer">8 月 31 日周报</a>。</p></section>
+<section class="section" id="sec-4" aria-labelledby="sec-title-4"><div class="section-head"><span class="section-num">04</span><h2 id="sec-title-4">本周最大的风险</h2></div><div class="risk-box"><div class="risk-box-label">本周首要风险</div><p><strong>最大的风险是能源冲击持续化，让股票和长债同时承压。</strong> 运输或炼油受阻，会抬高燃料及物流成本；如果企业继续提价、通胀预期随之上升，市场就可能重新上调利率预期。最先受到影响的，通常是高估值成长股、长久期债券和难以转嫁成本的企业。</p></div><p>风险升级不能只看油价某天大涨。如果实际交付持续减少、成品油相对原油明显变贵，同时美债收益率上行、企业借款相对国债的额外成本扩大，才说明冲击可能从能源扩散到融资。若这些信号没有共振，应避免把一轮波动直接定义为危机。</p><div class="risk-box tail-risk"><div class="risk-box-label">尾部预案 · 非基准判断</div><p><strong>黑天鹅单列：关键能源设施长期停摆，或主要航道发生持续、广泛的中断。</strong> 这会使供给缺口超过库存和替代运输能够弥补的程度，冲击远大于一般风险溢价上升。它不是本期基准判断；只有出现可确认的设施损毁、停运与交付锐减，才切换到这一预案。</p></div></section>
+<section class="section" id="sec-5" aria-labelledby="sec-title-5"><div class="section-head"><span class="section-num">05</span><h2 id="sec-title-5">三条主要宏观线索</h2></div><article class="macro-line" id="macro-1"><h3 class="sub-title">1. 就业撑住了，利率压力却没有解除</h3><div class="line-layer" data-layer="1"><span class="layer-label">发生了什么：</span><p>美国 8 月新增非农就业 16.2 万人，失业率维持 4.1%。这份数据支持“就业没有全面失速”，但增量集中于部分行业。它能削弱立即救经济的必要性，却不能单独证明经济进入强劲扩张，更不能直接决定下一次利率动作。</p></div><div class="line-layer" data-layer="2"><span class="layer-label">为什么重要：</span><p>就业稳定给了美联储继续处理通胀的空间，能源和设备涨价则可能拖慢降温。与此同时，工资增长温和、生产效率改善也可能缓冲成本。因此更可靠的判断是，利率暂时难以快速下降，而不是已经进入无法逆转的加息周期。</p></div><div class="line-layer" data-layer="3"><span class="layer-label">传导到资产：</span><p>资金成本越高，投资者越不愿为多年后的利润付出过高价格，科技股需要更强盈利来支撑估值。AI 投资能增加订单，也可能抬高设备、能源和融资成本；这两面必须一起看。债券则要区分持有期价格波动与买入后获得的利息。</p></div><div class="line-layer" data-layer="4"><span class="layer-label">需要继续观察：</span><p>第一，看核心通胀是否持续放缓，改善有没有扩展到更多项目；第二，看 AI 企业新增投入能否形成收入、利润与现金回款。若只有投入增长，没有回报改善，科技投资叙事就应降级；若效率提升开始压低成本，利率压力也可能缓解。</p></div><p class="source-note">来源：<a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener noreferrer">BLS，9 月 4 日</a>。</p></article><article class="macro-line" id="macro-2"><h3 class="sub-title">2. 原油不能只看谈判，交付才决定风险能否退去</h3><div class="line-layer" data-layer="1"><span class="layer-label">发生了什么：</span><p>美伊冲突风险延伸至油轮和运输安全。路透 9 月 7 日的报道披露了近期袭船及截至 9 月 6 日的海峡通行减少情况；EIA 也指出，多个地区炼油活动受扰使成品油供应偏紧。这意味着成本压力既可能来自原油，也可能来自加工和配送环节。</p></div><div class="line-layer" data-layer="2"><span class="layer-label">为什么重要：</span><p>船只仍在航行，不等于买家能按时收到足够的油；库存释放也不等于新增供应恢复。未被船舶追踪覆盖的运量缺少可复核估计，因此不能据此断言油价很快回落。更有力的反向证据，应是交付恢复、保险成本下降，以及成品油紧张缓解。</p></div><div class="line-layer" data-layer="3"><span class="layer-label">传导到资产：</span><p>能源生产企业可能受益于售价上升，航空、运输和部分制造企业则面临利润挤压。若冲击进一步影响通胀和利率，科技股与长债也会承压。黄金可能得到避险支持，但实际利率上升会产生相反作用，不能把战争风险直接翻译成金价必涨。</p></div><div class="line-layer" data-layer="4"><span class="layer-label">需要继续观察：</span><p>第一，装载、过境与到港能否在同一统计口径下持续恢复；第二，柴油等成品油相对原油的价差是否收窄。谈判只有落实为停火、航道安全和实际交付改善，才足以降低风险；单次政治表态不作为配置方向的切换条件。</p></div><figure class="infographic" id="figure-3" aria-labelledby="ais-title"><div class="figure-kicker">MUSE · 口径说明</div><figcaption class="figure-title" id="ais-title">看得到的船，不等于交付到手的油</figcaption><p class="figure-sub">可见记录、暗航估算和实际交付，是三个不同的证据层次。</p><div class="evidence-grid"><div class="evidence-block"><div class="evidence-tag">可见记录</div><h4>船舶位置与通行</h4><p>区分装载、过境与到港。<br>通行记录不直接等于交付量。</p></div><div class="evidence-block estimate"><div class="evidence-tag">估算 · 待核实</div><h4>未被充分记录的航运</h4><p>暗航规模与数据覆盖待查。<br>机构、原报告与方法需核对。</p></div></div><div class="evidence-result"><span class="mark" aria-hidden="true">≠</span><p><strong>不能直接相加，推出实际交付总量。</strong><br>先统一统计期和口径，再以装载、过境、到港交叉验证。</p></div><p class="figure-note">示意面积不代表运量。未被记录的航运规模缺少可复核估计，不能填补成确定的交付量；实际供应仍需用装载与到港数据交叉验证。</p></figure><p class="source-note">来源：<a href="https://www.zawya.com/en/business/middle-east/hormuz-traffic-dips-to-lowest-since-may-after-us-iranian-strikes-on-ships-479338" target="_blank" rel="noopener noreferrer">路透 / Zawya 转载，9 月 7 日</a>；<a href="https://www.eia.gov/todayinenergy/detail.php?id=68104" target="_blank" rel="noopener noreferrer">EIA，9 月 4 日</a>。</p></article><article class="macro-line" id="macro-3"><h3 class="sub-title">3. 焦煤涨得快，不能替整个旧经济报喜</h3><div class="line-layer" data-layer="1"><span class="layer-label">发生了什么：</span><p>国家统计局最新旬报显示，8 月下旬较中旬，主焦煤价格上涨 16.1%，山西优混上涨 0.9%，水泥与玻璃却分别下跌 0.2%、1.0%。同一时期的明显分化，说明“煤价上涨”和“需求全面复苏”之间，还有一段需要验证的距离。但当期 50 种产品中有 34 种上涨，螺纹钢也上涨 2.2%，不能仅凭水泥与玻璃下跌就确认终端需求全面走弱。该统计是流通价格，不是销量、出厂价或公司利润，不能单独识别供需贡献。</p></div><div class="line-layer" data-layer="2"><span class="layer-label">为什么重要：</span><p>安全许可与运输条件影响供给，但新公布的煤矿许可办法到 2027 年才施行，不能直接解释本周减产。焦煤服务炼钢，动力煤主要服务发电等需求，二者不能混用；原料上涨如果遇到终端提价困难，反而会挤压下游利润。</p></div><div class="line-layer" data-layer="3"><span class="layer-label">传导到资产：</span><p>煤炭股票值得筛选，但条件是自身产量稳定、售价改善能够留下现金流，且分红有保障。钢铁和化工企业则要看能否转嫁成本。若原料涨、成品卖不动，行业总收入看似改善，也可能只是利润从下游转移到上游，并非整条链都受益。</p></div><div class="line-layer" data-layer="4"><span class="layer-label">需要继续观察：</span><p>第一，国内煤矿实际复产和进口到货能否缓解供应；第二，下游订单、库存和利润能否承受原料价格。若供应恢复而需求未起，紧缺逻辑就应降级；若订单和现金回款同步改善，才有理由从资源品扩展到更广的顺周期资产。</p></div><p class="source-note">来源：<a href="https://www.stats.gov.cn/sj/zxfbhjd/202609/t20260903_1965182.html" target="_blank" rel="noopener noreferrer">国家统计局，9 月 4 日</a>；<a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202609/t20260904_715238.shtml" target="_blank" rel="noopener noreferrer">应急管理部，9 月 4 日</a>。</p></article></section>
+<section class="section" id="sec-6" aria-labelledby="sec-title-6"><div class="section-head"><span class="section-num">06</span><h2 id="sec-title-6">交叉传导</h2></div><div class="logic-chain"><div class="logic-chain-label">海外链条</div><p>本期最需要连起来看的是：<strong>地缘冲突 → 原油运输与炼油受扰 → 燃料和物流成本上升 → 通胀降温受阻 → 美联储维持或收紧政策的预期增强 → 美债收益率上行压力增加 → 美股科技估值受压 → A 股高位成长板块短期回调风险增加。</strong></p></div><figure class="infographic" id="figure-1" aria-labelledby="flow-title">
+    <figcaption class="figure-title" id="flow-title">能源冲击，如何传到科技估值？</figcaption>
+    <div class="flow-grid">
+      <div class="flow-node"><span class="flow-icon" aria-hidden="true">01</span><h4>送油受阻</h4><p>燃料可能变贵</p></div>
+      <div class="flow-node"><span class="flow-icon" aria-hidden="true">02</span><h4>企业成本上升</h4><p>可能继续提价</p></div>
+      <div class="flow-node"><span class="flow-icon" aria-hidden="true">03</span><h4>降息更难</h4><p>借钱仍不便宜</p></div>
+      <div class="flow-node"><span class="flow-icon" aria-hidden="true">04</span><h4>股价可能承压</h4><p>长期债券也需小心</p></div>
+    </div>
+    <p class="figure-note"><strong>这是一种可能，不是必然。</strong>要看涨价持续多久、企业能否提价，以及美联储如何应对。</p>
+  </figure><p>A 股的传导先经过海外估值参照与风险偏好，再回到自身订单和利润，并非海外跌、国内就必然同幅下跌。如果出现回调，有真实订单、利润兑现和较低融资依赖的公司，更可能在预期调整后率先企稳；上涨空间仍取决于调整后的价格是否合理。</p><div class="logic-chain"><div class="logic-chain-label">国内成本链 · 有条件传导</div><p>另一条是有条件的成本链：<strong>原油与柴油上涨 → 若蒙煤运输成本上升，则进口到厂成本提高 → 与国内供应约束叠加 → 焦煤及焦炭承压涨价 → 钢厂利润受到挤压。</strong> 实际强弱取决于燃料来源、运输方式和供需；人民币汇率也会改变美元计价能源的进口成本。</p></div></section>
+<section class="section" id="sec-7" aria-labelledby="sec-title-7">
+  <div class="section-head"><span class="section-num">07</span><h2 id="sec-title-7">未来一周观察清单</h2></div>
+  <table class="data-table mobile-cards" id="watch-table">
+    <thead><tr><th scope="col">时间 / 事件</th><th scope="col">看什么</th><th scope="col">如何调整判断</th></tr></thead>
+    <tbody>
+      <tr><td data-label="时间 / 事件"><strong>9 月 9 日 09:30</strong><br>中国物价数据</td><td data-label="看什么">上游涨价是否扩散到更多产品？</td><td data-label="如何调整判断">价格回暖还需销量、利润配合，才能支持经济回暖。</td></tr>
+      <tr><td data-label="时间 / 事件"><strong>9 月 10 日 20:30</strong><br>美国企业端物价（PPI）</td><td data-label="看什么">涨价是否从能源扩散到其他商品和服务？</td><td data-label="如何调整判断">涨价越广，越要小心利率难降。</td></tr>
+      <tr><td data-label="时间 / 事件"><strong>9 月 11 日 20:30</strong><br>美国居民物价（CPI）</td><td data-label="看什么">除食品和能源外，物价涨幅是否继续放缓？</td><td data-label="如何调整判断">如果持续放缓，降低对加息的担忧。</td></tr>
+      <tr><td data-label="时间 / 事件"><strong>整周跟踪</strong><br>原油到货与运输</td><td data-label="看什么">到货、保险费用和汽柴油供应。</td><td data-label="如何调整判断">到货持续恢复、费用下降，能源风险减轻。</td></tr>
+      <tr><td data-label="时间 / 事件"><strong>整周跟踪</strong><br>煤炭供应与钢厂经营</td><td data-label="看什么">煤矿复产、进口、钢厂订单和利润。</td><td data-label="如何调整判断">供应增加、需求没起色，就要重看煤价上涨的理由。</td></tr>
+    </tbody>
+  </table>
+  <p class="source-note">观察期：9 月 7—13 日，时间均为北京时间，发布安排以官网为准。日程：<a href="https://www.stats.gov.cn/sj/" target="_blank" rel="noopener noreferrer">国家统计局</a>、<a href="https://www.bls.gov/schedule/2026/home.htm" target="_blank" rel="noopener noreferrer">美国劳工统计局</a>。美联储议息会议为美国时间 9 月 15—16 日，<strong>不在本期观察周内</strong>。单项数据不作为买卖开关。</p>
+</section>
+<section class="section" id="sec-8" aria-labelledby="sec-title-8">
+  <div class="section-head"><span class="section-num">08</span><h2 id="sec-title-8">四情景路线图</h2></div>
+  <figure class="infographic" id="figure-2" aria-labelledby="scenario-chart-title">
+    <figcaption class="figure-title" id="scenario-chart-title">未来 1—3 个月，保留四种准备</figcaption>
+    <p class="figure-sub">以下为 MUSE 对四种可能的主观判断比例，<strong>不是计算得出的精确概率</strong>。</p>
+    <div class="scenario-overview">
+      <article class="prob-card base" id="scenario-a"><div class="prob-top"><span>A · 大体维持现状</span><b>45<small>%</small></b></div><p>经济没有明显变差，能源和借款仍贵。<strong>继续求稳，挑能赚钱的公司。</strong></p><p class="scenario-check">看：到货不再恶化，物价也没明显加速上涨。</p></article>
+      <article class="prob-card risk" id="scenario-b"><div class="prob-top"><span>B · 成本继续上升</span><b>30<small>%</small></b></div><p>能源持续涨价，并带动其他价格上涨。<strong>提高防守，少押高价科技股和长期债券。</strong></p><p class="scenario-check">看：到货减少、涨价范围扩大、借钱更贵。</p></article>
+      <article class="prob-card optimistic" id="scenario-c"><div class="prob-top"><span>C · 压力逐渐缓解</span><b>15<small>%</small></b></div><p>供油恢复、物价涨幅放缓，公司仍能赚钱。<strong>再评估科技股和长期债券的机会。</strong></p><p class="scenario-check">看：到货改善、成本回落、利润没有变差。</p></article>
+      <article class="prob-card blackswan" id="scenario-d"><div class="prob-top"><span>D · 极端供应中断</span><b>10<small>%</small></b></div><p>航道或能源设施长期停摆。<strong>先保证手头资金够用</strong>；黄金和债券也未必马上上涨。</p><p class="scenario-check">看：多个可靠来源确认停运，库存也补不上缺口。</p></article>
+    </div>
+    <p class="figure-note">四个比例合计 100%。出现极端停运时先按 D 处理；否则看情况恶化、改善或维持现状。随新证据调整，不自动触发买卖。</p>
+  </figure>
+</section>
+<section class="section" id="sec-9" aria-labelledby="sec-title-9"><div class="section-head"><span class="section-num">09</span><h2 id="sec-title-9">本期关键词</h2></div><div class="keywords"><span class="keyword">高资金成本</span><span class="keyword">能源供给</span><span class="keyword">通胀黏性</span><span class="keyword">现金流</span><span class="keyword">焦煤分化</span><span class="keyword">实际利率</span><span class="keyword">盈利兑现</span><span class="keyword">条件配置</span></div></section><div class="ending" id="closing"><p>高利率压力仍在，能源供给风险又抬头。资源涨价带来的是资产分化，还不能证明全面复苏；配置最终要落到企业的订单、利润与现金流。</p><p class="condition"><strong>什么情况会让我改判断：</strong>如果实际交付恢复、核心通胀持续降温，且企业盈利没有恶化，就下调利率风险权重；如果能源冲击扩散、融资成本上升，而利润跟不上，则提高防守要求。国内供给恢复后，煤炭紧缺逻辑也要重新检验。</p><p class="question">这一周，你更担心能源成本继续上升，还是企业盈利跟不上预期？</p></div><footer class="footer"><div class="slogan-footer">Never ask what to allocate.</div><p class="bio">我是 MUSE，每周跟踪宏观因素如何改变资产价格，直接说清楚该配什么。</p><div class="source-note"><ul><li>官方统计：<a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener noreferrer">BLS 8 月就业，9 月 4 日</a>；<a href="https://www.stats.gov.cn/sj/zxfbhjd/202609/t20260903_1965182.html" target="_blank" rel="noopener noreferrer">国家统计局 8 月下旬生产资料价格，9 月 4 日</a>。</li><li>政策与官方分析：<a href="https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm" target="_blank" rel="noopener noreferrer">沃勒讲话，9 月 3 日</a>；<a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202609/t20260904_715238.shtml" target="_blank" rel="noopener noreferrer">煤矿许可新规，9 月 4 日官网发布</a>；<a href="https://www.eia.gov/todayinenergy/detail.php?id=68104" target="_blank" rel="noopener noreferrer">EIA 成品油分析，9 月 4 日</a>。</li><li>媒体辅助：<a href="https://www.zawya.com/en/business/middle-east/hormuz-traffic-dips-to-lowest-since-may-after-us-iranian-strikes-on-ships-479338" target="_blank" rel="noopener noreferrer">路透霍尔木兹航运报道，9 月 7 日（Zawya 转载）</a>。该文中的船舶追踪数据属于估算。</li><li>公司披露：微软、伊顿季度业绩，中国移动、国电南瑞半年度业绩，详见下方公司公告。</li><li>观点对照：<a href="https://github.com/chelsea-yang-fin/muse-weekly/blob/main/w35-b.html" target="_blank" rel="noopener noreferrer">MUSE 上期通讯，8 月 31 日</a>。传导分析与配置判断为 MUSE 观点。</li></ul></div><details class="verification-panel" id="allocation-verification">
+  <summary>配置逻辑核验 · 事实、推断与调整条件</summary>
+  <p class="verification-intro">资料截至 <time datetime="2026-09-07">2026-09-07</time>。以下区分公开事实、配置观点与调整条件。<strong>资料可以核对，未来收益不能提前保证。</strong>行业有机会，也不等于任何价格都值得买。</p>
+  <section class="verification-item" aria-labelledby="verify-rates"><h4 id="verify-rates"><span class="evidence-status">事实已核对</span>[1] 利率与短债：防波动，不等于判断长债必跌</h4>
+    <p><strong>事实：</strong>BLS 9 月 4 日公布，8 月非农新增 16.2 万，失业率 4.1%；数据通过 BLS 官方检索正文复核，本次直接访问受限，未取得独立归档。美联储沃勒 9 月 3 日讲话原文显示：若通胀继续降温，倾向维持利率；若改善逆转，才考虑加息。他同时指出，截至讲话时，能源价格尚未广泛传导到其他商品和服务。</p>
+    <p><strong>配置推断：</strong>短久期是降低利率敏感度的方式，不是收益一定优于长债的结论；低信用质量债券即使期限短，也可能大幅亏损。长端收益率还受增长、通胀预期和期限溢价影响，不能由一次官员表态推出持续上行。防守资金先匹配支出币种，避免用换汇新增风险。</p>
+    <p><strong>调整条件：</strong>核心通胀连续改善、增长明显转弱或期限溢价回落时，重新评估延长久期；短债同时面临到期后再投资收益下降的风险。</p>
+    <p class="verification-sources">来源：<a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener noreferrer">BLS，就业报告，2026-09-04（动态页面）</a>；<a href="https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm" target="_blank" rel="noopener noreferrer">美联储，沃勒讲话，2026-09-03</a>；<a href="https://finra.org/investors/insights/bonds-interest-rate-hikes-duration" target="_blank" rel="noopener noreferrer">FINRA，利率与久期，2024-09-19（机制依据）</a>。</p>
+  </section>
+  <section class="verification-item" aria-labelledby="verify-tech"><h4 id="verify-tech"><span class="evidence-status conditional">条件判断</span>[2] 科技：投资增长不等于股东回报增长</h4>
+    <p><strong>事实与边界：</strong>沃勒讲话支持 AI 相关投资仍然较强，但不能证明所有 AI 公司都在多赚钱。微软云收入增长与毛利率下降并存，伊顿订单增长也未阻止按会计准则报告的净利润下滑。<strong>公司业绩不能直接外推为整个科技板块的上涨理由。</strong>微软和伊顿仅列研究观察名单；长期经营数据不能回答本周是否适合买入，当前价格是否合理尚未判断。</p>
+    <p><strong>研究边界：</strong>利润能否持续、支付建设支出后能留下多少现金，以及当前价格是否已反映未来增长，都是待核对的问题，并非已满足的条件。经营走弱时下调研究判断；经营改善时也仍需检查股价与市场期待，<strong>不据此自动买入或加仓。</strong></p>
+    <p class="verification-sources">来源：<a href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/metrics" target="_blank" rel="noopener noreferrer">微软季度指标，2026-07-29</a>；<a href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-second-quarter-2026-results.html" target="_blank" rel="noopener noreferrer">伊顿季度业绩公告，2026-07-31</a>；<a href="https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm" target="_blank" rel="noopener noreferrer">美联储，2026-09-03</a>。具体公司的研究理由、风险与调整条件见<a href="#equity-watch">研究观察名单</a>。</p>
+  </section>
+  <section class="verification-item" aria-labelledby="verify-gold"><h4 id="verify-gold"><span class="evidence-status">机制已核对</span>[3] 黄金：利率高，不等于黄金一定跌</h4>
+    <p><strong>依据：</strong>黄金需关注实际利率，而非仅看名义利率。世界黄金协会 2025 年研究指出，2022 年以来，央行需求与风险分散等因素曾抵消实际利率上升的压力。因此，高名义利率不能直接推出金价上涨空间受限，地缘冲突也不能推出金价必涨。</p>
+    <p><strong>配置推断：</strong>黄金保留组合分散作用，不是单边多头或无风险资产。战术判断需同时看实际利率、美元、资金流和持仓拥挤度；若实际利率与美元上行且资金流出，不宜只凭避险叙事加仓。</p>
+    <p class="verification-sources">来源：<a href="https://www.gold.org/goldhub/gold-focus/2025/06/you-asked-we-answered-are-fiscal-concerns-driving-gold" target="_blank" rel="noopener noreferrer">世界黄金协会，2025-06-24</a>。该文仅用于核验定价机制，不代表 2026 年 9 月当周购金量、ETF 流量或金价方向已经核实。</p>
+  </section>
+  <section class="verification-item" aria-labelledby="verify-china"><h4 id="verify-china"><span class="evidence-status">数据已核对</span>[4] A 股与国内周期：价格分化，不等于需求已经反转</h4>
+    <p><strong>事实：</strong>国家统计局 9 月 4 日旬报中，8 月下旬较中旬，主焦煤上涨 16.1%，山西优混上涨 0.9%，水泥下跌 0.2%，玻璃下跌 1.0%；同时，50 种产品中有 34 种上涨，螺纹钢也上涨 2.2%。不能只选取下跌品种，宣称终端需求已全面转弱。</p>
+    <p><strong>口径边界：</strong>这是流通领域批发与销售价格，不是矿山出厂价、长协售价、销量或上市公司利润。数据确认品种分化，却不能单独识别供给与需求各自贡献，也不能据此断言“仅供给驱动”。焦煤与动力煤分别对应不同需求，应分开研究。</p>
+    <p><strong>配置推断：</strong>资源股需进一步核对产销量、长协比例、开采成本、税费、资本开支与分红覆盖。地产及下游链条等待销售回款、订单、新开工和利润共同改善；若改善扩大，可重新评估更广的顺周期配置。A 股并非美债的机械映射；“结构性配置”是当前证据下的倾向，不是已验证的指数区间预测。</p>
+    <p class="verification-sources">来源：<a href="https://www.stats.gov.cn/sj/zxfbhjd/202609/t20260903_1965182.html" target="_blank" rel="noopener noreferrer">国家统计局，8 月下旬生产资料价格，2026-09-04</a>。价格数据本身不足以确认地产需求反转。中国移动的经营现金净流入增长与利润下降并存，国电南瑞则需继续观察现金流恢复，具体见<a href="#equity-watch">公司观察</a>。</p>
+  </section>
+  <section class="verification-item" aria-labelledby="verify-energy"><h4 id="verify-energy"><span class="evidence-status">扰动有依据</span>[5] 原油：通行、炼油与最终交付不能混为一谈</h4>
+    <p><strong>事实：</strong>EIA 9 月 4 日指出，多地区炼油活动受扰使成品油供给偏紧，汽油及馏分油裂解价差偏高。路透航运报道的可访问转载发表于 9 月 7 日，披露截至 9 月 6 日的通行数据。报道日期不等于统计截止日期，通行记录也不等于买家实际收货量。</p>
+    <p><strong>配置推断：</strong>炼油受扰可以推高成品油价差，但也可能压低炼厂原油加工需求，因此不等于原油必涨。船舶通行记录也不等于实际出口或到港桶数。油价还受需求破坏、库存与替代供应影响，不能仅凭谈判消息看空，或仅凭冲突消息追多。</p>
+    <p><strong>调整条件：</strong>同口径实际到货持续恢复、保险费用下降、成品油紧张缓解时，下调供应风险；反之，确认持续断供才升级风险判断。未核验具体合约、入场价、期货展期成本和退出边界，故不提供确定的“区间操作”建议。</p>
+    <p class="verification-sources">来源：<a href="https://www.eia.gov/todayinenergy/detail.php?id=68104" target="_blank" rel="noopener noreferrer">EIA，2026-09-04</a>；<a href="https://www.zawya.com/en/business/middle-east/hormuz-traffic-dips-to-lowest-since-may-after-us-iranian-strikes-on-ships-479338" target="_blank" rel="noopener noreferrer">路透 / Zawya 转载，2026-09-07</a>。路透原站本次访问受限，以署名转载交叉核对；航运数据仍属第三方追踪估算。</p>
+  </section>
+  <p class="verification-limit"><strong>使用边界：</strong>公开数据支撑事实，配置方向是 MUSE 的条件判断。公司案例仅核对了所列的部分业绩指标，尚未完成实时估值、市场预期核对和全面尽调；<strong>它们是研究观察名单，不是本周买入推荐。</strong>未提供买入价、仓位比例或收益目标。45% / 30% / 15% / 10% 是主观情景权重，不是统计预测。实际配置仍取决于投资期限、支出币种与风险承受能力。</p>
+</details>
+
+<details id="source-details"><summary>完整信源与数据口径</summary><h4>1. 官方机构及发布日期</h4>
+<table class="data-table mobile-cards"><thead><tr><th scope="col">机构与材料</th><th scope="col">发布日期／统计期</th><th scope="col">说明</th></tr></thead><tbody>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener noreferrer">美国劳工统计局：8 月就业报告</a></td>
+<td class="" data-label="发布日期／统计期">2026-09-04／2026 年 8 月</td>
+<td class="" data-label="说明">就业、失业率与前值修订；数据本身不识别 AI 的因果贡献。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.bls.gov/news.release/empsit.t17.htm" target="_blank" rel="noopener noreferrer">BLS：表 B-1</a>、<a href="https://www.bls.gov/news.release/empsit.t19.htm" target="_blank" rel="noopener noreferrer">表 B-3</a></td>
+<td class="" data-label="发布日期／统计期">2026-09-04／2026 年 8 月</td>
+<td class="" data-label="说明">行业就业与时薪变化。</td>
+</tr>
+
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm" target="_blank" rel="noopener noreferrer">美联储：沃勒经济展望讲话</a></td>
+<td class="" data-label="发布日期／统计期">2026-09-03</td>
+<td class="" data-label="说明">维持利率或加息的条件与通胀风险。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm" target="_blank" rel="noopener noreferrer">美联储：沃什杰克逊霍尔讲话</a></td>
+<td class="" data-label="发布日期／统计期">2026-08-28</td>
+<td class="" data-label="说明">双重使命、通胀目标及 AI 影响的不确定性。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.stats.gov.cn/sj/zxfbhjd/202609/t20260903_1965182.html" target="_blank" rel="noopener noreferrer">国家统计局：8 月下旬生产资料价格</a></td>
+<td class="" data-label="发布日期／统计期">2026-09-04／8 月下旬对比中旬</td>
+<td class="" data-label="说明">煤焦与建材价格分化；流通价格不直接等于企业售价或利润。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.stats.gov.cn/sj/zxfbhjd/202608/t20260817_1965055.html" target="_blank" rel="noopener noreferrer">国家统计局：7 月工业生产</a></td>
+<td class="" data-label="发布日期／统计期">2026-08-17／2026 年 7 月</td>
+<td class="" data-label="说明">规上工业发电量与火电占比，不与装机容量混用。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202609/t20260904_715238.shtml" target="_blank" rel="noopener noreferrer">应急管理部：第 22 号令《煤矿企业安全生产许可证实施办法》</a></td>
+<td class="" data-label="发布日期／统计期">2026-08-31 公布；09-04 官网发布；2027-01-01 施行</td>
+<td class="" data-label="说明">区分公布、发布和施行日期，不将未来施行的规定等同于当期减产。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.eia.gov/todayinenergy/detail.php?id=68104" target="_blank" rel="noopener noreferrer">EIA：炼油价差与燃料价格分析</a></td>
+<td class="" data-label="发布日期／统计期">2026-09-04</td>
+<td class="" data-label="说明">成品油供应与炼油环节；截至 9 月 5 日当周的部分数据为基于 9 月 3 日的估计。</td>
+</tr>
+<tr>
+<td class="" data-label="机构与材料"><a href="https://www.bls.gov/schedule/2026/home.htm" target="_blank" rel="noopener noreferrer">BLS 2026 发布日程</a>、<a href="https://www.stats.gov.cn/sj/" target="_blank" rel="noopener noreferrer">国家统计局日程</a>、<a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener noreferrer">FOMC 日历</a></td>
+<td class="" data-label="发布日期／统计期">动态日历，核验于 2026-09-07</td>
+<td class="" data-label="说明">未来发布日期与时区；日期安排不代表数据结果。</td>
+</tr>
+</tbody></table>
+<h4>2. 公司公告与业绩资料</h4>
+<ul><li><a href="https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/metrics" target="_blank" rel="noopener noreferrer">微软季度指标，2026-07-29</a>。统计期为截至 6 月 30 日的第四财季；云收入增速与云毛利率为不同指标。</li><li><a href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-second-quarter-2026-results.html" target="_blank" rel="noopener noreferrer">伊顿季度业绩公告，2026-07-31</a>。2026 年第二季度销售额与期末订单；区分报告净利润和调整后利润。</li><li><a href="https://www.10086.cn/aboutus/news/groupnews/index_detail_55650.html" target="_blank" rel="noopener noreferrer">中国移动中期业绩公告，2026-08-13</a>。2026 年上半年现金流、利润和派息；同比增速采用报告口径。</li><li><a href="https://www.cnfin.com/announ/detail/index.html?id=841073894572&amp;code=600406&amp;dannoun=lcdetail&amp;announ=lc" target="_blank" rel="noopener noreferrer">国电南瑞半年度报告，2026-08-27</a>；<a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=841679047698" target="_blank" rel="noopener noreferrer">国电南瑞业绩说明会记录，2026-09-02</a>。2026 年上半年收入、归母净利润和经营现金流；现金流变化的原因是公司解释。</li></ul>
+<h4>3. 财经媒体及发布日期</h4>
+<ul><li><a href="https://www.zawya.com/en/business/middle-east/hormuz-traffic-dips-to-lowest-since-may-after-us-iranian-strikes-on-ships-479338" target="_blank" rel="noopener noreferrer">路透：Hormuz traffic dips to lowest since May after US, Iranian strikes on ships</a>，2026-09-07（Zawya 转载；通行数据截至 9 月 6 日）。用于辅助确认袭船与通行风险；追踪数据为第三方估算，不能自动换算为实际出口桶数。</li></ul>
+<h4>4. 往期观点</h4>
+<ul><li><a href="https://github.com/chelsea-yang-fin/muse-weekly/blob/main/w35-b.html" target="_blank" rel="noopener noreferrer">MUSE 宏观配置通讯 VOL.35</a>，2026-08-31。对应第三节的观点对照；历史观点不是当前事实的替代。</li></ul>
+<p><strong>证据边界：</strong>缺少可复核依据的航运估算不用于断言供应恢复；行业数据不直接代表每家公司的利润。公司披露的是历史业绩，不保证未来盈利、分红或股价表现。</p></details><p>VOL.36 · 2026-09-07 · MUSE 宏观配置通讯<br>内部参考，不构成投资建议。情景概率为主观判断，配置需结合自身期限与风险承受能力。</p><a href="#top">回到顶部 ↑</a></footer></main>
+</div>
+<button class="to-top" type="button" aria-label="回到顶部" aria-hidden="true" tabindex="-1">↑</button>
+<script>
+(() => {
+  const button = document.querySelector('.to-top');
+  const update = () => {
+    const show = window.scrollY > 480;
+    button.classList.toggle('show', show);
+    button.setAttribute('aria-hidden', String(!show));
+    button.tabIndex = show ? 0 : -1;
+  };
+  window.addEventListener('scroll', update, {passive:true});
+  button.addEventListener('click', () => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:reduced ? 'auto' : 'smooth'});
+    document.querySelector('#top').focus({preventScroll:true});
+  });
+  update();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+  const menu = document.getElementById('toc-menu');
+  const toggle = menu.querySelector('summary');
+  const compact = window.matchMedia('(max-width: 1000px)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const main = document.getElementById('top');
+  const links = Array.from(menu.querySelectorAll('.toc-link'));
+  const entries = links.map(link => ({link, target: document.getElementById(link.hash.slice(1))})).filter(entry => entry.target);
+  const progress = document.getElementById('reading-progress');
+  const fill = document.getElementById('reading-progress-fill');
+  const percentLabel = document.getElementById('reading-percent');
+  let frame = 0;
+  let printState = [];
+  const synchronizeMenu = () => {
+    menu.open = !compact.matches;
+    toggle.tabIndex = compact.matches ? 0 : -1;
+    if (compact.matches) toggle.removeAttribute('aria-disabled');
+    else toggle.setAttribute('aria-disabled', 'true');
+  };
+  const update = () => {
+    frame = 0;
+    const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) + 8;
+    let current = entries[0];
+    for (const entry of entries) {
+      if (entry.target.getBoundingClientRect().top <= top) current = entry;
+    }
+    for (const entry of entries) {
+      if (entry === current) entry.link.setAttribute('aria-current', 'location');
+      else entry.link.removeAttribute('aria-current');
+    }
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const percent = Math.min(100, Math.max(0, Math.round(window.scrollY / maxScroll * 100)));
+    progress.setAttribute('aria-valuenow', String(percent));
+    percentLabel.textContent = percent + '%';
+    fill.style.transform = 'scaleX(' + percent / 100 + ')';
+  };
+  const scheduleUpdate = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+  const targetForHash = hash => {
+    if (!hash || hash === '#') return null;
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); }
+    catch (_) { return null; }
+  };
+  const reveal = target => {
+    let parent = target;
+    while (parent && parent !== main.parentElement) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+  };
+  const focusTarget = target => {
+    const focusable = target.tagName === 'DETAILS' ? target.querySelector('summary') : target;
+    if (!focusable.hasAttribute('tabindex') && focusable.tagName !== 'SUMMARY') focusable.tabIndex = -1;
+    focusable.focus({preventScroll: true});
+  };
+  document.addEventListener('click', event => {
+    const anchor = event.target.closest('a[href^="#"]');
+    if (!anchor || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = targetForHash(anchor.hash);
+    if (!target) return;
+    event.preventDefault();
+    if (compact.matches) menu.open = false;
+    reveal(target);
+    try { if (location.hash !== anchor.hash) history.pushState(null, '', anchor.hash); }
+    catch (_) { location.hash = anchor.hash; }
+    window.requestAnimationFrame(() => {
+      focusTarget(target);
+      target.scrollIntoView({behavior: reduced.matches ? 'auto' : 'smooth', block: 'start'});
+      scheduleUpdate();
+    });
+  });
+  const followHash = () => {
+    const target = targetForHash(location.hash);
+    if (!target) { scheduleUpdate(); return; }
+    if (compact.matches) menu.open = false;
+    reveal(target);
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({behavior: 'auto', block: 'start'});
+      scheduleUpdate();
+    });
+  };
+  toggle.addEventListener('click', event => { if (!compact.matches) event.preventDefault(); });
+  menu.addEventListener('toggle', () => {
+    if (!compact.matches && !menu.open) menu.open = true;
+    scheduleUpdate();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && compact.matches && menu.open) {
+      menu.open = false;
+      toggle.focus({preventScroll:true});
+    }
+  });
+  main.querySelectorAll('details').forEach(details => details.addEventListener('toggle', scheduleUpdate));
+  window.addEventListener('scroll', scheduleUpdate, {passive:true});
+  window.addEventListener('resize', scheduleUpdate, {passive:true});
+  window.addEventListener('hashchange', followHash);
+  window.addEventListener('popstate', followHash);
+  const onLayoutChange = () => { synchronizeMenu(); scheduleUpdate(); };
+  if (compact.addEventListener) compact.addEventListener('change', onLayoutChange);
+  else compact.addListener(onLayoutChange);
+  if ('ResizeObserver' in window) new ResizeObserver(scheduleUpdate).observe(main);
+  window.addEventListener('beforeprint', () => {
+    printState = Array.from(main.querySelectorAll('details')).map(details => [details, details.open]);
+    printState.forEach(([details]) => { details.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    printState.forEach(([details, wasOpen]) => { details.open = wasOpen; });
+    printState = [];
+    scheduleUpdate();
+  });
+  synchronizeMenu();
+  followHash();
+  update();
+})();
+
+</script>
+</body>
+</html>
