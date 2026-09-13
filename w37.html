@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIRA 宏观配置通讯 · W37 · 2026-09-13</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<style>
+:root{
+  --navy:#0f2a4a; --navy2:#173d6b; --gold:#c9a24a; --red:#c8352b; --green:#1f8a5b; --blue:#2b6cb0; --purple:#6b46c1; --orange:#b45309;
+  --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --bg:#f6f7f9; --card:#fff; --soft:#f0f4fa; --hl:#fff3b0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:15.5px}
+a{color:var(--blue);text-decoration:none}
+mark{background:var(--hl);color:inherit;padding:0 3px;border-radius:3px}
+b{color:var(--navy)}
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red));width:0;z-index:99}
+
+/* hero */
+header.hero{background:radial-gradient(1200px 400px at 20% -10%,#1f4c85 0%,var(--navy) 55%);color:#fff;padding:40px 0 32px}
+.hero .in{max-width:1280px;margin:0 auto;padding:0 28px}
+.hero .brand{display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#cbd5e1}
+.hero .brand b{color:var(--gold);letter-spacing:.3em}
+.hero h1{font-size:32px;margin:14px 0 6px;font-weight:700}
+.hero .sub{color:#cbd5e1;font-size:15px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero .meta span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:13px}
+
+/* shell: left toc + main */
+.shell{max-width:1280px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px}
+aside.toc{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);overflow:auto;padding:18px 0 30px}
+.toc .ttl{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:700;margin:0 0 10px 12px}
+.toc ul{list-style:none;margin:0 0 14px;padding:0}
+.toc li a{display:block;padding:8px 12px;border-left:3px solid transparent;border-radius:0 8px 8px 0;color:var(--ink);font-size:14px;line-height:1.45}
+.toc li a small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.toc li a:hover{background:var(--soft)}
+.toc li a.active{border-left-color:var(--gold);background:var(--soft);color:var(--navy);font-weight:600}
+.toc .grp{font-size:12px;color:var(--muted);margin:14px 12px 4px;text-transform:uppercase;letter-spacing:.1em}
+.toc .btns{display:flex;gap:6px;margin:10px 12px 0}
+.toc .btns button{flex:1;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 8px;font-size:12px;cursor:pointer;color:var(--ink)}
+.toc .btns button:hover{background:var(--soft)}
+main{min-width:0;padding-bottom:40px}
+@media(max-width:960px){.shell{grid-template-columns:1fr;gap:0}aside.toc{position:static;max-height:none;padding:12px 0 0}.toc ul{display:flex;flex-wrap:wrap;gap:4px}.toc li a small{display:none}.toc .grp{display:none}}
+
+/* sections */
+section.blk{padding-top:36px}
+.blk-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.blk-head .k{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:700}
+.blk-head h2{margin:0;font-size:24px;color:var(--navy)}
+.blk-head .hint{color:var(--muted);font-size:13px}
+.lead{color:var(--muted);margin:0 0 18px;font-size:14px}
+
+/* summary */
+.summary{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 30px;border-left:5px solid var(--gold)}
+.summary h3{font-size:16px;color:var(--navy);margin:18px 0 6px;display:flex;align-items:center;gap:8px}
+.summary h3:first-child{margin-top:0}
+.summary h3 .ic{width:24px;height:24px;border-radius:6px;background:var(--navy);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+.summary p{margin:0 0 10px;text-align:justify;font-size:15.5px}
+.summary .wc{color:var(--muted);font-size:12.5px;text-align:right;margin-top:8px}
+.glossary{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:16px}
+.glossary div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.glossary b{display:block;font-size:14px;margin-bottom:2px}
+.glossary span{color:#374151}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.panel.full{grid-column:1/-1}
+.panel h4{margin:0 0 8px;font-size:15px;color:var(--navy)}
+.chart{width:100%;height:320px}
+.chart.tall{height:520px}
+.chart.short{height:260px}
+.chart-note{color:var(--muted);font-size:12.5px;margin-top:6px}
+.src{display:inline-block;font-size:11.5px;color:var(--muted);background:var(--soft);border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle;font-weight:400}
+.cal{list-style:none;margin:0;padding:0}
+.cal li{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.cal li:last-child{border-bottom:0}
+.cal .d{min-width:74px;font-weight:700;color:var(--navy)}
+.cal .w{color:var(--muted);font-size:13px}
+.callout{background:var(--soft);border-radius:12px;padding:14px 16px;margin:12px 0;border-left:4px solid var(--navy2)}
+.callout.red{border-left-color:var(--red);background:#fdf3f2}
+.callout.green{border-left-color:var(--green);background:#eef8f2}
+.callout.gold{border-left-color:var(--gold);background:#fdf9ee}
+.stance{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
+.stance div{border-radius:12px;padding:12px 14px;border:1px solid var(--line);background:#fff}
+.stance .a{font-size:13px;color:var(--muted)}
+.stance .v{font-weight:700;font-size:15px;margin-top:2px}
+.stance.up .v,.stance div.up .v{color:var(--green)} .stance div.down .v{color:var(--red)} .stance div.flat .v{color:var(--navy2)} .stance div.warn .v{color:#8a6a12}
+
+/* kpi tiles */
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
+.kpis div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpis .l{font-size:12.5px;color:var(--muted)} .kpis .v{font-size:24px;font-weight:700;color:var(--navy);line-height:1.25} .kpis .s{font-size:12px;color:var(--muted)}
+.kpis .v.red{color:var(--red)} .kpis .v.green{color:var(--green)}
+
+/* deep read */
+details.sec{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;scroll-margin-top:12px}
+details.sec>summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:14px;user-select:none}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary .no{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.15em;min-width:28px}
+details.sec>summary h3{margin:0;font-size:18px;color:var(--navy);flex:1}
+details.sec>summary .brief{color:var(--muted);font-size:13px;font-weight:400;display:block;margin-top:2px}
+details.sec>summary .arrow{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;transition:transform .2s;color:var(--muted);font-size:13px}
+details.sec[open]>summary .arrow{transform:rotate(180deg)}
+details.sec[open]>summary{border-bottom:1px solid var(--line);background:var(--soft)}
+.body{padding:20px 24px 26px}
+.body h4{margin:22px 0 8px;font-size:16px;color:var(--navy);padding-left:10px;border-left:3px solid var(--gold)}
+.body h4:first-child{margin-top:0}
+.body p{margin:8px 0}
+.body ul{margin:6px 0 10px;padding-left:20px}
+.body li{margin:4px 0}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:12px 0}
+.kv div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kv .l{font-size:12.5px;color:var(--muted)} .kv .v{font-size:22px;font-weight:700;color:var(--navy);line-height:1.3} .kv .s{font-size:12px;color:var(--muted)}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:12px 0}
+.flow .step{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.flow .step .i{font-size:11.5px;color:var(--gold);font-weight:700;letter-spacing:.1em}
+.flow .step .t{font-weight:600;margin:3px 0 4px;color:var(--navy)}
+.flow .step .d{font-size:13px;color:var(--muted)}
+.flow .step.fiscal{border-top:3px solid var(--green)} .flow .step.market{border-top:3px solid var(--red)}
+.legend{font-size:12.5px;color:var(--muted);display:flex;gap:16px;margin-top:6px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
+/* metro map */
+.metro-wrap{width:100%;overflow-x:auto}
+.metro{width:100%;min-width:720px;height:auto;display:block;font-family:inherit}
+.metro .line{fill:none;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+.metro .line.thin{stroke-width:8}
+.metro .st{fill:#fff;stroke-width:4}
+.metro .lbl{font-size:14px;font-weight:700;fill:#1f2937}
+.metro .sub{font-size:11.5px;fill:#6b7280}
+.metro .lname{font-size:12px;font-weight:700;letter-spacing:.08em}
+.metro .hub{fill:#0f2a4a;stroke:#fff;stroke-width:5}
+.metro .hublbl{font-size:18px;font-weight:800;fill:#fff}
+.metro .hubsub{font-size:11px;fill:#cbd5e1}
+.metro .note{font-size:11.5px;fill:#374151}
+.metro .notebox{fill:#fdf9ee;stroke:#c9a24a;stroke-width:1}
+.metro .term{stroke-width:4;rx:8}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+@media(max-width:820px){.howto{grid-template-columns:1fr}}
+.howto div{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:#374151}
+.howto .n{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;font-size:11.5px;align-items:center;justify-content:center;margin-right:6px;vertical-align:middle}.fmap-svg{display:none}.fcol-h{text-align:left}}
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:700px){.scen{grid-template-columns:1fr}}
+.scen div{border-radius:12px;padding:14px 16px;border:1px solid var(--line)}
+.scen .a{background:#eef8f2;border-color:#bfe3cd} .scen .b{background:#fdf3f2;border-color:#f3c2bd}
+.scen b{display:block;margin-bottom:4px}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+@media(max-width:760px){.triad{grid-template-columns:1fr}}
+.triad div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;border-top:4px solid var(--navy2)}
+.triad .who{font-weight:700;color:var(--navy);font-size:16px}
+.triad .role{color:var(--gold);font-size:13px;font-weight:600;margin-bottom:6px}
+.triad p{font-size:13.5px;margin:4px 0;color:#374151}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+th,td{border:1px solid var(--line);padding:9px 11px;vertical-align:top;text-align:left}
+th{background:var(--soft);color:var(--navy);font-weight:600;white-space:nowrap}
+.figs{display:grid;grid-template-columns:1fr;gap:16px;margin:14px 0}
+figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(15,42,74,.05)}
+figure img{display:block;width:100%;cursor:zoom-in}
+figcaption{padding:8px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+#lb{position:fixed;inset:0;background:rgba(10,20,35,.92);display:none;align-items:center;justify-content:center;z-index:200;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+footer{padding:30px 0 50px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:30px}
+footer .brand{color:var(--navy);font-weight:700}
+.up-btn{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .2s}
+.up-btn.show{opacity:1;pointer-events:auto}
+@media print{aside.toc,.up-btn{display:none}.shell{grid-template-columns:1fr}details.sec{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="lb" onclick="this.style.display='none'"><img id="lbimg" alt=""></div>
+
+<header class="hero">
+  <div class="in">
+    <div class="brand"><b>MIRA</b> 宏观配置通讯 · Macro Allocation Letter</div>
+    <h1>W37 · 旧秩序的人工维稳：油、息、AI 与国内注资</h1>
+    <div class="sub">美伊冲突升级、长端利率共振上行、GPT-6 Astra 质变、第四次财政注资银行：四条主线的边际变化与配置含义</div>
+    <div class="meta"><span>第 37 周 · 2026-09-13</span><span>数据截至 2026-09-10</span><span>作者：MIRA 宏观配置通讯</span><span>摘要 3 分钟 · 精读 15 分钟</span></div>
+  </div>
+</header>
+
+<div class="shell">
+<aside class="toc" id="toc">
+  <div class="ttl">目录</div>
+  <ul>
+    <li><a href="#sum">摘要<small>先读这个，3 分钟</small></a></li>
+    <li><a href="#flow">宏观地铁图<small>什么推动什么</small></a></li>
+    <li><a href="#data">数据看板<small>本周关键数字</small></a></li>
+  </ul>
+  <div class="grp">精读 · 六条主线</div>
+  <ul>
+    <li><a href="#S1" data-open="S1">01 美伊战争与原油<small>主动权在伊朗，油价有天花板</small></a></li>
+    <li><a href="#S2" data-open="S2">02 利率<small>长端共振上行，9/17 FOMC</small></a></li>
+    <li><a href="#S3" data-open="S3">03 美国非农与通胀<small>16.2 万，具备加息条件</small></a></li>
+    <li><a href="#S4" data-open="S4">04 科技 / AI<small>GPT-6 Astra 质变</small></a></li>
+    <li><a href="#S5" data-open="S5">05 国内财政注资<small>3600 亿，注资 ≠ 牛市</small></a></li>
+    <li><a href="#S6" data-open="S6">06 国内数据与煤炭<small>通胀、出口、旧经济</small></a></li>
+  </ul>
+  <div class="btns"><button onclick="toggleAll(true)">全部展开</button><button onclick="toggleAll(false)">全部折叠</button></div>
+</aside>
+
+<main>
+
+<!-- ===== 摘要 ===== -->
+<section class="blk" id="sum">
+  <div class="blk-head"><span class="k">SUMMARY</span><h2>摘要：3 分钟看懂本周</h2><span class="hint">术语见文末小词典</span></div>
+  <div class="summary">
+    <h3><span class="ic">1</span>一句话</h3>
+    <p><mark><b>全世界的钱在变贵（利率上行），这是今年最大的主线</b></mark>。油价决定它涨得多快，AI 决定它跌不下来，美国三个关键人物在拼命"人工维稳"，但都是治标不治本。对投资者来说，<b>现在不适合押单边，适合做"强的对弱的"相对交易</b>。</p>
+
+    <h3><span class="ic">2</span>为什么钱在变贵：两个推手</h3>
+    <p><b>推手一：油价（快变量）。</b>美伊冲突这周<mark>全面升级，而且主动权在伊朗手里</mark>：打击目标从军队扩大到油田、炼厂和油轮，也门胡塞武装也加入进来。霍尔木兹海峡（全球约五分之一石油的必经之路）运费和保险费创新高，公开的通航量创新低。但卫星显示<b>其实还有不少船在"偷偷走"</b>，所以彻底断供的概率很低。我们的判断：<mark>油价在 100 美元以上会待一段时间，但越往上涨，继续涨的劲越小，跌的赔率越大</mark>。</p>
+    <p><b>推手二：AI（慢变量）。</b>OpenAI 的 <b>GPT-6 Astra</b> 是一次真正的质变：AI 从"会回答问题"变成"会替你干活"（管项目、操作电脑、连机器人）。这意味着<mark>企业真的愿意为 AI 付钱了</mark>，2023-2025 年"建这么多算力谁买单"的质疑有了答案。但坏消息是：<b>经济越好，美联储越没理由降息</b>，所以 AI 越强，利率压力反而越大。</p>
+
+    <h3><span class="ic">3</span>美国：加息条件已经具备</h3>
+    <p>8 月美国新增就业 <b>16.2 万人</b>，远超预期。更关键的是结构：<mark>AI 数据中心建设带动建筑业 +2.2 万、制造业 +1.6 万</mark>，说明 AI 的红利真的流到了传统行业（中国这一步传导偏弱）。代价是信息、金融行业继续裁员，AI 替代白领已成事实。现在美联储<b>更怕通胀、不怕失业</b>，而且美国劳动力总量在缩水，<mark>降息的大门基本关上了</mark>。</p>
+    <p>财长贝森特把长期国债回购上限从 20 亿翻到 60 亿美元想压住利率，市场没买账，<b>10 年期美债收益率触及三年新高</b>。我们用一个框架解释为什么"无解"：<b>特朗普守油价、贝森特守国债、沃什（美联储）守科技估值</b>，三人越是精准地"做 T"，越说明这套秩序离不开人工维稳。<mark>9 月 17 日 FOMC 是分水岭：一次性加息 = 利空出尽；开启加息周期 = 利空强化</mark>。</p>
+
+    <h3><span class="ic">4</span>中国：3600 亿注资，别当牛市信号</h3>
+    <p>财政部这周第四次给金融央企注资，<b>3000 亿特别国债 + 600 亿原股东，合计 3600 亿</b>，六大行全部补齐，还首次把保险公司和政策性银行纳入。我们的核心观点：<mark>这补的是银行"能放贷的额度"，不等于银行"真的会放贷"，更不等于企业和居民"真的想借"</mark>。大行净息差只有约 1.3%，放贷不赚钱，钱更可能流向国债和优质央企，而不是民企。历史经验是注资到信用真正加速要 <b>1-2 年</b>。对股市：银行股估值修复但 ROE 被摊薄；保险资金会多买高股息和新经济龙头做"底仓"，能降低波动，但<mark>注资额 ≠ 净买入，不必然推高指数</mark>。</p>
+    <p>数据面：8 月出口同比 <b>+25%</b>，而且是<mark>靠涨价而不是靠降价冲量</mark>；PPI 回升靠的是上游涨价和输入性因素，不是国内需求变好；汽车、建材等旧经济依然过剩。</p>
+
+    <h3><span class="ic">5</span>怎么配：不做单边，做相对</h3>
+    <p><b>受压的</b>：贵金属、股指（利率是它们的敌人）；有色只是部分计价，新经济金属强于旧经济金属。<b>看多的</b>：<mark>煤炭和国内"土鳖品种"</mark>，能源链（原油→成品油→煤）和地缘（俄乌、美伊、中蒙）两头推，可能贯穿整个下半年，且独立于海外变量。<b>纠结的</b>：化工短期<mark>"看空不做空"</mark>，甚至要考虑多配对冲，等油价见顶的右侧信号。A 股科技缩圈、更看基本面，<b>沪深 300 / 中证 500（IC）好于中证 1000（IM）</b>。产业链利润上游赚、中游亏、下游弱，所以<mark>单边裸多 ✕，跨品种多空对冲 ✓</mark>。额外变量：9 月底习特会，基调是"管控下的稳定"，若科技制裁松动会提振风险偏好。</p>
+    <div class="wc">约 1100 字</div>
+  </div>
+
+  <div class="glossary">
+    <div><b>长端利率</b><span>10 年、30 年期国债收益率，代表"长期借钱的成本"，也是股票估值的分母。</span></div>
+    <div><b>FOMC</b><span>美联储议息会议，决定加息还是降息。下一次 9 月 17 日。</span></div>
+    <div><b>利空出尽</b><span>坏消息落地后反而不再下跌，因为市场早已消化。</span></div>
+    <div><b>核心一级资本</b><span>银行最硬的"本钱"，决定它最多能放多少贷款。</span></div>
+    <div><b>净息差</b><span>银行贷款利率减存款利率，是放贷的利润空间。1.3% 意味着很薄。</span></div>
+    <div><b>IC / IM</b><span>中证 500 / 中证 1000 股指期货，IM 代表更小盘、更偏题材的股票。</span></div>
+    <div><b>看空不做空</b><span>认为长期会跌，但短期有反弹风险，不建仓做空。</span></div>
+    <div><b>右侧信号</b><span>等价格已经确认转向再动手，而不是提前猜顶猜底。</span></div>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h4>未来两周关键日程</h4>
+      <ul class="cal">
+        <li><span class="d">09-11</span><span>美国 8 月 CPI<span class="w">：沃勒"9 月不加息可能性"的前提</span></span></li>
+        <li><span class="d">09-17</span><span>FOMC 决议<span class="w">：一次性加息还是加息周期开始</span></span></li>
+        <li><span class="d">9 月下旬</span><span>习特会<span class="w">：基调"管控下的稳定"，关注科技制裁</span></span></li>
+        <li><span class="d">持续</span><span>海峡通航量、运价保费、国内抛储<span class="w">：油价右侧信号</span></span></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>本周立场</h4>
+      <div class="stance" style="margin-top:0">
+        <div class="up"><div class="a">煤炭 / 国内土鳖品种</div><div class="v">看多，叙事贯穿下半年</div></div>
+        <div class="down"><div class="a">贵金属 / 股指</div><div class="v">受利率压制</div></div>
+        <div class="warn"><div class="a">化工（短期）</div><div class="v">看空不做空，多配对冲</div></div>
+        <div class="flat"><div class="a">有色</div><div class="v">新经济金属 &gt; 旧经济金属</div></div>
+        <div class="flat"><div class="a">A 股科技</div><div class="v">缩圈重基本面，IC &gt; IM</div></div>
+        <div class="warn"><div class="a">姿态</div><div class="v">单边裸多 ✕ · 跨品种对冲 ✓</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 宏观地铁图 ===== -->
+<section class="blk" id="flow">
+  <div class="blk-head"><span class="k">MAP</span><h2>本周宏观地铁图：所有线路都开往「利率」站</h2><span class="hint">一图读懂本周逻辑</span></div>
+  <p class="lead">把本周的宏观逻辑画成一张地铁线路图：两条线（油价线、AI 线）从左边出发，都在「利率」这一站换乘；下车之后，不同资产走向不同的出口。国内线自成一体，不经过利率站。</p>
+  <div class="panel full">
+    <div class="metro-wrap"><svg id="metro" class="metro" viewBox="0 0 1000 700" role="img" aria-label="本周宏观地铁图"></svg></div>
+    <div class="howto">
+      <div><span class="n">1</span>先看左侧两条线：<b>油价线</b>（美伊冲突）和 <b>AI 线</b>（GPT-6 Astra），它们分别是通胀的<b>快变量</b>和<b>慢变量</b>，终点都是「利率」站。</div>
+      <div><span class="n">2</span>再看「利率」这个<b>换乘站</b>：9 月 17 日美联储会议决定后面走哪条线。一次性加息 = 利空出尽；开启加息周期 = 利空强化。</div>
+      <div><span class="n">3</span>最后看右侧三个出口：<b>红色</b>是被利率压制的资产，<b>金色</b>是只跌了一半、要挑着买的，<b>橙色</b>是短期先别碰的。底部<b>国内线</b>独立运行，煤炭是终点站。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 数据看板 ===== -->
+<section class="blk" id="data">
+  <div class="blk-head"><span class="k">DATA</span><h2>数据看板</h2><span class="hint">我们跟踪的核心数据</span></div>
+  <p class="lead">以下图表均基于我们本周跟踪的公开数据绘制，长序列图表（欧债利率、期限溢价历史、出口长序列等）见精读区。</p>
+
+  <div class="kpis">
+    <div><div class="l">美国 8 月新增非农</div><div class="v">16.2 万</div><div class="s">大超预期，前值上修</div></div>
+    <div><div class="l">美国失业率</div><div class="v">4.1%</div><div class="s">这个数字已经不重要</div></div>
+    <div><div class="l">美债 10Y（9/9）</div><div class="v red">4.83%</div><div class="s">三年新高；30Y 5.28%</div></div>
+    <div><div class="l">10Y 新债拍卖得标</div><div class="v red">4.834%</div><div class="s">390 亿美元，该期限历史最高</div></div>
+    <div><div class="l">中国 8 月出口（美元）</div><div class="v green">+25%</div><div class="s">价格贡献 &gt; 数量贡献</div></div>
+    <div><div class="l">本轮财政注资</div><div class="v">3600 亿</div><div class="s">3000 亿国债 + 600 亿原股东</div></div>
+    <div><div class="l">大行净息差</div><div class="v">≈1.30%</div><div class="s">放一般贷款回报低</div></div>
+    <div><div class="l">险资股票 + 基金</div><div class="v">6.39 万亿</div><div class="s">占运用余额 16.23%（2026Q2）</div></div>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h4>美债收益率曲线 · 2026-09-09 <span class="src">数据截至 9/9</span></h4>
+      <div id="c_curve" class="chart"></div>
+      <div class="chart-note">中段（2Y-5Y）抬升最快，超长端 20Y/30Y 同为 5.28%。与 5/29、6/30、7/31 三个时点的对比见精读 02。</div>
+    </div>
+    <div class="panel">
+      <h4>美国 8 月非农分行业新增（万人） <span class="src">看板 1</span></h4>
+      <div id="c_nfp" class="chart"></div>
+      <div class="chart-note">绿色：AI 基建与设备投资拉动的建筑、制造；红色：被 AI 替代的信息、金融；灰色：季节性反弹的休闲酒店与政府（合计贡献约 70%）。</div>
+    </div>
+    <div class="panel">
+      <h4>1998 年特别国债注资四大行分配（亿元） <span class="src">看板 2</span></h4>
+      <div id="c_1998" class="chart short"></div>
+      <div class="chart-note">合计 2700 亿元：工行 850、农行 933、中行 425、建行 492。配合降准 13%→8%、AMC 剥离约 1.4 万亿不良。</div>
+    </div>
+    <div class="panel">
+      <h4>近两轮特别国债注资对比（亿元） <span class="src">看板 3</span></h4>
+      <div id="c_inject" class="chart short"></div>
+      <div class="chart-note">2025 年 5000 亿注资中行、建行、交行、邮储；2026 年 3000 亿特别国债 + 600 亿原股东，覆盖工行、农行、进出口行、信保及四家保险央企。2003-08 年汇金注资约 790 亿美元，单位不同未并入。</div>
+    </div>
+    <div class="panel">
+      <h4>险资权益配置结构（2026 Q2，万亿元） <span class="src">看板 4</span></h4>
+      <div id="c_ins" class="chart short"></div>
+      <div class="chart-note">保险资金运用余额超 40 万亿，其中股票 + 基金约 6.39 万亿、占比 16.23%。本次 700 亿保险注资若按既有结构配置，股票/基金增量仅百亿元级。</div>
+    </div>
+    <div class="panel">
+      <h4>美股盈利广度 vs 制造业 PMI <span class="src">看板 5</span></h4>
+      <div id="c_eps" class="chart short"></div>
+      <div class="chart-note">标普 500 中未来 12 个月 EPS 预计增长的公司占比接近 90%，而通常领先约六个月的 ISM 制造业 PMI 仅回升至 55 附近。两者过去大致同步，本轮差距加速扩大。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 精读 ===== -->
+<section class="blk" id="deep">
+  <div class="blk-head"><span class="k">DEEP READ</span><h2>精读：完整逻辑与图表</h2><span class="hint">按主线折叠，图表可点击放大</span></div>
+  <p class="lead">每条主线展开后是我们的完整论述与数据图表。</p>
+
+  <details class="sec" id="S1">
+    <summary><span class="no">01</span><h3>美伊战争：这次主动权在伊朗，TACO 失灵<span class="brief">冲突升级 → 海峡受阻但有暗航 → 油价有天花板 → 化工看空不做空</span></h3><span class="arrow">▾</span></summary>
+    <div class="body">
+      <h4>冲突本身：重新全面升级</h4>
+      <ul>
+        <li>打击目标从军事设施扩展到能源设施与油轮。</li>
+        <li>胡塞武装下场，波及中东其他产油国的炼厂与港口。</li>
+        <li>经济战施压：伊朗石油面临全面断供风险。</li>
+        <li>核心仍是海峡控制权，背后涉及石油美元信用。</li>
+        <li>长期拉锯、持久战化；中期选举前特朗普需要安抚舆论。</li>
+      </ul>
+      <h4>海峡：名义封锁与实际通航的背离</h4>
+      <ul>
+        <li>运价、保费创新高，实际通过量创新低。</li>
+        <li>替代线路受威胁：红海与曼德海峡形成两头堵，被迫改道苏伊士运河；陆上管道成为袭击目标。</li>
+        <li>暗航存在，极端断供概率仍低，构成油价上方的天花板。卫星观测显示海峡通航量其实并不低，现货紧张程度低于 3 月。</li>
+      </ul>
+      <h4>原油与化工：低库存矛盾继续发酵</h4>
+      <ul>
+        <li>化工作为旧经济，长期会被打回原形；但短期看空不做空，甚至需考虑多配对冲，等待油价右侧信号。</li>
+        <li>成品油比原油更缺（减化增油）。</li>
+        <li>关注国内抛售战略储备的动作。</li>
+      </ul>
+      <div class="callout gold">油价的简单节奏：100 美元以上持续，但随着价格上涨，动能趋向衰减，下跌的赔率增加。</div>
+      <div class="figs">
+        <figure><img src="W37_assets/fig/fig01.png" alt="图 1" loading="lazy" onclick="zoom(this)"><figcaption>原油现货紧张程度低于 3 月：Dubai 基差与 Brent 即期基差 <span class="src">图 1</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig02.png" alt="图 2" loading="lazy" onclick="zoom(this)"><figcaption>卫星观测：海峡原油通过量并不低 <span class="src">图 2</span></figcaption></figure>
+      </div>
+    </div>
+  </details>
+
+  <details class="sec" id="S2">
+    <summary><span class="no">02</span><h3>利率：全球长端共振上行，压力长期存在<span class="brief">沃勒放鸽但看 CPI → 非农拉回加息预期 → 贝森特救火无效 → 9/17 是分水岭</span></h3><span class="arrow">▾</span></summary>
+    <div class="body">
+      <h4>本周边际变化</h4>
+      <ul>
+        <li>美联储二把手沃勒向市场释放"9 月不加息的可能性"，但依然取决于 9 月 11 日的 CPI 数据。</li>
+        <li>8 月非农超预期，又重新把加息预期拉起来。</li>
+        <li>目前通胀（加息门槛）的优先级远高于就业（降息门槛）。</li>
+        <li>贝森特救火：9 月 10 日将单次长期国债回购上限从 20 亿美元提升至 60 亿美元、干预日元，但市场反应消极，10Y 盘中触及三年新高，390 亿美元新债拍卖得标利率 4.834% 创该期限历史最高。</li>
+        <li>欧洲极右翼政党上台推升长端欧债利率，全球共振。</li>
+      </ul>
+      <div class="scen">
+        <div class="a"><b>情景 A：一次性加息</b>利空出尽。短端追赶长端，曲线走平，风险资产获得喘息，但整体抬升趋势不变。</div>
+        <div class="b"><b>情景 B：加息周期开始</b>利空强化。加息预期过高容易拉爆 AI 融资链条，贵金属与股指压制加深。</div>
+      </div>
+      <h4>期限结构：中段抬升较快，超长端暂被沃什按住</h4>
+      <p>市场把对财政的担忧放在 10Y。财政和货币都需要美债结构平缓，这也是 9 月加息概率上升、短端利率加速追赶长端的必要性所在。美债期限溢价并未缓解。</p>
+      <h4>更高维度：利率的无解难题</h4>
+      <p>美国全球战略收缩，从"提供全球公共品"退到"看守核心垄断权"。三个人各守一个定价锚：</p>
+      <div class="triad">
+        <div><div class="who">特朗普</div><div class="role">能源定价锚：石油—美军—美元</div><p>全球关键能源航线的军事存在。油价温和上涨可以（页岩油赚钱），暴涨不行（选民满意度下降）。伊朗对海峡控制的加深触碰了美国核心利益。</p></div>
+        <div><div class="who">贝森特</div><div class="role">财政融资权：美债</div><p>温和通胀可以化债，恶性通胀会崩盘。需要长端利率缓慢上行但不失控。</p></div>
+        <div><div class="who">沃什</div><div class="role">资本定价权：科技—利率</div><p>加息预期太高容易拉爆 AI 融资，太低影响美联储信用。</p></div>
+      </div>
+      <div class="callout red">结论：三人越是精准地"做 T"，越说明这套旧秩序已经离不开人工维稳，简单说就是暂时无解。只有拖到 AI 全要素生产率爆发填平财政窟窿、制造业回流重建实体经济、全球能源瓶颈摆脱霍尔木兹海峡，才能根本性缓解，而这至少在年内难以看到。利率这条线的压力将以"温水煮青蛙"的方式长期存在。</div>
+      <div class="figs">
+        <figure><img src="W37_assets/fig/fig03.png" alt="图 3" loading="lazy" onclick="zoom(this)"><figcaption>全球长端利率继续共振上行 <span class="src">图 3</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig04.png" alt="图 4" loading="lazy" onclick="zoom(this)"><figcaption>欧洲政治变量推升长端欧债利率 <span class="src">图 4</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig05.png" alt="图 5" loading="lazy" onclick="zoom(this)"><figcaption>美债中段抬升最快，期限溢价并未缓解 <span class="src">图 5</span></figcaption></figure>
+      </div>
+    </div>
+  </details>
+
+  <details class="sec" id="S3">
+    <summary><span class="no">03</span><h3>美国 8 月非农：经济不弱，具备加息条件<span class="brief">16.2 万超预期 → AI 基建传导至建筑制造 → 劳动供给缩水封死降息</span></h3><span class="arrow">▾</span></summary>
+    <div class="body">
+      <div class="kv">
+        <div><div class="l">新增非农</div><div class="v">16.2 万</div><div class="s">大超预期，前值上修</div></div>
+        <div><div class="l">建筑业</div><div class="v">+2.2 万</div><div class="s">AI 基建拉动</div></div>
+        <div><div class="l">制造业</div><div class="v">+1.6 万</div><div class="s">设备投资拉动</div></div>
+        <div><div class="l">信息业</div><div class="v">-2.3 万</div><div class="s">AI 替代白领持续</div></div>
+        <div><div class="l">失业率</div><div class="v">4.1%</div><div class="s">已不重要</div></div>
+      </div>
+      <h4>结构解读</h4>
+      <p>前期拖累的休闲酒店、政府等反弹贡献了 70%，属于季节性噪音，意义不大。值得关注的是 AI 基建与设备投资拉动建筑业与制造业分别增加 2.2 万人和 1.6 万人，这是新经济向传统领域有效传导的关键信号（中国相反，传导偏弱）。坏的地方是信息和金融就业继续减少，AI 对白领的替代持续，这在意料之中。</p>
+      <h4>K 型分化加剧，通胀粘性下降</h4>
+      <ul>
+        <li>最主要的薪资粘性通胀尚不明显。</li>
+        <li>居民实际收入缩水。</li>
+        <li>失业率 4.1% 其实已经不重要：虽然本月劳动参与率小幅提升，但长期美国劳动力总供应缩水的趋势无法逆转，意味着降息空间被封死。</li>
+      </ul>
+      <div class="figs">
+        <figure><img src="W37_assets/fig/fig06.png" alt="图 6" loading="lazy" onclick="zoom(this)"><figcaption>8 月非农：总量与分行业 <span class="src">图 6</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig07.png" alt="图 7" loading="lazy" onclick="zoom(this)"><figcaption>K 型分化加剧，薪资粘性通胀尚不明显 <span class="src">图 7</span></figcaption></figure>
+      </div>
+    </div>
+  </details>
+
+  <details class="sec" id="S4">
+    <summary><span class="no">04</span><h3>科技 / AI：GPT-6 Astra，又一次量变到质变<span class="brief">会答问题 → 会办事 → 硬件软件闭环 → 美股看二阶导，国内差距拉大</span></h3><span class="arrow">▾</span></summary>
+    <div class="body">
+      <h4>哪里发生了质变</h4>
+      <p>不只是一个"参数更大、显卡更多"的聊天模型，而是把 AI 从"会答问题"推向"会办事"：</p>
+      <ul>
+        <li>推理能力：从"背答案"到"自己想办法"。</li>
+        <li>工程能力：从"写代码"到"管整个项目"。</li>
+        <li>计算机使用：从"你操作软件"到"它坐你工位上操作"。</li>
+        <li>物理世界任务：从"屏幕里办事"到"连机器人和实况"。</li>
+      </ul>
+      <h4>两条向上主线的共振</h4>
+      <div class="flow">
+        <div class="step"><div class="i">上游 · 硬件</div><div class="t">算力、大模型训练</div><div class="d">Token 更便宜，但应用场景更多，需求量反而增加</div></div>
+        <div class="step"><div class="i">⇄ 互相强化</div><div class="t">双轮驱动</div><div class="d">能力提升 → 每美元能干的活更多 → 原本不值得用 AI 的流程变得值得 → 推理任务量更大 → 瓶颈回到芯片、存储</div></div>
+        <div class="step"><div class="i">下游 · 软件</div><div class="t">企业应用</div><div class="d">从少数 AI 实验室扩展到银行、制造、零售、医疗、专业服务、软件、政府；效率真正提高、收入增加、AI 投入更多</div></div>
+      </div>
+      <p>2023-2025 年的三个质疑（要建多少算力、最终谁付钱、回报在哪里）在此得到回答：上游资本开支得到了下游真实、持续的买单，并自我强化。距离可自我迭代的 AGI 尚早。</p>
+      <h4>对美股：基本面越好，要求越苛刻</h4>
+      <p>标普 500 成分股中未来 12 个月 EPS 预计增长的公司占比接近 90%，而通常领先该指标约六个月的 ISM 制造业 PMI 仅回升至 55 附近，两者过去大致同步，本轮差距加速扩大：美股盈利周期越来越脱离传统制造业，加速向 AI 基建靠拢。</p>
+      <div class="callout red">最大的问题是市场对基本面不断提出更高、更完美的要求。只要没有预期那么好（哪怕绝对增速依然很高），"失望情绪"就会导致多头筹码踩踏离场。股票看的是二阶导，减速本身就可能持续压制估值。</div>
+      <h4>对国内：差距重新拉大</h4>
+      <ul>
+        <li>Astra 有防蒸馏机制；国内买不到 NVLink72 也无法自己训练；训练、蒸馏成本高，国产芯片能否赶上仍是未知数。</li>
+        <li>中国集成电路自给率已接近 70%，但高端逻辑、先进存储和 AI 芯片仍较多依赖进口。</li>
+        <li>美股新高 ≠ A 股新高：国家队流入不多，科技赛道缩圈更注重基本面，配置 IC 好于 IM。</li>
+        <li>如果科技制裁放松，有利于风险偏好。</li>
+      </ul>
+      <div class="figs">
+        <figure><img src="W37_assets/fig/fig08.png" alt="图 8" loading="lazy" onclick="zoom(this)"><figcaption>美股盈利周期脱离传统制造业，向 AI 基建靠拢 <span class="src">图 8</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig09.png" alt="图 9" loading="lazy" onclick="zoom(this)"><figcaption>国产 AI 硬件与海外仍有差距 <span class="src">图 9</span></figcaption></figure>
+      </div>
+    </div>
+  </details>
+
+  <details class="sec" id="S5">
+    <summary><span class="no">05</span><h3>国内政策：历史上第四次财政注资银行，注资 ≠ 牛市<span class="brief">3600 亿补扩表能力 → 后三步不由财政决定 → 险资增量真实但 ≠ 净买入</span></h3><span class="arrow">▾</span></summary>
+    <div class="body">
+      <div class="kv">
+        <div><div class="l">合计金额</div><div class="v">3600 亿</div><div class="s">3000 亿特别国债 + 600 亿原股东（烟草系等）</div></div>
+        <div><div class="l">覆盖机构</div><div class="v">8 家</div><div class="s">工行、农行、进出口行、信保、国寿、太平、人保、再保</div></div>
+        <div><div class="l">理论撬动</div><div class="v">3-4 万亿</div><div class="s">3000 亿核心一级对应的资产空间</div></div>
+        <div><div class="l">大行净息差</div><div class="v">≈1.30%</div><div class="s">放一般贷款回报低</div></div>
+      </div>
+      <h4>这是什么</h4>
+      <ul>
+        <li>是 924 政策的落地，不是新内容，与 2025 年那轮（特别国债注资中行、建行、交行、邮储约 5000 亿）是连续动作。本次把工行、农行补齐后，六家国有大行全部完成财政专项注资；同时首次把保险央企、政策性金融纳入"核心一级资本"框架。</li>
+        <li>顶层思路变化：过去是危机/改制驱动、单点补银行；现在是低通胀、低息差、低内源资本、高监管资本要求下的"跨周期资本储备"，把金融央企当成逆周期调节器统一加压。</li>
+      </ul>
+      <h4>历史四轮注资对比</h4>
+      <table>
+        <tr><th>时间</th><th>形式</th><th>背景与目的</th></tr>
+        <tr><td>1998 年</td><td>救火式</td><td>财政部发 2700 亿特别国债注资四大行（工 850、农 933、中 425、建 492），配合降准 13%→8%、成立 AMC 剥离约 1.4 万亿不良。背景是不良率 25%-30%、资本充足率不足 5%，本质是"技术破产修复"。对宏观是清理银行资产负债表，为 WTO 后信贷扩张打底；对股市直接传导很弱（大行未上市），但解除了系统性风险。</td></tr>
+        <tr><td>2003-2008 年</td><td>改制上市式</td><td>汇金用外汇储备向中行、建行、工行、农行分期注资约 790 亿美元，配合财务重组、引战、A/H 上市。目标是把国有银行改成现代公司治理主体，此后资本补充转由利润留存、IPO、可转债、配股市场化完成。宏观上对应加入 WTO 后出口→地产→基建信用周期，是"上市前重组"不是"逆周期刺激"。</td></tr>
+        <tr><td>2025 年</td><td>扩表式</td><td>5000 亿特别国债补中行、建行、交行、邮储核心一级。背景是净息差历史低位、信贷受资本约束、地产风险出清期需要大行承接科技/绿色/普惠/化债配套。逻辑从"救机构"转向"给信贷扩表能力"。</td></tr>
+        <tr><td>2026 年</td><td>预防性系统式</td><td>3000 亿特别国债 + 600 亿原股东，扩到工行、农行 + 进出口行/信保 + 四家保险。官方定调"前瞻性、系统性、未雨绸缪"。本质是把"银行资本工具"升级为"财政—银行—保险—政策性金融"四位一体资本前置。</td></tr>
+      </table>
+      <h4>传导链条：补的是扩表能力，不等于自动信用扩张</h4>
+      <div class="flow">
+        <div class="step fiscal"><div class="i">STEP 1 · 财政决定</div><div class="t">发特别国债 → 入股</div><div class="d">银行核心一级上升，风险加权资产上限扩大</div></div>
+        <div class="step market"><div class="i">STEP 2 · 银行决定</div><div class="t">愿意贷</div><div class="d">风险偏好和授信能力上升</div></div>
+        <div class="step market"><div class="i">STEP 3 · 私人部门决定</div><div class="t">愿意借</div><div class="d">企业/居民有投资与消费意愿</div></div>
+        <div class="step market"><div class="i">STEP 4 · 项目决定</div><div class="t">有现金回报</div><div class="d">形成社融、营收、税收正循环</div></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--green)"></i>财政可控</span><span><i style="background:var(--red)"></i>不由财政决定</span></div>
+      <h4>信用扩张的主要约束</h4>
+      <ul>
+        <li>净息差太薄：大行净息差约 1.30%，放一般贷款回报低，银行会更挑客户、倾向低风险权重资产（利率债、政金债、票据、优质央企），而不是全面流向实体，民企该缺钱还是缺钱。</li>
+        <li>民间意愿弱：地产去杠杆、地方平台控增量化债、民企资本开支谨慎，企业借钱看订单和 ROIC，不看银行有没有钱。历史上注资到信用提速通常有 1-2 年时滞，且必须配合财政项目、产业政策、地产预期修复。</li>
+        <li>资金投向：不像 2009-2017 年主要进地产 + 基建平台。本轮官方口径明确科技、先进制造、绿色、普惠、养老、外贸，这类资产的资本占用、信息不对称、久期都不利于大行快速放量，更像"定向扩表"而非"总量放水"。</li>
+        <li>特别国债要付息，注资换来的银行分红可部分对冲，但若实体回报起不来，财政端甚至可能亏钱。</li>
+      </ul>
+      <h4>政策效果推演</h4>
+      <table>
+        <tr><th>阶段</th><th>主要效果</th></tr>
+        <tr><td>短期（0-2 季度）</td><td>防风险、稳银行指标、稳信贷"不掉量"，对增长拉动有限</td></tr>
+        <tr><td>中期（2-4 季度）</td><td>若配合积极财政项目、地产企稳、设备更新/科技再贷款，可把大行对公科技/绿色/化债配套做起来，结构改善但总量未必跳升</td></tr>
+        <tr><td>长期</td><td>提升银行穿越低息差周期的能力，降低去杠杆风险，属于"托底潜在增速"</td></tr>
+        <tr><td>新增顶层设计</td><td>企业出海 + 外循环：进出口行 + 信保注资直接服务稳外贸、走出去、出口信用保险覆盖面，比单纯给大行补资本更有针对性</td></tr>
+      </table>
+      <h4>中国缺少的是把货币转化为有效需求的渠道</h4>
+      <p>和美国 2008 年不同，本轮房地产下行，中国家庭和企业用于偿还本息的收入占比不降反升，说明过去几年的宽松政策尚未有效减轻现金流压力、修复私人部门资产负债表。</p>
+      <h4>对股市：注资 ≠ 牛市</h4>
+      <ul>
+        <li>银行/保险股：估值修复，缓解了"资本不够和卖股"的抛压，但新增资本摊薄了 ROE。</li>
+        <li>险资入市：长期资金增量为真，但"注资额 ≠ 净买入"。截至 2026 年二季度，保险资金运用余额超 40 万亿，股票 + 基金约 6.39 万亿、占比 16.23%。</li>
+        <li>直接配置法：700 亿注资按既有资产结构，债券吸收大部分，股票/基金增量可能仅百亿元级。</li>
+        <li>资本撬动法：新增核心资本按偿付能力风险因子可"承载"更多权益敞口，理论可达千亿级，但上限不是净买入。</li>
+        <li>实际节奏：未来 1-3 年险资对高股息（银行、公用事业、煤炭、电信）、新经济（半导体、高端制造、医药、绿电）的"底仓化配置"增加，降低市场波动率，不必然推高指数。</li>
+      </ul>
+      <div class="figs">
+        <figure><img src="W37_assets/fig/fig10.png" alt="图 10" loading="lazy" onclick="zoom(this)"><figcaption>中国缺少的是把货币转化为有效需求的渠道 <span class="src">图 10</span></figcaption></figure>
+      </div>
+    </div>
+  </details>
+
+  <details class="sec" id="S6">
+    <summary><span class="no">06</span><h3>国内数据与旧经济：8 月通胀、出口与煤炭叙事<span class="brief">PPI 靠上游与输入性 → 出口靠涨价 → 煤炭成国内工业品的锚</span></h3><span class="arrow">▾</span></summary>
+    <div class="body">
+      <h4>8 月通胀：输入性因素 + AI 驱动，旧经济仍偏弱</h4>
+      <ul>
+        <li>算力需求对物价的影响从 PPI 传导至 CPI（通信工具 CPI 同比明显抬升）。</li>
+        <li>汽车、建材、部分食品加工等传统行业价格仍偏弱，产能过剩尚未缓解。</li>
+        <li>PPI 的推动力是上游、供给、输入性，不是内生自发性需求推动。</li>
+      </ul>
+      <h4>8 月出口：继续狂飙</h4>
+      <ul>
+        <li>8 月美元计价出口同比升至 25%。</li>
+        <li>不再降价换量：出口价格贡献已超过数量贡献。</li>
+        <li>AI 景气周期一枝独秀。</li>
+      </ul>
+      <h4>旧经济：煤炭成为国内工业品的锚</h4>
+      <p>煤炭同时受能源链条（原油→成品油→煤）与地缘（俄乌、美伊、中蒙关系）两条线推动。</p>
+      <ul>
+        <li>不是 2021 年的重演。</li>
+        <li>产业链利润分化：上游赚、中游亏、下游弱。单边裸多不可取，跨品种、多空对冲是主要姿态。</li>
+        <li>煤炭叙事可能持续整个下半年，成为国内工业品的锚，独立于海外宏观变量。</li>
+      </ul>
+      <h4>下半年额外新增变量：中美关系</h4>
+      <div class="callout">9 月底习特会，大方向是"管控下的稳定"，而非关系的重大突破。如果科技制裁放松，有利于风险偏好。</div>
+      <div class="figs">
+        <figure><img src="W37_assets/fig/fig11.png" alt="图 11" loading="lazy" onclick="zoom(this)"><figcaption>8 月通胀：输入性 + AI 驱动 <span class="src">图 11</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig12.png" alt="图 12" loading="lazy" onclick="zoom(this)"><figcaption>PPI 的推动力：供给与输入性 <span class="src">图 12</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig13.png" alt="图 13" loading="lazy" onclick="zoom(this)"><figcaption>8 月出口：同比与价量拆分 <span class="src">图 13</span></figcaption></figure>
+        <figure><img src="W37_assets/fig/fig14.png" alt="图 14" loading="lazy" onclick="zoom(this)"><figcaption>出口结构：AI 景气一枝独秀 <span class="src">图 14</span></figcaption></figure>
+      </div>
+    </div>
+  </details>
+
+
+</section>
+
+<footer>
+  <div class="brand">MIRA 宏观配置通讯 · W37 · 2026-09-13</div>
+  <div>本通讯为我们对公开信息的整理与判断，仅作宏观研究交流之用，不构成任何投资建议。</div>
+</footer>
+</main>
+</div>
+<a class="up-btn" id="upBtn" href="#sum" title="回到顶部">↑</a>
+
+<script>
+/* ---------- 交互 ---------- */
+function toggleAll(open){document.querySelectorAll('details.sec').forEach(d=>d.open=open);}
+function openSec(id){const d=document.getElementById(id);if(d)d.open=true;}
+function zoom(img){document.getElementById('lbimg').src=img.src;document.getElementById('lb').style.display='flex';}
+document.querySelectorAll('#toc a[data-open]').forEach(a=>a.addEventListener('click',()=>openSec(a.dataset.open)));
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progress').style.width=p+'%';
+  document.getElementById('upBtn').classList.toggle('show',h.scrollTop>600);
+});
+function openFromHash(){const id=location.hash.replace('#','');if(/^S\d$/.test(id))openSec(id);}
+window.addEventListener('hashchange',openFromHash);openFromHash();
+/* 目录高亮 */
+(function(){
+  const links=[...document.querySelectorAll('#toc a')];
+  const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));}});
+  },{rootMargin:'-10% 0px -70% 0px',threshold:0});
+  targets.forEach(t=>io.observe(t));
+})();
+
+/* ---------- ECharts ---------- */
+const NAVY='#0f2a4a',GOLD='#c9a24a',RED='#c8352b',GREEN='#1f8a5b',BLUE='#2b6cb0',PURPLE='#6b46c1',ORANGE='#b45309',GREY='#9ca3af',SLATE='#475569';
+const charts=[];
+function mk(id,opt){const el=document.getElementById(id);if(!el||typeof echarts==='undefined')return;const c=echarts.init(el);c.setOption(opt);charts.push(c);}
+window.addEventListener('resize',()=>charts.forEach(c=>c.resize()));
+/* 宏观地铁图 */
+(function(){
+  const svg=document.getElementById('metro');if(!svg)return;
+  const OR='#b45309',PU='#6b46c1',RD='#c8352b',GD='#a67c1e',GR='#1f8a5b',BL='#2b6cb0';
+  const H={x:500,y:330};
+  let o='';
+  const line=(d,c,cls='')=>o+=`<path class="line ${cls}" d="${d}" stroke="${c}"/>`;
+  const st=(x,y,c,l,sub,pos='top')=>{
+    o+=`<circle class="st" cx="${x}" cy="${y}" r="9" stroke="${c}"/>`;
+    if(pos==='top'){o+=`<text class="lbl" x="${x}" y="${y-36}" text-anchor="middle">${l}</text>`;if(sub)o+=`<text class="sub" x="${x}" y="${y-20}" text-anchor="middle">${sub}</text>`;}
+    else{o+=`<text class="lbl" x="${x}" y="${y+30}" text-anchor="middle">${l}</text>`;if(sub)o+=`<text class="sub" x="${x}" y="${y+46}" text-anchor="middle">${sub}</text>`;}
+  };
+  const term=(x,y,c,l,sub,w=150)=>{
+    o+=`<rect class="term" x="${x-w/2}" y="${y-16}" width="${w}" height="32" fill="#fff" stroke="${c}"/>`;
+    o+=`<text class="lbl" x="${x}" y="${y+5}" text-anchor="middle" fill="${c}">${l}</text>`;
+    if(sub)o+=`<text class="sub" x="${x}" y="${y+34}" text-anchor="middle">${sub}</text>`;
+  };
+  const lname=(x,y,c,t)=>o+=`<text class="lname" x="${x}" y="${y}" fill="${c}">${t}</text>`;
+
+  /* 线路 */
+  line(`M70,150 H360 C450,150 500,230 ${H.x},${H.y}`,OR);
+  line(`M70,510 H360 C450,510 500,430 ${H.x},${H.y}`,PU);
+  line(`M${H.x},${H.y} C560,330 560,200 640,200 H930`,RD);
+  line(`M${H.x},${H.y} H930`,GD);
+  line(`M${H.x},${H.y} C560,330 560,460 640,460 H930`,OR,'thin');
+  line(`M70,625 H930`,BL);
+
+  /* 线路名（放在线路名和站点标签不冲突的位置） */
+  lname(70,92,OR,'油价线 · 通胀的快变量');
+  lname(70,470,PU,'AI 线 · 通胀的慢变量');
+  lname(70,600,BL,'国内线 · 政策与旧经济（不经过利率站）');
+  lname(560,178,RD,'出口 A · 被利率压制');
+  lname(560,312,GD,'出口 B · 只跌一半，挑着买');
+  lname(660,447,OR,'出口 C · 短期先别碰');
+
+  /* 油价线站点（标签在上方） */
+  st(110,150,OR,'美伊冲突升级','主动权在伊朗手里');
+  st(240,150,OR,'海峡受阻','运费保费新高，但有暗航');
+  st(370,150,OR,'油价 100 美元+','越涨越没劲，有天花板');
+  /* AI 线站点（标签在上方，避开国内线） */
+  st(110,510,PU,'GPT-6 Astra','AI 从会答题到会干活','bottom');
+  st(240,510,PU,'企业真付钱了','算力需求反而更大','bottom');
+  st(370,510,PU,'美国经济不弱','8 月新增就业 16.2 万','bottom');
+  /* 出口 A（标签在下方，避开线路名） */
+  st(720,200,RD,'贵金属 ↓','利率是它的敌人','bottom');
+  st(860,200,RD,'股指 ↓','美股新高 ≠ A 股新高','bottom');
+  /* 出口 B（标签在下方） */
+  st(720,330,GD,'有色','新经济金属 > 旧经济','bottom');
+  st(860,330,GD,'A 股科技','IC 好于 IM，看基本面','bottom');
+  /* 出口 C（标签在下方） */
+  st(790,460,OR,'化工','看空不做空，等油价见顶','bottom');
+  /* 国内线（标签在下方） */
+  st(110,625,BL,'财政注资 3600 亿','六大行补齐 + 保险','bottom');
+  st(310,625,BL,'能放贷 ≠ 会放贷','净息差仅约 1.3%','bottom');
+  st(510,625,BL,'注资 ≠ 牛市','注资额 ≠ 净买入','bottom');
+  st(700,625,BL,'险资买高股息','做底仓，降波动','bottom');
+  term(880,625,GR,'煤炭 · 国内的锚','油价链条 + 地缘双推，贯穿下半年',170);
+
+  /* 换乘站 */
+  o+=`<circle class="hub" cx="${H.x}" cy="${H.y}" r="40"/>`;
+  o+=`<text class="hublbl" x="${H.x}" y="${H.y+2}" text-anchor="middle">利率</text>`;
+  o+=`<text class="hubsub" x="${H.x}" y="${H.y+18}" text-anchor="middle">换乘站</text>`;
+  /* 换乘提示：放在左下空白区 */
+  o+=`<rect class="notebox" x="300" y="255" width="150" height="52" rx="8"/>`;
+  o+=`<text class="note" x="375" y="273" text-anchor="middle" font-weight="700">9/17 FOMC 决定去哪条线</text>`;
+  o+=`<text class="note" x="375" y="288" text-anchor="middle">一次性加息 = 利空出尽</text>`;
+  o+=`<text class="note" x="375" y="301" text-anchor="middle">开启周期 = 利空强化</text>`;
+  o+=`<rect class="notebox" x="300" y="356" width="150" height="36" rx="8"/>`;o+=`<text class="note" x="375" y="371" text-anchor="middle" font-weight="700">全球放水结束</text>`;o+=`<text class="note" x="375" y="386" text-anchor="middle">年度级别压制所有资产</text>`;
+  svg.innerHTML=o;
+})();
+
+/* 美债曲线 2026-09-09 */
+(function(){
+  const t=['1M','3M','6M','1Y','2Y','3Y','5Y','10Y','20Y','30Y'];
+  const v=[3.81,3.95,4.01,4.17,4.43,4.49,4.61,4.83,5.28,5.28];
+  mk('c_curve',{
+    tooltip:{trigger:'axis',valueFormatter:x=>x.toFixed(2)+'%'},
+    grid:{left:48,right:20,top:30,bottom:30},
+    xAxis:{type:'category',data:t,axisLine:{lineStyle:{color:'#cbd5e1'}}},
+    yAxis:{type:'value',min:3.5,max:5.5,axisLabel:{formatter:'{value}%'},splitLine:{lineStyle:{color:'#eef2f7'}}},
+    series:[
+      {type:'bar',data:v,barWidth:22,itemStyle:{color:'#e3ecf7',borderRadius:[4,4,0,0]},tooltip:{show:false}},
+      {name:'2026-09-09',type:'line',data:v,smooth:true,symbol:'circle',symbolSize:8,lineStyle:{color:RED,width:3},itemStyle:{color:RED},
+       label:{show:true,position:'top',fontSize:11.5,color:RED,fontWeight:600,formatter:p=>p.value.toFixed(2)},
+       markArea:{silent:true,itemStyle:{color:'rgba(201,162,74,.12)'},data:[[{xAxis:'2Y',name:'中段抬升最快'},{xAxis:'5Y'}]],label:{color:'#8a6a12',fontSize:11}}}
+    ]
+  });
+})();
+
+/* 非农分行业 */
+(function(){
+  const d=[['信息',-2.3],['金融',-1.1],['零售业',0.1],['公共事业',0.3],['其他服务业',0.3],['采矿业',0.3],['运输仓储业',0.5],['批发业',0.8],['专业和商业服务',1.0],['制造业',1.6],['建筑业',2.2],['教育和医疗',2.9],['政府部门',3.5],['休闲和酒店业',6.2]];
+  const hi={'建筑业':GREEN,'制造业':GREEN,'信息':RED,'金融':RED,'休闲和酒店业':GREY,'政府部门':GREY};
+  mk('c_nfp',{
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:v=>v+' 万人'},
+    grid:{left:112,right:44,top:10,bottom:26},
+    xAxis:{type:'value',splitLine:{lineStyle:{color:'#eef2f7'}}},
+    yAxis:{type:'category',data:d.map(x=>x[0]),axisLabel:{fontSize:12}},
+    series:[{type:'bar',data:d.map(x=>({value:x[1],itemStyle:{color:hi[x[0]]||NAVY,borderRadius:3}})),barWidth:14,label:{show:true,position:'right',fontSize:11,formatter:p=>p.value.toFixed(1)}}]
+  });
+})();
+
+/* 1998 注资分配 */
+mk('c_1998',{
+  tooltip:{trigger:'axis',valueFormatter:v=>v+' 亿元'},
+  grid:{left:50,right:20,top:16,bottom:28},
+  xAxis:{type:'category',data:['工行','农行','中行','建行']},
+  yAxis:{type:'value',splitLine:{lineStyle:{color:'#eef2f7'}}},
+  series:[{type:'bar',barWidth:40,data:[850,933,425,492],itemStyle:{color:'#94a3b8',borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]
+});
+
+/* 2025 vs 2026 注资 */
+mk('c_inject',{
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:v=>v?v+' 亿元':''},
+  legend:{top:0,textStyle:{fontSize:12}},
+  grid:{left:50,right:20,top:34,bottom:28},
+  xAxis:{type:'category',data:['2025 年','2026 年']},
+  yAxis:{type:'value',splitLine:{lineStyle:{color:'#eef2f7'}}},
+  series:[
+    {name:'特别国债',type:'bar',stack:'t',barWidth:56,data:[5000,3000],itemStyle:{color:NAVY},label:{show:true,color:'#fff',fontSize:12}},
+    {name:'原股东出资',type:'bar',stack:'t',data:[0,600],itemStyle:{color:GOLD,borderRadius:[4,4,0,0]},label:{show:true,color:'#fff',fontSize:12,formatter:p=>p.value||''}}
+  ]
+});
+
+/* 险资结构 */
+mk('c_ins',{
+  tooltip:{formatter:p=>`${p.name}<br/>${p.value} 万亿 · ${p.percent}%`},
+  series:[{type:'pie',radius:['52%','78%'],center:['50%','52%'],avoidLabelOverlap:true,
+    data:[{value:6.39,name:'股票 + 基金',itemStyle:{color:NAVY}},{value:32.98,name:'债券、存款及其他',itemStyle:{color:'#cbd5e1'}}],
+    label:{formatter:p=>`${p.name}\n${p.value} 万亿 (${p.percent}%)`,fontSize:12,lineHeight:16},labelLine:{length:10,length2:12}}]
+});
+
+/* 美股盈利广度 vs PMI */
+mk('c_eps',{
+  series:[
+    {type:'gauge',center:['25%','58%'],radius:'70%',min:0,max:100,startAngle:200,endAngle:-20,progress:{show:true,width:14,itemStyle:{color:GREEN}},axisLine:{lineStyle:{width:14,color:[[1,'#eef2f7']]}},axisTick:{show:false},splitLine:{show:false},axisLabel:{show:false},pointer:{show:false},
+     title:{offsetCenter:[0,'30%'],fontSize:12,color:'#6b7280'},detail:{offsetCenter:[0,'-5%'],fontSize:24,fontWeight:700,color:NAVY,formatter:'≈{value}%'},data:[{value:90,name:'标普500 EPS预计增长公司占比'}]},
+    {type:'gauge',center:['75%','58%'],radius:'70%',min:30,max:70,startAngle:200,endAngle:-20,progress:{show:true,width:14,itemStyle:{color:GOLD}},axisLine:{lineStyle:{width:14,color:[[1,'#eef2f7']]}},axisTick:{show:false},splitLine:{show:false},axisLabel:{show:false},pointer:{show:false},
+     title:{offsetCenter:[0,'30%'],fontSize:12,color:'#6b7280'},detail:{offsetCenter:[0,'-5%'],fontSize:24,fontWeight:700,color:NAVY,formatter:'≈{value}'},data:[{value:55,name:'ISM 制造业 PMI'}]}
+  ]
+});
+</script>
+</body>
+</html>
