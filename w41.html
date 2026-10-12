@@ -1,0 +1,852 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RENA 宏观配置通讯 VOL.41 · 所有缓和都写着同一个到期日</title>
+<meta name="description" content="地缘短暂休战 + 利率压制喘口气 + 国内政策温和托底，风险偏好在夹缝中回暖，但随时可能反转。市场只放松了近端，没有放松远端。">
+<style>
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:#fff; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", sans-serif;
+  color:#1f2937; font-size:11.5px; line-height:1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+ul.b { margin:0; padding-left:0; list-style:none; }
+ul.b li { position:relative; padding-left:13px; margin:0 0 5px; font-size:11.5px; }
+ul.b li::before { content:""; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:#c9a24a; }
+ul.b li b { color:#0f2a4a; }
+ul.b li.red::before { background:#c8352b; } ul.b li.green::before { background:#1f8a5b; }
+mark { background:#fff3b0; color:inherit; padding:0 2px; }
+.call { border-left:4px solid #c9a24a; background:#f0f4fa; padding:6px 10px; font-size:11.2px; margin-top:6px; border-radius:0 4px 4px 0; }
+.call b { color:#0f2a4a; }
+.call.red { border-left-color:#c8352b; background:#fdf2f1; }
+.call.green { border-left-color:#1f8a5b; background:#eef8f3; }
+.figcap { font-size:10px; color:#6b7280; margin-top:2px; line-height:1.4; }
+table.t { border-collapse:collapse; width:100%; font-size:10.8px; line-height:1.4; }
+table.t th { background:#0f2a4a; color:#fff; padding:5px 7px; text-align:left; font-weight:600; }
+table.t td { padding:4px 7px; border-bottom:1px solid #e5e7eb; vertical-align:top; }
+table.t tr:nth-child(even) td { background:#fafbfc; }
+.pill { display:inline-block; font-size:10px; font-weight:700; padding:1px 7px; border-radius:10px; color:#fff; white-space:nowrap; }
+.pill.up { background:#1f8a5b; } .pill.dn { background:#c8352b; } .pill.flat { background:#6b7280; } .pill.gold { background:#c9a24a; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.box { border:1px solid #e5e7eb; border-radius:6px; padding:7px 10px; background:#fff; }
+.box h3 { margin:0 0 4px; font-size:12.5px; color:#0f2a4a; }
+.box h3 .st { font-size:11px; color:#6b7280; font-weight:400; margin-left:6px; }
+.box ul.b li { font-size:10.8px; margin-bottom:3px; line-height:1.45; }
+.box.hi { border-color:#c9a24a; background:#fffaf0; }
+.box.red { border-color:#c8352b; } .box.green { border-color:#1f8a5b; }
+.arrow { color:#c9a24a; font-weight:700; }
+.small { font-size:11.5px; color:#6b7280; }
+svg text { font-family: inherit; }
+
+html { scroll-behavior:smooth; }
+body { background:#f6f7f9; font-size:15px; line-height:1.7; color:#1f2937; }
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.9;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='150'><g transform='rotate(-22 130 75)' fill='%230f2a4a' fill-opacity='0.055' font-family='Arial' font-weight='700'><text x='10' y='60' font-size='15' letter-spacing='3'>RENA · 宏观配置通讯</text><text x='90' y='130' font-size='11' letter-spacing='2' font-weight='400'>RENA MACRO WEEKLY W41</text></g></svg>"); }
+.topbar { position:sticky; top:0; z-index:40; background:#0f2a4a; color:#fff; height:50px; display:flex; align-items:center; gap:12px; padding:0 16px; box-shadow:0 2px 10px rgba(0,0,0,.18); }
+.topbar .brand { font-weight:700; letter-spacing:.2em; color:#c9a24a; white-space:nowrap; }
+.topbar .brand span { color:#cbd5e1; font-weight:400; letter-spacing:.04em; margin-left:6px; font-size:13px; }
+.topbar .sp { flex:1; }
+.topbar a { color:#e5e7eb; text-decoration:none; font-size:13px; padding:5px 9px; border-radius:4px; white-space:nowrap; }
+.topbar a:hover { background:rgba(255,255,255,.12); }
+.layout { position:relative; z-index:1; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:230px minmax(0,1fr); gap:28px; padding:0 20px; }
+.toc { position:sticky; top:66px; align-self:start; max-height:calc(100vh - 80px); overflow:auto; padding:6px 0 20px; }
+.toc a { display:block; padding:6px 10px; font-size:13px; color:#6b7280; text-decoration:none; border-left:2px solid #e5e7eb; line-height:1.4; }
+.toc a.l2 { padding-left:22px; font-size:12.5px; }
+.toc a.on { color:#0f2a4a; border-left-color:#c9a24a; background:#fff; font-weight:700; }
+.toc .tocsub { font-size:11px; letter-spacing:.15em; color:#c9a24a; font-weight:700; padding:14px 10px 4px; }
+main { min-width:0; padding-bottom:60px; overflow-x:hidden; }
+html, body { max-width:100%; overflow-x:hidden; }
+.hero { background:radial-gradient(900px 400px at 15% -10%, #173d6b 0%, #0f2a4a 60%); color:#fff; border-radius:12px; padding:38px 34px 30px; margin:22px 0 26px; position:relative; overflow:hidden; }
+.hero .brand { font-size:12px; letter-spacing:.3em; color:#cbd5e1; } .hero .brand b { color:#c9a24a; }
+.hero h1 { font-size:34px; margin:10px 0 8px; line-height:1.25; }
+.hero h2 { font-size:18px; font-weight:500; color:#e5e7eb; margin:0 0 18px; line-height:1.5; }
+.hero .line { width:70px; height:4px; background:#c9a24a; margin-bottom:16px; }
+.hero .meta { font-size:13.5px; color:#cbd5e1; display:flex; flex-wrap:wrap; gap:8px 22px; }
+.hero .note { margin-top:14px; font-size:12.5px; color:#9fb3cc; border-top:1px solid rgba(255,255,255,.16); padding-top:10px; }
+.sec { background:#fff; border-radius:12px; padding:26px 28px; margin-bottom:22px; box-shadow:0 2px 12px rgba(15,42,74,.06); scroll-margin-top:70px; min-width:0; }
+.sec h2 { font-size:22px; color:#0f2a4a; margin:0 0 4px; line-height:1.3; }
+.sec .sub { color:#6b7280; font-size:14px; margin:0 0 18px; }
+.sec h3 { font-size:17px; color:#0f2a4a; margin:22px 0 8px; }
+.kick { font-size:11px; letter-spacing:.2em; color:#c9a24a; font-weight:700; }
+.cols { display:flex; gap:24px; }
+.col { flex:1 1 0; min-width:0; }
+ul.b li { font-size:15px; margin-bottom:9px; padding-left:16px; } ul.b li::before { top:11px; width:6px; height:6px; }
+.call { font-size:14.5px; padding:12px 16px; margin-top:14px; line-height:1.65; }
+.figcap { font-size:12.5px; margin:6px 0 4px; }
+table.t { font-size:14px; line-height:1.5; } table.t th { padding:8px 10px; } table.t td { padding:8px 10px; }
+.box { padding:12px 14px; } .box h3 { font-size:15.5px; margin:0 0 6px; } .box ul.b li { font-size:14px; margin-bottom:6px; }
+.grid2 { gap:14px; }
+.small { font-size:13px; }
+.kgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.k { background:#f0f4fa; border-radius:8px; padding:12px 14px; }
+.k .kl { font-size:12.5px; color:#6b7280; } .k .kv { font-size:26px; font-weight:700; line-height:1.15; color:#0f2a4a; } .k .ks { font-size:12px; color:#6b7280; }
+.charts { display:grid; grid-template-columns:1fr 1fr; gap:22px 28px; margin-top:18px; }
+.chart { min-width:0; } .chart .ct { font-size:14px; font-weight:700; color:#0f2a4a; margin-bottom:6px; }
+.tmap { background:#f7f9fc; border-radius:10px; padding:14px; }
+.tlab { font-size:12px; letter-spacing:.15em; font-weight:700; margin:4px 0 10px; }
+.trow { display:grid; grid-template-columns:1fr 34px 1.1fr 34px 1fr; gap:10px; align-items:stretch; }
+.trow.dom { grid-template-columns:repeat(4,1fr); }
+.trow.three { grid-template-columns:repeat(3,1fr); }
+.tcol { display:flex; flex-direction:column; gap:10px; } .tcol.hub { justify-content:center; }
+.tn { background:#fff; border:1.5px solid var(--c); border-radius:8px; overflow:hidden; }
+.tn-h { background:var(--c); color:#fff; font-weight:700; font-size:13.5px; padding:6px 10px; }
+.tn ul { margin:0; padding:8px 10px 8px 24px; font-size:13px; line-height:1.55; } .tn li { margin:2px 0; }
+.tarr { display:flex; align-items:center; justify-content:center; position:relative; }
+.tarr::before { content:"→"; font-size:26px; color:#c9a24a; font-weight:700; }
+.tcross { text-align:center; color:#c8352b; font-size:12.5px; margin:14px 0 8px; border-top:1.5px dashed #c8352b; padding-top:8px; }
+details.deep { border:1px solid #e5e7eb; border-radius:10px; margin-bottom:12px; background:#fff; scroll-margin-top:70px; }
+details.deep summary { cursor:pointer; list-style:none; padding:14px 18px; display:flex; align-items:center; gap:12px; }
+details.deep summary::-webkit-details-marker { display:none; }
+details.deep summary .n { width:28px; height:28px; border-radius:50%; background:#0f2a4a; color:#fff; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; flex:none; }
+details.deep summary .t { font-weight:700; color:#0f2a4a; font-size:16px; } details.deep summary .s { color:#6b7280; font-size:13px; display:block; font-weight:400; }
+details.deep summary .chev { margin-left:auto; color:#6b7280; transition:transform .2s; }
+details.deep[open] summary .chev { transform:rotate(180deg); }
+details.deep .dbody { padding:0 18px 18px; border-top:1px solid #e5e7eb; }
+details.deep .dbody h3 { font-size:16px; color:#0f2a4a; margin:18px 0 6px; padding-left:10px; border-left:3px solid #c9a24a; }
+details.deep .dbody .sub { font-size:13px; margin-bottom:12px; color:#6b7280; }
+.toolrow { display:flex; gap:10px; margin-bottom:14px; } .toolrow button { font-size:12.5px; padding:5px 12px; border:1px solid #e5e7eb; background:#fff; border-radius:16px; cursor:pointer; color:#0f2a4a; }
+.gloss { background:#f0f4fa; border-radius:8px; padding:12px 16px; margin-top:16px; font-size:13px; line-height:1.6; }
+.gloss span { display:block; margin-top:4px; } .gloss span b { color:#0f2a4a; }
+.summary p { margin:0 0 12px; font-size:15.5px; }
+/* 盒内标题不继承章节/精读的大标题样式 */
+.sec .box h3, details.deep .dbody .box h3 { font-size:15.5px; margin:0 0 6px; padding-left:0; border-left:none; }
+.tn li.red { color:#c8352b; }
+/* V2 新增 */
+.score { background:#f0f4fa; border-radius:10px; padding:12px 16px; margin:0 0 18px; }
+.score .sl { font-size:12px; letter-spacing:.14em; color:#c9a24a; font-weight:700; margin-bottom:8px; }
+.score .row { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 26px; }
+.score .n { font-size:14.5px; color:#374151; } .score .n b { font-size:21px; color:#0f2a4a; margin-right:3px; }
+.score .n.up b { color:#1f8a5b; } .score .n.half b { color:#c9a24a; } .score .n.no b { color:#c8352b; }
+.score .cav { margin-top:9px; padding-top:8px; border-top:1px solid #d8e0ec; font-size:12.5px; color:#6b7280; }
+.lead ul.b li { font-size:15.5px; margin-bottom:12px; line-height:1.72; }
+.sharecard { margin:0 0 6px; }
+.sharecard svg { width:100%; height:auto; display:block; border-radius:10px; }
+.conf { display:inline-block; font-size:11px; font-weight:700; padding:1px 6px; border-radius:4px; background:#eef1f6; color:#0f2a4a; white-space:nowrap; }
+.conf.hi { background:#0f2a4a; color:#fff; } .conf.lo { background:#f0f4fa; color:#6b7280; }
+.jump { font-size:13px; color:#c9a24a; font-weight:700; text-decoration:none; white-space:nowrap; }
+.jump:hover { text-decoration:underline; }
+.colophon { background:#fff; border-radius:12px; padding:16px 22px; margin-bottom:14px; box-shadow:0 2px 12px rgba(15,42,74,.06); font-size:13.5px; color:#6b7280; line-height:1.7; }
+.colophon b { color:#0f2a4a; }
+.foot { color:#6b7280; font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:10px 4px; }
+.fab { display:none; }
+@media (max-width:900px) {
+  .layout { grid-template-columns:minmax(0,1fr); padding:0 12px; gap:0; }
+  .sec, .hero, details.deep { min-width:0; overflow:hidden; }
+  .dbody, .summary { max-width:100%; overflow-wrap:anywhere; }
+  .hero h1 { overflow-wrap:anywhere; }
+  .toc { display:none; position:fixed; left:0; right:0; bottom:0; top:auto; max-height:70vh; background:#fff; z-index:60; padding:12px 12px 24px; border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.18); }
+  .toc.open { display:block; }
+  .fab { display:flex; position:fixed; right:16px; bottom:18px; z-index:61; width:48px; height:48px; border-radius:50%; background:#0f2a4a; color:#fff; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(0,0,0,.25); font-size:20px; border:none; }
+  .hero { padding:26px 20px 22px; margin:14px 0 16px; } .hero h1 { font-size:27px; } .hero h2 { font-size:16px; }
+  .sec { padding:18px 16px; border-radius:10px; } .sec h2 { font-size:19px; }
+  .cols { flex-direction:column; gap:14px; }
+  .grid2, .grid3 { grid-template-columns:1fr !important; }
+  .kgrid { grid-template-columns:1fr 1fr; } .k .kv { font-size:22px; }
+  .charts { grid-template-columns:1fr; }
+  .trow, .trow.dom, .trow.three { grid-template-columns:1fr; }
+  .tarr { height:34px; } .tarr::before { content:"↓"; }
+  .topbar a.hide-m { display:none; }
+  table.t.review, table.t.review tbody, table.t.review tr, table.t.review td { display:block; width:100%; }
+  table.t.review thead, table.t.review tr:first-child { display:none; }
+  table.t.review tr { border:1px solid #e5e7eb; border-radius:8px; margin-bottom:10px; padding:6px 0; background:#fff !important; }
+  table.t.review td { border:none; padding:4px 12px; background:transparent !important; }
+  table.t.review td::before { content:attr(data-label); display:block; font-size:11px; color:#c9a24a; font-weight:700; letter-spacing:.1em; }
+}
+</style></head>
+<body>
+<div class="topbar"><span class="brand">RENA<span>宏观配置通讯 · VOL.41</span></span><span class="sp"></span><a class="hide-m" href="index.html">归档首页</a><a class="hide-m" href="w38.html">上期 VOL.38</a></div>
+<div class="layout"><nav class="toc" id="toc">
+<div class="tocsub">VOL.41 · 2026-10-11</div>
+<a href="#lead">本期要闻</a><a href="#review">判断回顾</a><a href="#map">一张图：都停在 11/3</a><a href="#summary">摘要：3 分钟看懂本周</a><a href="#dash">数据看板</a>
+<div class="tocsub">精读</div>
+<a class="l2" href="#d1">1 · 利率</a><a class="l2" href="#d2">2 · 美伊与油价</a><a class="l2" href="#d3">3 · 中欧贸易战</a><a class="l2" href="#d4">4 · 国内政策</a><a class="l2" href="#d5">5 · 人民币汇率</a><a class="l2" href="#d6">6 · 科技 / AI</a>
+<div class="tocsub">结论</div>
+<a href="#alloc">资产观点</a><a href="#earn">三季报日历</a><a href="#next">下周关注</a>
+</nav><main>
+
+<div class="hero"><div class="brand"><b>RENA</b> 宏观配置通讯 · MACRO WEEKLY · <b>W41</b></div>
+<h1>所有缓和，都写着同一个到期日</h1>
+<h2>地缘短暂休战 + 利率压制喘口气 + 国内政策温和托底，风险偏好在夹缝中回暖，但随时可能反转</h2>
+<div class="line"></div>
+<div class="meta"><span>2026-10-11</span><span>第 41 周</span><span>数据截至 10 月 9 日收盘</span><span>阅读：摘要 3 分钟 / 全文 15 分钟</span></div></div>
+
+<section class="sec lead" id="lead"><div class="kick">LEAD</div><h2>本期要闻</h2><p class="sub">本刊为连续跟踪型宏观配置周报，每期开头先核对上期判断，再给本期判断。</p>
+
+<div class="score">
+<div class="sl">判断跟踪记录</div>
+<div class="row">
+<span class="n">累计 <b>14</b> 条</span>
+<span class="n up">兑现 <b>11</b></span>
+<span class="n half">部分兑现 <b>3</b></span>
+<span class="n no">证伪 <b>0</b></span>
+</div>
+<div class="cav">每周持续跟踪，完整账目见下方<a href="#review" style="color:#0f2a4a;font-weight:700">判断回顾</a>。</div>
+</div>
+
+<ul class="b">
+<li><b>特朗普承诺中期选举前不对伊朗动武。</b>俄罗斯柴油制裁放松、进场补位，伊朗回复积极，普京下场调解，战争溢价在 11 月 3 日前被官方封顶。但油价不跌反涨，周内箱体落在 85–105 并贴近上沿。</li>
+<li><b>10Y 美债周内一度触及 5.368%，续创 2002 年新高，随后回落至 5.24%。</b>财长贝森特预告财政整顿，缓和了部分期限溢价，但整顿计划要等中期选举之后。美联储纪要与多位官员口径一致指向年内可能再加一次：10 月加息概率已降至 22%，12 月为 84%。</li>
+<li><b>10 月 9 日，中共中央与国务院联合发布《关于发展新质生产力的意见》，确立 19 条任务，人工智能首次单独成文。</b>同日财政部就「增量政策」表态，以基础民生和六张网为主的精准托底。A 股节后两个交易日，10/8 高开低走、10/9 国家队入场 V 形反转，成交回到 1.9 万亿。</li>
+<li><b>10 月 7 日欧洲议会通过对华强硬决议，两天后欧委会与中方达成 PHEV 谅解。</b>议会恢复「制度性对手」表述并将中国先进产业定性为「生存性威胁」，但决议无法律约束力。同期央行发布汇率白皮书，CNH 升破 6.70。</li>
+</ul>
+</section>
+
+<section class="sec" id="review"><div class="kick">RECAP</div><h2>判断回顾：五条兑现、两条部分兑现</h2><p class="sub">定价逻辑的连续跟踪：上期说了什么、后来怎么走、哪里要改</p>
+
+<table class="t review">
+<tr><th style="width:24%">9 月 20 日判断</th><th style="width:40%">此后发生了什么</th><th style="width:10%">结果</th><th>下一步</th></tr>
+
+<tr><td data-label="9 月 20 日判断">加息是周期不是一次性，12 月再加 25bp 是主流预期</td>
+<td data-label="此后发生了什么">美联储纪要及多位官员口径一致：通胀偏高、年内可能再加一次。10 月不加息（22%）基本定价完毕，<b>12 月加息的 84% 才是悬顶之剑</b></td>
+<td data-label="结果"><span class="pill up">兑现</span></td>
+<td data-label="下一步">本周四 CPI 若落 3.7% 上方，12 月概率进一步上行</td></tr>
+
+<tr><td data-label="9 月 20 日判断">5% 成为 10Y 新锚，看 20Y/30Y 会否再破 5.4%</td>
+<td data-label="此后发生了什么">破 5.4 的不是 20Y/30Y，是 10Y 自己——周内一度触及 <b>5.368%</b>、续创 2002 年新高，后回落至 5.24%。期限溢价主导长端的逻辑未变</td>
+<td data-label="结果"><span class="pill up">兑现</span></td>
+<td data-label="下一步"><b>超额兑现</b>，破位的品种从长端换成了 10Y。基准 5.2–5.35% 震荡；CPI 超预期则再上冲 5.35%</td></tr>
+
+<tr><td data-label="9 月 20 日判断">油价 95–110 区间，不追单边；跌破 100 加仓化工空</td>
+<td data-label="此后发生了什么">特朗普承诺 11/3 前不攻伊朗，但<b>油价不跌反涨</b>——市场尊重休战承诺，不认为它能解决实物紧张。箱体实际落在 85–105</td>
+<td data-label="结果"><span class="pill half">部分兑现</span></td>
+<td data-label="下一步"><b>区间要下修</b>：重心偏上沿、底部比顶部硬；缓和带来的回调是多头入场点，不是趋势反转</td></tr>
+
+<tr><td data-label="9 月 20 日判断">化工反弹做空 + 动力煤做多，跨品种对冲</td>
+<td data-label="此后发生了什么">化工不再完全跟随原油：「中东断供」和「油价成本」已经是两条需要分开定价的逻辑。新增变量是<b>俄柴油进场补位</b></td>
+<td data-label="结果"><span class="pill half">部分兑现</span></td>
+<td data-label="下一步"><b>结构要拆开</b>：改为强弱对冲（多甲醇链 / 空油头），关注裂解相关品种上方压力；黑色反弹空下游</td></tr>
+
+<tr><td data-label="9 月 20 日判断">IC 好于 IM；3850 支撑多次验证、4000 压力</td>
+<td data-label="此后发生了什么">上证节前收盘 <b>3845</b>，就是那条线。10/8 高开低走、10/9 国家队入场 V 形反转，接近 7 月前低位置，成交量回到 1.9 万亿</td>
+<td data-label="结果"><span class="pill up">兑现</span></td>
+<td data-label="下一步">3845 能否放量收复（成交持续 1.8 万亿以上）是本轮反弹修复的必要条件</td></tr>
+
+<tr><td data-label="9 月 20 日判断">贵金属：实际利率压顶、地缘与央行购金托底，不做多也不做空</td>
+<td data-label="此后发生了什么">利率压制仍在，但<b>央行加速购金已经形成底部支撑</b>——压制和托底的强弱关系发生了变化</td>
+<td data-label="结果"><span class="pill up">兑现</span></td>
+<td data-label="下一步"><b>方向升级为转多</b>：本期唯一的方向性变化。利率压制阶段是收集便宜筹码的窗口，上方空间要等风口切到货币信用逻辑</td></tr>
+
+<tr><td data-label="9 月 20 日判断">CNH 6.704 三年多新高，中美利差 333bp 下人民币还在升</td>
+<td data-label="此后发生了什么">10/9 央行发布汇率白皮书，选在 <b>CNH 升破 6.70 + 中欧例会次日 + 11 月中选前</b>，在两条谈判战线上同步亮明底牌</td>
+<td data-label="结果"><span class="pill up">兑现</span></td>
+<td data-label="下一步"><b>升格为独立主线</b>：6.70 下方是政策敏感区，升值方向也要防</td></tr>
+</table>
+<div class="call"><b>一句话：</b>方向性判断没有一条被推翻，要改的两条都是<b>区间和结构</b>——油价箱体下移、化工与原油脱钩。框架还能用，但不能照抄上一期的参数。</div>
+</section>
+
+<section class="sec" id="map"><div class="kick">MAP</div><h2>一张图：所有线路都停在 11/3 这一站</h2><p class="sub">上两期的枢纽是「利率」，这一期换成了一个日期。市场放松的全是有官方到期日的东西，没到期的一个也没放松。</p>
+
+<div class="sharecard">
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="W41 速览卡">
+<rect x="0" y="0" width="1200" height="675" fill="#0f2a4a"/>
+<rect x="0" y="0" width="1200" height="6" fill="#c9a24a"/>
+<text x="60" y="66" font-size="17" letter-spacing="5" font-weight="700" fill="#c9a24a">RENA</text>
+<text x="152" y="66" font-size="15" letter-spacing="1" fill="#9fb3cc">宏观配置通讯</text>
+<text x="1140" y="66" font-size="15" text-anchor="end" fill="#9fb3cc">VOL.41 · 2026-10-11</text>
+<text x="60" y="148" font-size="46" font-weight="700" fill="#ffffff">所有缓和，都写着同一个到期日</text>
+<text x="60" y="188" font-size="19" fill="#cbd5e1">近端放松的全有官方到期日，远端一个都没放松 —— 所以是「夹缝」，不是转向</text>
+<text x="60" y="248" font-size="13" letter-spacing="3" font-weight="700" fill="#1f8a5b">近端 · 已经放松</text>
+<text x="470" y="248" font-size="13" letter-spacing="3" font-weight="700" fill="#c9a24a">枢纽 · 11 月 3 日</text>
+<text x="880" y="248" font-size="13" letter-spacing="3" font-weight="700" fill="#c8352b">远端 · 一点没放松</text>
+<rect x="60" y="262" width="350" height="196" rx="10" fill="#15355c" stroke="#1f8a5b" stroke-width="2"/>
+<circle cx="88" cy="294" r="5" fill="#1f8a5b"/><text x="104" y="300" font-size="17" fill="#e5e7eb">美伊不打：承诺 11/3 前不攻伊朗</text>
+<circle cx="88" cy="328" r="5" fill="#1f8a5b"/><text x="104" y="334" font-size="17" fill="#e5e7eb">10 月不加息，概率 22% 已定价</text>
+<circle cx="88" cy="362" r="5" fill="#1f8a5b"/><text x="104" y="362" font-size="17" fill="#e5e7eb">中欧 PHEV 谅解</text>
+<text x="60" y="440" font-size="17" fill="#8fa8c4">共同点：都有到期日</text>
+<rect x="470" y="262" width="350" height="196" rx="10" fill="#c9a24a"/>
+<text x="645" y="296" font-size="21" font-weight="700" fill="#0f2a4a" text-anchor="middle">中期选举 · 11/3</text>
+<circle cx="498" cy="328" r="5" fill="#0f2a4a"/><text x="514" y="334" font-size="16" fill="#0f2a4a">财政整顿、12 月 FOMC 都在这之后</text>
+<circle cx="498" cy="362" r="5" fill="#0f2a4a"/><text x="514" y="368" font-size="16" fill="#0f2a4a">财报峰值周 2437 家跨过这一天</text>
+<circle cx="498" cy="396" r="5" fill="#0f2a4a"/><text x="514" y="402" font-size="16" font-weight="700" fill="#8a1c15">五角大楼已指示重启军事准备</text>
+<rect x="880" y="262" width="260" height="196" rx="10" fill="#15355c" stroke="#c8352b" stroke-width="2"/>
+<circle cx="908" cy="296" r="5" fill="#c8352b"/><text x="924" y="302" font-size="17" fill="#e5e7eb">战争随时可再升级</text>
+<circle cx="908" cy="330" r="5" fill="#c8352b"/><text x="924" y="336" font-size="17" fill="#e5e7eb">12 月加息 84%</text>
+<circle cx="908" cy="364" r="5" fill="#c8352b"/><text x="924" y="370" font-size="17" fill="#e5e7eb">美财政无解</text>
+<circle cx="908" cy="398" r="5" fill="#c8352b"/><text x="924" y="404" font-size="17" fill="#e5e7eb">欧版 301 待立法</text>
+<line x1="60" y1="500" x2="1140" y2="500" stroke="#2c4d78" stroke-width="1.5"/>
+<text x="60" y="536" font-size="19" font-weight="700" fill="#c9a24a">姿态：做强弱不做方向 · 仓位不宜重 · 要跑得快</text>
+<text x="60" y="572" font-size="17" fill="#9fb3cc">油价区间下修 85–105 ｜ 化工与原油脱钩，改强弱对冲 ｜ 黄金转多</text>
+<circle cx="60" cy="632" r="5" fill="#1f8a5b"/>
+<text x="78" y="638" font-size="17" fill="#cbd5e1">累计跟踪 14 条判断：兑现 11 · 部分兑现 3 · 证伪 0</text>
+<text x="1140" y="638" font-size="15" text-anchor="end" fill="#6b8299">内部研究交流，不构成投资建议</text>
+</svg>
+</div>
+
+<div class="tmap">
+<div class="trow">
+<div class="tcol">
+<div class="tlab" style="color:#1f8a5b">近端：已经放松的</div>
+<div class="tn" style="--c:#1f8a5b"><div class="tn-h">美伊不打</div><ul><li>特朗普承诺 11/3 前不攻伊朗</li><li>俄柴油制裁放松、进场补位</li><li>伊朗回复积极 + 普京下场调解</li><li>战争溢价被<b>官方封顶</b></li></ul></div>
+<div class="tn" style="--c:#1f8a5b"><div class="tn-h">10 月不加息</div><ul><li>22% 概率，基本定价完毕</li><li>贝森特预告财政整顿</li><li>10Y 自 5.368% 回落至 5.24%</li></ul></div>
+<div class="tn" style="--c:#1f8a5b"><div class="tn-h">贸易摩擦降温</div><ul><li>欧委会达成 PHEV 谅解</li><li>议会决议无法律约束力</li></ul></div>
+</div>
+<div class="tarr"></div>
+<div class="tcol hub">
+<div class="tn" style="--c:#0f2a4a"><div class="tn-h">枢纽：11 月 3 日中期选举</div><ul><li>休战承诺的<b>到期日</b></li><li>财政整顿计划要等中选后</li><li>12 月 FOMC 在中选后</li><li>战后方案中期选举后定稿</li><li>特朗普口径：9/16「接近尾声」→ 9/17「是否消灭政权」→ 9/20「决策阶段」</li><li class="red"><b>休战承诺前一天，五角大楼已指示美军重启军事行动准备</b></li><li class="red">财报密度峰值也在这一周：<b>11/1 当周 2437 家</b></li></ul></div>
+</div>
+<div class="tarr"></div>
+<div class="tcol">
+<div class="tlab" style="color:#c8352b">远端：一点没放松</div>
+<div class="tn" style="--c:#c8352b"><div class="tn-h">战争可以再升级</div><ul><li>四条随时点火的引线</li><li>潜在打击目标含核设施</li><li>11 月不能排除油价冲 120</li></ul></div>
+<div class="tn" style="--c:#c8352b"><div class="tn-h">12 月加息 84%</div><ul><li>官员口径：年内可能再加一次</li><li>CPI 落 3.7% 上方 → 概率再上行</li></ul></div>
+<div class="tn" style="--c:#c8352b"><div class="tn-h">美财政问题</div><ul><li>期限溢价主导长端逻辑未变</li><li>贝森特亲手背书：财政就是长端压力来源</li><li>整顿要等中选后，<b>远水不解近渴</b></li></ul></div>
+</div>
+</div>
+
+<div class="tcross">唯一的交叉：油价高位 → 欧洲工业失血 → 保护主义升温 —— 海外线和中欧线在这里接上</div>
+
+<div class="tlab" style="color:#c9a24a; margin-top:10px">资产出口：夹缝里的三种姿态</div>
+<div class="trow three">
+<div class="tn" style="--c:#c8352b"><div class="tn-h">A · 不宜重仓押单边</div><ul><li>股指：反弹不是反转</li><li>暴跌轻仓抄底、反弹逢高跑路</li><li><b>仓位不宜重，且要跑得快</b></li></ul></div>
+<div class="tn" style="--c:#c9a24a"><div class="tn-h">B · 挑着买</div><ul><li>有色里只有<b>铜</b>逻辑最硬</li><li>黄金：利率压制期收便宜筹码</li><li>PHEV 链 / 碳酸锂利空缓解</li></ul></div>
+<div class="tn" style="--c:#6b7280"><div class="tn-h">C · 只做强弱不做方向</div><ul><li>化工：多甲醇链 / 空油头</li><li>黑色：反弹空下游</li><li>旧经济金属：月差、内外套利</li></ul></div>
+</div>
+
+<div class="tlab" style="color:#0f2a4a; margin-top:14px">国内线：独立运行，定价权在政策</div>
+<div class="trow dom">
+<div class="tn" style="--c:#0f2a4a"><div class="tn-h">新质生产力纲领</div><ul><li>中共中央 + 国务院联合发文，级别最高</li><li>19 条任务，AI 首次单独成文</li><li><b>不动总量</b>，债市长端没反应</li></ul></div>
+<div class="tn" style="--c:#0f2a4a"><div class="tn-h">财政「增量政策」</div><ul><li>10/9 财政部表态</li><li>基础民生 + 六张网</li><li>精准托底，<b>不是大放水</b></li></ul></div>
+<div class="tn" style="--c:#0f2a4a"><div class="tn-h">央行汇率白皮书</div><ul><li>双向浮动、有序升值</li><li>不确认单边趋势</li><li>6.70 下方进政策敏感区</li></ul></div>
+<div class="tn" style="--c:#0f2a4a"><div class="tn-h">A 股节后两日</div><ul><li>10/8 高开低走</li><li>10/9 国家队入场 V 形反转</li><li>成交 1.9 万亿，<b>资金开始有入场意愿</b></li></ul></div>
+</div>
+</div>
+</section>
+
+<section class="sec summary" id="summary"><div class="kick">SUMMARY</div><h2>摘要：3 分钟看懂本周</h2><p class="sub">这一节只讲判断和配置含义——为什么这么判断，在下面的精读里</p>
+
+<p><b>一句话：</b>本周的风险偏好回暖，放松的全是<b>带有官方到期日</b>的东西（美伊不打、10 月不加息、中欧 PHEV 谅解），没有到期日的矛盾（战争升级、12 月加息、美财政）一个都没放松。<mark>所以定性是「夹缝」，不是转向</mark>。对应的姿态：不宜过度押注单边，仓位不宜重，而且要跑得快。</p>
+
+<p><b>利率：这次是喘口气，不是压制解除。</b>松绑的代价是把 12 月和财政问题一起推到了中选之后——10 月不再是问题，12 月才是。基准 5.2–5.35% 震荡，CPI 超预期则再上冲 5.35%。<a class="jump" href="#d1">→ 精读 1</a></p>
+
+<p><b>油价：底部比顶部更硬。</b>箱体从 95–110 下修到 85–105，但重心偏上沿。中选前每一次地缘缓和带来的回调，都更可能是入场点而<b>不是趋势反转</b>。<a class="jump" href="#d2">→ 精读 2</a></p>
+
+<p><b>中欧：一边放狠话、一边自己找台阶。</b>两天之内的一硬一软（10/7 议会决议 vs 10/9 欧委会谅解）是欧盟多层治理的常态，眼下不构成实际压力；真正的风险是下半年欧版「301 调查」会不会立法——那之后议会表态就变成执行工具。<a class="jump" href="#d3">→ 精读 3</a></p>
+
+<p><b>国内政策：是主线确认，不是放水。</b>纲领文件把科技赛道的底部抬高了，但不改总量，也改不了内需。对 A 股，定性依然是<b>反弹不是反转</b>：文件发布买预期、细则落地警惕买事实，<mark>10 月最后两周是本轮反弹最脆弱的时段</mark>（海外财报密集期、FOMC、A 股三季报披露、细则落地四件事叠在一起）。<a class="jump" href="#d4">→ 精读 4</a> ｜ <a class="jump" href="#earn">→ 财报日历</a></p>
+
+<p><b>人民币与黄金：本期两条变化。</b>人民币从观察指标升格为独立主线，6.70 下方是政策敏感区，<b>升值方向也要防</b>；黄金是本期唯一的方向性变化，从「不做多也不做空」转为在利率压制阶段收集便宜筹码。<a class="jump" href="#d5">→ 精读 5</a> ｜ <a class="jump" href="#d6">→ 精读 6</a></p>
+
+<p><b>怎么配：</b>做强弱不做方向，仓位不宜重且要跑得快。相对上期，油价区间下修、化工改为强弱对冲、黄金转多。三季报是下一个关口，<b>CPI-PPI 剪刀差对中下游利润的挤压是最大的潜在雷区</b>。<a class="jump" href="#alloc">→ 资产观点</a></p>
+
+<div class="call"><b>基准与乐观：</b>基准是休战窗口延续至 11/3、油价 100–105 贴箱体上沿、12 月加息概率维持 80% 上下、美债 5.2–5.35% 震荡。乐观场景是伊朗接受或接近接受七日方案 → 海峡开放预期成形 → 油价下探 95 下方 → 长端回落 → <b>科技 + 黄金共振，A 股补量上攻 3900</b>。</div>
+
+<div class="gloss"><b>小词典</b>
+<span><b>期限溢价</b> 持有长债相比滚动短债要求的额外补偿，反映的是市场对财政的担忧。它主导长端，意味着加不加息都不一定能让 10Y 下来。</span>
+<span><b>四重锁定</b> 前期周报提出的油价框架：底部腿（流量、运费、物流）把价格托住，顶部腿（抛储、暗航、替代路线）把价格压住，两边都在，所以是箱体而不是趋势。</span>
+<span><b>VLCC</b> 超大型原油运输船。运费占到岸成本 20%，意味着运费本身就是油价的一部分，战争结束也不会马上消失。</span>
+<span><b>裂解价差</b> 成品油与原油的价差，代表炼厂利润。俄柴油进场补位会压制这个价差。</span>
+<span><b>反向多数表决</b> 欧盟的一种决策机制：提案默认通过，除非反对方凑够多数票把它否掉。门槛在反对方身上，所以通过率很高。</span>
+<span><b>配额 vs 关税</b> 配额限制进口数量，会推高商品在欧盟境内的价格（保价）；关税直接加在成本上（推价）。欧盟偏好配额，因为它保护本土企业的同时不那么刺激通胀。</span>
+<span><b>CPI-PPI 剪刀差</b> 上游涨价（PPI）快于终端售价（CPI）时，中下游企业的利润被两头挤压。剪刀差持续扩大，是三季报最大的潜在雷区。</span>
+<span><b>耐心资本</b> 长周期、不追短期排名的资金。制度化引导它入市，对应的是长钱的底仓行为，不是短线增量。</span>
+</div>
+</section>
+
+<section class="sec" id="dash"><div class="kick">DASHBOARD</div><h2>数据看板</h2><p class="sub">本周关键数字</p>
+<div class="kgrid">
+<div class="k"><div class="kl">10Y 美债</div><div class="kv">5.24%</div><div class="ks">周内触 5.368%，2002 年来新高</div></div>
+<div class="k"><div class="kl">12 月加息概率</div><div class="kv" style="color:#c8352b">84%</div><div class="ks">10 月 22% 已基本定价完毕</div></div>
+<div class="k"><div class="kl">Brent 箱体</div><div class="kv">85–105</div><div class="ks">基准情形贴上沿 100–105</div></div>
+<div class="k"><div class="kl">A 股成交（10/9）</div><div class="kv">1.9 万亿</div><div class="ks">和节前比，资金开始有入场意愿</div></div>
+<div class="k"><div class="kl">上证节前收盘</div><div class="kv">3845</div><div class="ks">放量收复是反弹修复的必要条件</div></div>
+<div class="k"><div class="kl">CNH</div><div class="kv" style="color:#1f8a5b">6.70</div><div class="ks">升破后进入政策敏感区</div></div>
+<div class="k"><div class="kl">霍尔木兹直出流量</div><div class="kv" style="color:#c8352b">-27%</div><div class="ks">修复中，油价底部腿之一</div></div>
+<div class="k"><div class="kl">标普三季报预期</div><div class="kv" style="color:#1f8a5b">+30.6%</div><div class="ks">能源 +123%、科技 +66.5%</div></div>
+</div>
+
+<div class="charts">
+<div class="chart"><svg style="width:100%;max-width:480px;height:auto;display:block" viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="14" font-size="12.5" font-weight="700" fill="#0f2a4a">10Y 美债：高位钝化，但没离开 5%</text>
+<rect x="190" y="42" width="195" height="30" fill="#fdf6e6" stroke="#c9a24a" stroke-width="1.2" rx="3"/>
+<text x="287" y="61" font-size="11" text-anchor="middle" fill="#8a6d2a">基准震荡区间 5.20–5.35%</text>
+<line x1="50" y1="110" x2="460" y2="110" stroke="#9aa3b2" stroke-width="1.2"/>
+<line x1="60" y1="106" x2="60" y2="114" stroke="#9aa3b2"/><text x="60" y="128" font-size="10.5" text-anchor="middle" fill="#6b7280">5.10</text>
+<line x1="190" y1="106" x2="190" y2="114" stroke="#9aa3b2"/><text x="190" y="128" font-size="10.5" text-anchor="middle" fill="#6b7280">5.20</text>
+<line x1="320" y1="106" x2="320" y2="114" stroke="#9aa3b2"/><text x="320" y="128" font-size="10.5" text-anchor="middle" fill="#6b7280">5.30</text>
+<line x1="450" y1="106" x2="450" y2="114" stroke="#9aa3b2"/><text x="450" y="128" font-size="10.5" text-anchor="middle" fill="#6b7280">5.40</text>
+<line x1="242" y1="72" x2="242" y2="110" stroke="#0f2a4a" stroke-width="1.5"/>
+<circle cx="242" cy="110" r="6" fill="#0f2a4a"/>
+<text x="242" y="152" font-size="13" font-weight="700" text-anchor="middle" fill="#0f2a4a">5.24%</text>
+<text x="242" y="167" font-size="10.5" text-anchor="middle" fill="#6b7280">10/9 现值</text>
+<line x1="408" y1="42" x2="408" y2="110" stroke="#c8352b" stroke-width="1.5" stroke-dasharray="3,3"/>
+<circle cx="408" cy="110" r="6" fill="#c8352b"/>
+<text x="408" y="152" font-size="13" font-weight="700" text-anchor="middle" fill="#c8352b">5.368%</text>
+<text x="408" y="167" font-size="10.5" text-anchor="middle" fill="#6b7280">周内高点 · 2002 年来新高</text>
+<text x="0" y="186" font-size="10" fill="#6b7280">期限溢价主导长端的逻辑未变；CPI 超预期则再上冲 5.35%。</text>
+</svg></div>
+
+<div class="chart"><svg style="width:100%;max-width:480px;height:auto;display:block" viewBox="0 0 480 205" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="14" font-size="12.5" font-weight="700" fill="#0f2a4a">10 月加息概率的三周变化</text>
+<line x1="40" y1="46" x2="430" y2="46" stroke="#e5e7eb"/><text x="34" y="50" font-size="10" text-anchor="end" fill="#9aa3b2">100%</text>
+<line x1="40" y1="75" x2="430" y2="75" stroke="#e5e7eb"/><text x="34" y="79" font-size="10" text-anchor="end" fill="#9aa3b2">75%</text>
+<line x1="40" y1="104" x2="430" y2="104" stroke="#e5e7eb"/><text x="34" y="108" font-size="10" text-anchor="end" fill="#9aa3b2">50%</text>
+<line x1="40" y1="133" x2="430" y2="133" stroke="#e5e7eb"/><text x="34" y="137" font-size="10" text-anchor="end" fill="#9aa3b2">25%</text>
+<line x1="40" y1="162" x2="430" y2="162" stroke="#9aa3b2" stroke-width="1.2"/><text x="34" y="166" font-size="10" text-anchor="end" fill="#9aa3b2">0%</text>
+<path d="M120.0,112.7 L270.0,98.2 L420.0,162.0" fill="none" stroke="#9aa3b2" stroke-width="2.4" stroke-linejoin="round"/>
+<circle cx="120" cy="112.7" r="4.5" fill="#fff" stroke="#9aa3b2" stroke-width="2.2"/>
+<circle cx="270" cy="98.2" r="4.5" fill="#fff" stroke="#9aa3b2" stroke-width="2.2"/>
+<circle cx="420" cy="162" r="5.5" fill="#0f2a4a"/>
+<text x="120" y="101" font-size="12" font-weight="700" text-anchor="middle" fill="#6b7280">42.5%</text>
+<text x="278" y="87" font-size="12" font-weight="700" text-anchor="middle" fill="#6b7280">55%</text>
+<text x="416" y="151" font-size="13" font-weight="700" text-anchor="end" fill="#0f2a4a">22%</text>
+<text x="120" y="180" font-size="10.5" text-anchor="middle" fill="#6b7280">9/11 前后</text>
+<text x="270" y="180" font-size="10.5" text-anchor="middle" fill="#6b7280">9/18</text>
+<text x="420" y="180" font-size="10.5" text-anchor="middle" fill="#6b7280">10/9</text>
+<circle cx="120" cy="197" r="4" fill="none" stroke="#6b7280" stroke-width="2"/>
+<text x="132" y="201" font-size="10.5" fill="#6b7280">10 月加息概率</text>
+<circle cx="300" cy="197" r="4" fill="none" stroke="#c8352b" stroke-width="2"/>
+<text x="312" y="201" font-size="10.5" fill="#c8352b">12 月加息概率 84%</text>
+</svg></div>
+
+<div class="chart"><svg style="width:100%;max-width:480px;height:auto;display:block" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="14" font-size="12.5" font-weight="700" fill="#0f2a4a">市场预期的标普 500 三季度盈利增速</text>
+<text x="76" y="52" font-size="12" text-anchor="end" fill="#1f2937">能源</text>
+<rect x="84" y="36" width="322" height="24" fill="#c8352b" rx="2"/>
+<text x="414" y="53" font-size="13" font-weight="700" fill="#c8352b">+123%</text>
+<text x="76" y="97" font-size="12" text-anchor="end" fill="#1f2937">科技</text>
+<rect x="84" y="81" width="174" height="24" fill="#0f2a4a" rx="2"/>
+<text x="266" y="98" font-size="13" font-weight="700" fill="#0f2a4a">+66.5%</text>
+<text x="76" y="142" font-size="12" text-anchor="end" fill="#1f2937">整体</text>
+<rect x="84" y="126" width="80" height="24" fill="#c9a24a" rx="2"/>
+<text x="172" y="143" font-size="13" font-weight="700" fill="#8a6d2a">+30.6%</text>
+<line x1="406" y1="60" x2="406" y2="126" stroke="#c8352b" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="400" y="158" font-size="11" font-weight="700" text-anchor="end" fill="#c8352b">能源一项就是整体的 4 倍</text>
+<text x="8" y="176" font-size="10.5" fill="#6b7280">权重最大的板块增速是整体的四倍，意味着指数盈利对油价极度敏感；</text>
+<text x="8" y="190" font-size="10.5" fill="#6b7280">而 +123% 本身需要油价待在高位才能兑现——它既是高油价的果，也是高油价的因。</text>
+</svg></div>
+
+<div class="chart"><svg style="width:100%;max-width:480px;height:auto;display:block" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="12" font-size="12.5" font-weight="700" fill="#0f2a4a">四重锁定：底部腿 vs 顶部腿</text>
+<text x="0" y="32" font-size="10.5" font-weight="700" fill="#6b7280">顶部腿（压顶）· 暂时压不住</text>
+<rect x="0" y="38" width="152" height="26" fill="#f6f7f9" stroke="#e5e7eb" rx="3"/><text x="76" y="55" font-size="11.5" text-anchor="middle" fill="#6b7280">抛储</text>
+<rect x="164" y="38" width="152" height="26" fill="#f6f7f9" stroke="#e5e7eb" rx="3"/><text x="240" y="55" font-size="11.5" text-anchor="middle" fill="#6b7280">暗航</text>
+<rect x="328" y="38" width="152" height="26" fill="#f6f7f9" stroke="#e5e7eb" rx="3"/><text x="404" y="55" font-size="11.5" text-anchor="middle" fill="#6b7280">沙特替代路线</text>
+<rect x="0" y="76" width="480" height="40" fill="#0f2a4a" rx="4"/>
+<text x="240" y="92" font-size="13" font-weight="700" text-anchor="middle" fill="#fff">Brent 85–105，重心偏上沿</text>
+<text x="240" y="108" font-size="11" text-anchor="middle" fill="#c9a24a">底部比顶部更硬 · 运费比战争溢价更硬</text>
+<text x="0" y="140" font-size="10.5" font-weight="700" fill="#1f8a5b">底部腿（托底）· 继续生效</text>
+<rect x="0" y="146" width="152" height="40" fill="#eef8f3" stroke="#1f8a5b" rx="3"/>
+<text x="76" y="162" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1f8a5b">霍尔木兹直出 -27%</text>
+<text x="76" y="177" font-size="10.5" text-anchor="middle" fill="#6b7280">修复中</text>
+<rect x="164" y="146" width="152" height="40" fill="#eef8f3" stroke="#1f8a5b" rx="3"/>
+<text x="240" y="162" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1f8a5b">VLCC 运费历史高位</text>
+<text x="240" y="177" font-size="10.5" text-anchor="middle" fill="#6b7280">占到岸成本 20%</text>
+<rect x="328" y="146" width="152" height="40" fill="#eef8f3" stroke="#1f8a5b" rx="3"/>
+<text x="404" y="162" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1f8a5b">成品油物流滞后</text>
+<text x="404" y="177" font-size="10.5" text-anchor="middle" fill="#6b7280">减化增油逻辑延续</text>
+</svg></div>
+</div>
+</section>
+
+<section class="sec" id="deep"><div class="kick">DEEP DIVE</div><h2>精读：六条主线</h2><p class="sub">按本期重要性重排，中欧贸易战提前。默认折叠，按需展开。</p>
+<div class="toolrow"><button onclick="document.querySelectorAll('details.deep').forEach(function(d){d.open=true})">全部展开</button><button onclick="document.querySelectorAll('details.deep').forEach(function(d){d.open=false})">全部折叠</button></div>
+
+<details class="deep" id="d1"><summary><span class="n">1</span><span class="t">利率<span class="s">长端高位钝化，贝森特的财政整顿是一张远期支票</span></span><span class="chev">▾</span></summary>
+<div class="dbody">
+<h3>本周边际变化：回落了，但没离开高位</h3>
+<p class="sub">10Y 一度触及 5.368%（续创 2002 年新高）后回落至 5.24%</p>
+<ul class="b">
+<li><b>期限溢价主导长端的逻辑没有变。</b>变化的是这次由<b>贝森特亲手背书</b>——政府自己承认财政是长端压力的来源。</li>
+<li>但整顿计划<b>要等中选后</b>，远水不解近渴。这就是为什么利率只是「喘口气」，不是压制解除。</li>
+<li class="red">美元四连阳。利率回落 + 美元走强同时出现，说明松绑的是风险溢价，不是资金成本。</li>
+</ul>
+
+<h3>美联储口径：10 月不是问题，12 月才是</h3>
+<ul class="b">
+<li>纪要及多位官员口径一致：<b>通胀偏高、年内可能再加一次</b>。</li>
+<li>10 月不加息（22%）<b>基本定价完毕</b>——这是本周风险资产能松绑的直接原因。</li>
+<li class="red">12 月加息的 <b>84%</b> 才是悬顶之剑。它被推到了 11/3 之后，所以当下不构成压力，但并没有消失。</li>
+<li>本周四 CPI 若落 <b>3.7% 上方</b>，12 月概率进一步上行，10Y 可能再次上冲 5.35%，<b>全球风险资产二次承压</b>。基准是 CPI 落在 3.6–3.8%。</li>
+</ul>
+
+<h3>AI 和利率的联动，本周又做了一次压力测试</h3>
+<ul class="b">
+<li>OpenAI 营收预期落差引发<b>周四抛售、周五迅速反弹</b>，纳指仍四连涨。</li>
+<li>结论两面：<b>AI 利润增长够强，能对冲高利率</b>；副作用是一旦业绩不够完美，就会引发多头踩踏跑路。</li>
+<li>市场预期标普盈利 <b>+30.6%</b>（能源 +123%、科技 +66.5%）。注意<b>能源 +123% 的预期本身就内含油价高位的自我强化</b>——盈利预期和油价互为因果，一起下来也会一起下来。</li>
+</ul>
+<div class="call"><b>利率线小结：</b>这一周的「喘口气」是把 10 月的不确定性消掉换来的，代价是把 12 月和财政问题一起压到了中选之后。<b>把高位钝化当成趋势反转，是本期最容易犯的错。</b></div>
+</div></details>
+
+<details class="deep" id="d2"><summary><span class="n">2</span><span class="t">美伊与油价<span class="s">底部和顶部四重锁定，运费比战争溢价更硬</span></span><span class="chev">▾</span></summary>
+<div class="dbody">
+<h3>休战被「官方时间化」了</h3>
+<p class="sub">中选前不战 + 俄柴油制裁放松 + 伊朗回复积极 + 普京下场调解 = 战争溢价在 11 月 3 日前暂时被官方封顶</p>
+<ul class="b">
+<li class="green">这是本周最主要的边际变化，也是风险资产集体松绑的起点。</li>
+<li class="red"><b>但油价给出的信号是：市场尊重休战承诺，不认为它能解决实物紧张。</b>油价不跌反涨，这句话比任何表态都诚实。</li>
+</ul>
+
+<h3>四重锁定：两头都在，所以是箱体不是趋势</h3>
+<p class="sub">此前提出的油价框架，本期底部三项继续生效、顶部三项压不住</p>
+<div class="grid2">
+<div class="box green"><h3>底部腿 <span class="st">继续生效</span></h3><ul class="b">
+<li>霍尔木兹直出流量<b>下降 27%</b>（修复中）</li>
+<li>VLCC 运费处历史高位，<b>占到岸成本 20%</b></li>
+<li>成品油物流滞后</li>
+</ul></div>
+<div class="box"><h3>顶部腿 <span class="st">暂时压不住</span></h3><ul class="b">
+<li>抛储</li>
+<li>暗航</li>
+<li>沙特替代路线</li>
+</ul></div>
+</div>
+<div class="call green"><b>运费比战争溢价更硬。</b>战争溢价可以被一句承诺封顶，运费不行——它已经变成到岸成本的五分之一，停火也不会当天消失。这是油价「底部比顶部更硬」的物理原因。</div>
+<ul class="b" style="margin-top:14px">
+<li>宏观视角：<b>油价 85–105 箱体不变，但重心偏上沿</b>。</li>
+<li class="green">中选前每一次地缘缓和带来的回调，<b>都可能是多头的入场点，而不是趋势反转</b>。</li>
+</ul>
+
+<h3>中选后怎么办：四条随时点火的引线</h3>
+<div class="call red"><b>就在特朗普休战承诺的前一天，五角大楼已指示美军重启军事行动的准备工作</b>，潜在打击目标包括能源设施、基础设施和核设施。</div>
+<ul class="b" style="margin-top:14px">
+<li class="red">革命卫队袭击油轮频次上升（并有「走私航道即将关闭」的表态）</li>
+<li class="red">曼德海峡胡赛布雷</li>
+<li class="red">飓风扰动墨西哥湾生产</li>
+<li class="red">伊朗不放弃铀浓缩的底线</li>
+</ul>
+<p style="margin-top:10px"><b>11 月无法排除油价冲 120 的极端风险。</b></p>
+
+<h3>三个情景</h3>
+<div class="grid3">
+<div class="box hi"><h3>基准</h3><ul class="b">
+<li>休战窗口延续至 11/3</li>
+<li>油价 <b>100–105</b> 贴箱体上沿</li>
+<li>CPI 落 3.6–3.8%</li>
+<li>12 月加息概率维持 80% 上下</li>
+<li>美债 5.2–5.35% 震荡</li>
+</ul></div>
+<div class="box green"><h3>乐观</h3><ul class="b">
+<li>伊朗接受或接近接受七日方案</li>
+<li>海峡开放预期成形</li>
+<li>油价下探 <b>95 下方</b></li>
+<li>长端回落</li>
+<li><b>科技 + 黄金共振，A 股补量上攻 3900</b></li>
+</ul></div>
+<div class="box red"><h3>极端风险</h3><ul class="b">
+<li>四条引线中任意一条点火</li>
+<li>中选后军事行动重启</li>
+<li><b>11 月油价冲 120</b></li>
+<li>全球风险资产二次承压</li>
+</ul></div>
+</div>
+</div></details>
+
+<details class="deep" id="d3"><summary><span class="n">3</span><span class="t">中欧贸易战<span class="s">一边放狠话，一边自己找台阶；欧版 301 才是下半年最大风险</span></span><span class="chev">▾</span></summary>
+<div class="dbody">
+<h3>两天之内的一硬一软</h3>
+<ul class="b">
+<li class="red"><b>10 月 7 日</b>，欧洲议会通过对华强硬决议：恢复「<b>制度性对手</b>」表述，把中国先进产业定性为「<b>生存性威胁</b>」。</li>
+<li class="green"><b>10 月 9 日</b>，欧委会又与中方达成 PHEV（混动车）谅解。</li>
+</ul>
+<div class="call"><b>这不是自相矛盾，是欧盟多层治理的常态结构：</b>议会决议<b>无法律约束力</b>，执行层可商量。所以要把「议会说什么」和「欧委会做什么」分开读。</div>
+<ul class="b" style="margin-top:14px">
+<li><b>与中美相反，中欧能谈的都是真事</b>；台海、俄乌这类务虚的意识形态内容，仅停留在议会喊话层面。</li>
+</ul>
+
+<h3>为什么说它是中美博弈的二阶效应</h3>
+<svg style="width:100%;max-width:640px;height:auto;display:block;margin:10px 0" viewBox="0 0 640 112" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="20" width="132" height="44" fill="#f0f4fa" stroke="#0f2a4a" stroke-width="1.2" rx="4"/>
+<text x="66" y="40" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2a4a">美国关税墙</text>
+<text x="66" y="55" font-size="10.5" text-anchor="middle" fill="#6b7280">一阶：中美</text>
+<text x="146" y="48" font-size="18" font-weight="700" text-anchor="middle" fill="#c9a24a">→</text>
+<rect x="160" y="20" width="132" height="44" fill="#fff" stroke="#c9a24a" stroke-width="1.2" rx="4"/>
+<text x="226" y="40" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2a4a">出口分流欧洲</text>
+<text x="226" y="55" font-size="10.5" text-anchor="middle" fill="#6b7280">China Shock 2.0</text>
+<text x="306" y="48" font-size="18" font-weight="700" text-anchor="middle" fill="#c9a24a">→</text>
+<rect x="320" y="20" width="132" height="44" fill="#fff" stroke="#c9a24a" stroke-width="1.2" rx="4"/>
+<text x="386" y="40" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2a4a">逆差政治化</text>
+<text x="386" y="55" font-size="10.5" text-anchor="middle" fill="#c8352b">每天 10 亿欧元</text>
+<text x="466" y="48" font-size="18" font-weight="700" text-anchor="middle" fill="#c9a24a">→</text>
+<rect x="480" y="20" width="160" height="44" fill="#fdf2f1" stroke="#c8352b" stroke-width="1.2" rx="4"/>
+<text x="560" y="40" font-size="12" font-weight="700" text-anchor="middle" fill="#c8352b">保护主义升温</text>
+<text x="560" y="55" font-size="10.5" text-anchor="middle" fill="#6b7280">二阶：中欧</text>
+<line x1="0" y1="84" x2="640" y2="84" stroke="#c8352b" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="0" y="102" font-size="11" fill="#c8352b">另一条叠加线：油价高位 → 欧洲工业失血 → 保护主义升温</text>
+</svg>
+<ul class="b">
+<li><b>欧盟偏好配额而非关税</b>，深层原因是：<b>配额保价、关税推价</b>。</li>
+</ul>
+
+<h3>下半年最大的风险：欧版「301 调查」</h3>
+<div class="grid3">
+<div class="box red"><h3>触发</h3><p style="margin:0;font-size:14px">某类中国产品<b>占欧盟进口超 40%</b>即<b>自动</b>触发加税</p></div>
+<div class="box red"><h3>通过</h3><p style="margin:0;font-size:14px"><b>反向多数表决</b>——凑不齐反对即通过</p></div>
+<div class="box red"><h3>覆盖</h3><p style="margin:0;font-size:14px">半导体 / 稀土 / 关键原材料</p></div>
+</div>
+<div class="call red" style="margin-top:14px"><b>一旦立法，议会表态就从「喊话」变成「执行工具」。</b>今天「无法律约束力」这个安全垫，在那之后就不存在了。</div>
+
+<h3>对具体品种的落点</h3>
+<ul class="b">
+<li class="green"><b>PHEV 链条利空缓解</b>，对应<b>碳酸锂需求</b>、A 股新能源（宁德、比亚迪等）压力有所减轻。</li>
+<li class="red">后续关注<b>光伏 / 化工是下一批摩擦候选</b>：2025 年以来欧盟对华 <b>28 起</b>贸易救济调查，约半数涉化工。</li>
+</ul>
+</div></details>
+
+<details class="deep" id="d4"><summary><span class="n">4</span><span class="t">国内政策<span class="s">纲领文件是主线确认，不是放水；A 股要分清买预期和买事实</span></span><span class="chev">▾</span></summary>
+<div class="dbody">
+<h3>10 月 9 日《关于发展新质生产力的意见》：三点定性</h3>
+<p class="sub">中共中央 + 国务院联合发文，级别最高，确立 19 条任务</p>
+<div class="grid3">
+<div class="box"><h3>一 · 不动总量</h3><ul class="b">
+<li>纯结构性、制度性改革</li>
+<li><b>不是放水式刺激</b></li>
+<li class="green">证据：国内债市长端<b>没反应</b></li>
+</ul></div>
+<div class="box"><h3>二 · 三大纠偏</h3><ul class="b">
+<li><b>反内卷</b></li>
+<li><b>反泡沫</b>（先立后破、不能贪大求全）</li>
+<li><b>反同质化</b>（因地制宜 + 问责盲目投资）</li>
+<li class="red">文件<b>自带主动刹车条款</b>：质量高于速度和规模</li>
+</ul></div>
+<div class="box hi"><h3>三 · AI 首次单独成文</h3><ul class="b">
+<li>历史上第一次，科技赛道拿到<b>国家最高背书</b>，获制度性确认</li>
+<li>节后七部门固态电池规划正是本纲领的<b>执行分支</b></li>
+<li>绿电 / 电网 / 储能受益于能源革命条款</li>
+<li><b>耐心资本</b>制度化引导长钱入市（对应 10/10 证监会主席吴清讲话）</li>
+</ul></div>
+</div>
+
+<h3>财政的「增量政策」：精准托底，不是大放水</h3>
+<ul class="b">
+<li>10 月 9 日财政部「增量政策」表态，<b>以精准托底为主（基础民生 + 六张网）</b>。</li>
+<li>背景是国内政策在逐步发力对冲恶化的旧经济——<b>9 月信贷继续弱</b>。</li>
+<li class="green"><b>新经济依然是重心。</b>纲领文件把 AI 算力升级为国家战略，作为长期慢变量<b>抬高科技板块底部</b>。</li>
+</ul>
+
+<h3>A 股的节奏风险：买预期之后就是买事实</h3>
+<ul class="b">
+<li>A 股 10/8 高开低走，10/9 <b>国家队入场 V 形反转</b>，接近 7 月前低位置——<b>押注救市的赔率较高</b>。</li>
+<li>成交量 1.9 万亿，和节前相比资金开始有了入场意愿（虽然不多）。</li>
+<li class="red"><b>文件发布 = 主线确认（买预期），细则落地要警惕高开低走（买事实）。</b>1.9 万亿成交量下，回调压力在积聚。</li>
+<li class="red">对股指的定性依然是<b>反弹，不是反转</b>。月度/季度级别上，<b>美元资产吸血全球 + 中美科技客观差距 + 科技赛道高估值</b>，决定修复持续性不会太强：暴跌可以轻仓抄底，反弹逢高跑路为宜。</li>
+</ul>
+<div class="call red"><b>三季报是下一个关口。</b>目前 CPI-PPI 剪刀差持续扩大，输入性成本压力向上游集中，<b>对中下游利润的挤压是最大的潜在雷区</b>。</div>
+<div class="call"><b>必要条件：</b>上证节前收盘 <b>3845</b> 能否放量收复（成交持续 <b>1.8 万亿</b>以上），是本轮反弹修复的必要条件。</div>
+</div></details>
+
+<details class="deep" id="d5"><summary><span class="n">5</span><span class="t">人民币汇率<span class="s">央行明确「以我为主」，6.70 下方进入政策敏感区</span></span><span class="chev">▾</span></summary>
+<div class="dbody">
+<h3>为什么是这个时点</h3>
+<p class="sub">央行 10 月 9 日发布白皮书——时点选得很讲究</p>
+<ul class="b">
+<li>CNH <b>升破 6.70</b></li>
+<li><b>中欧例会次日</b></li>
+<li><b>11 月中选前</b></li>
+</ul>
+<div class="call"><b>等于在两条谈判战线上同步亮明汇率底牌。</b>本质是声明立场、划边界，防止「汇率低估 / 竞争性贬值」成为新的指控武器与谈判筹码。</div>
+
+<h3>官方口径与它的变化</h3>
+<ul class="b">
+<li>口径：<b>双向浮动、有序升值，不确认单边趋势</b>。</li>
+<li class="red"><b>CNH 6.70 下方进入政策敏感区</b>：升值越快，官方干预动机越强。</li>
+<li class="red">真正的变化在这里——<b>此前只防贬值超调，现在要观察升值方向</b>。对出口链和跨境资金的含义是对称的，不能只套用过去几年的单向思维。</li>
+</ul>
+</div></details>
+
+<details class="deep" id="d6"><summary><span class="n">6</span><span class="t">科技 / AI<span class="s">利润够强能对冲高利率，但不完美就踩踏</span></span><span class="chev">▾</span></summary>
+<div class="dbody">
+<h3>本周的压力测试</h3>
+<ul class="b">
+<li>OpenAI 营收预期落差引发<b>周四抛售</b>，<b>周五迅速反弹</b>，纳指仍四连涨。</li>
+<li class="green">正面结论：<b>AI 利润增长够强，能对冲高利率。</b></li>
+<li class="red">副作用：<b>一旦业绩不够完美，会引发多头踩踏跑路。</b>这和上两期「美股看二阶导」是同一件事的延续——绝对增速再高，只要不如预期就会被卖。</li>
+</ul>
+
+<h3>能源 +123% 背后的自我强化</h3>
+<ul class="b">
+<li>市场预期标普盈利 <b>+30.6%</b>，其中<b>能源 +123%、科技 +66.5%</b>。</li>
+<li class="red"><b>能源 +123% 的预期本身就内含油价高位的自我强化</b>——盈利预期需要油价待在高位才能兑现，而高油价又在推高利率、压制科技估值。这是本期需要盯住的一个内生循环。</li>
+</ul>
+
+<h3>国内：拿到最高背书，但差距和估值都还在</h3>
+<ul class="b">
+<li class="green">AI 历史上首次单独成文，科技赛道拿到国家最高背书并获制度性确认，<b>作为长期慢变量抬高板块底部</b>。</li>
+<li class="red">但月度/季度级别的三重压制没有变：<b>美元资产吸血全球 + 中美科技客观差距 + 科技赛道高估值</b>。</li>
+<li>所以定性是<b>反弹不是反转</b>：底部被抬高，不等于天花板被打开。</li>
+</ul>
+</div></details>
+</section>
+
+<section class="sec" id="alloc"><div class="kick">ALLOCATION</div><h2>资产观点：做强弱不做方向，仓位不宜重且要跑得快</h2><p class="sub">框架不变，本期改的是油价区间、化工的定价逻辑，以及黄金的方向。「周期」是判断的有效期，「确信度」决定仓位：高 = 正常仓位，中 = 对冲或减半，低 = 只观察不建仓。</p>
+<table class="t review">
+<tr><th style="width:10%">资产</th><th style="width:16%">9 月 20 日</th><th style="width:17%">10 月 11 日</th><th style="width:11%">周期 · 确信度</th><th>逻辑更新</th></tr>
+
+<tr><td data-label="资产"><b>股指 IC / IM</b></td><td data-label="9 月 20 日">IC 好于 IM，浮仓震荡 + 底仓低位</td><td data-label="10 月 11 日"><span class="pill flat">维持</span> 反弹不是反转</td><td data-label="周期 · 确信度">月～季<br><span class="conf hi">确信度 高</span></td><td data-label="逻辑更新">月度/季度级别三重压制：美元资产吸血全球 + 中美科技客观差距 + 科技赛道高估值。<b>暴跌轻仓抄底，反弹逢高跑路。</b>3845 放量收复（成交持续 1.8 万亿以上）是必要条件</td></tr>
+
+<tr><td data-label="资产"><b>贵金属</b></td><td data-label="9 月 20 日">不做多也不做空</td><td data-label="10 月 11 日"><span class="pill gold">转多</span> 收集便宜筹码</td><td data-label="周期 · 确信度">季<br><span class="conf">确信度 中</span></td><td data-label="逻辑更新"><b>本期唯一的方向性变化。</b>思路是在交易利率压制的阶段收集便宜筹码，央行加速购金形成底部支撑；上方空间要等风口切换到货币信用逻辑才能打开。确信度给中，是因为触发上行的条件（风口切换）本身没有时间表</td></tr>
+
+<tr><td data-label="资产"><b>原油</b></td><td data-label="9 月 20 日">95–110 区间，不追单边</td><td data-label="10 月 11 日"><span class="pill dn">区间下修</span> 85–105，重心偏上沿</td><td data-label="周期 · 确信度">周～月<br><span class="conf hi">确信度 高</span></td><td data-label="逻辑更新">底部比顶部更硬，运费比战争溢价更硬。<b>中选前每一次地缘缓和带来的回调，都可能是多头入场点，不是趋势反转</b>。高确信度的有效期只到 11/3</td></tr>
+
+<tr><td data-label="资产"><b>化工</b></td><td data-label="9 月 20 日">反弹做空、对冲多煤</td><td data-label="10 月 11 日"><span class="pill gold">改结构</span> 多甲醇链 / 空油头</td><td data-label="周期 · 确信度">周<br><span class="conf">确信度 中</span></td><td data-label="逻辑更新">「中东断供」VS「油价成本」两条逻辑要分开看，<b>并非完全跟随原油，强弱对冲更好</b>。新增变量是俄柴油进场，关注裂解相关品种上方压力。脱钩刚发生，强弱关系还需要几周验证</td></tr>
+
+<tr><td data-label="资产"><b>黑色 / 煤炭</b></td><td data-label="9 月 20 日">动力煤多 / 焦煤观望</td><td data-label="10 月 11 日"><span class="pill dn">阴跌格局</span> 反弹空下游</td><td data-label="周期 · 确信度">月<br><span class="conf">确信度 中</span></td><td data-label="逻辑更新">旧经济负反馈阴跌格局不变，但<b>在煤的矛盾没有完全解决的前提下，反弹空下游更好</b>。上期在煤上吃过政策的亏，这次不给高确信度</td></tr>
+
+<tr><td data-label="资产"><b>有色</b></td><td data-label="9 月 20 日">新经济金属 &gt; 旧经济金属</td><td data-label="10 月 11 日"><span class="pill up">缩到铜</span> 只有铜最硬</td><td data-label="周期 · 确信度">季<br><span class="conf hi">确信度 高</span></td><td data-label="逻辑更新">多配逻辑最硬的只有<b>铜</b>；锡资金博弈加剧，跟随科技风险偏好为主（锡单独看确信度低）；<b>旧经济金属做月差、内外套利更合适，单边性价比不高</b></td></tr>
+
+<tr><td data-label="资产"><b>人民币</b></td><td data-label="9 月 20 日">CNH 6.704 三年多新高</td><td data-label="10 月 11 日"><span class="pill gold">政策敏感区</span> 6.70 下方</td><td data-label="周期 · 确信度">月<br><span class="conf">确信度 中</span></td><td data-label="逻辑更新">央行白皮书口径：双向浮动、有序升值，不确认单边趋势。<b>升值越快，官方干预动机越强</b>；此前只防贬值超调，现在要观察升值方向</td></tr>
+
+<tr><td data-label="资产"><b>A 股新能源</b></td><td data-label="9 月 20 日">—</td><td data-label="10 月 11 日"><span class="pill up">压力减轻</span> 新增</td><td data-label="周期 · 确信度">周<br><span class="conf lo">确信度 低</span></td><td data-label="逻辑更新">欧委会 PHEV 谅解使 PHEV 链条利空缓解，对应碳酸锂需求、宁德比亚迪等压力有所减轻。<b>但光伏 / 化工是下一批摩擦候选</b>。确信度低：谅解是执行层的，议会那条线没变</td></tr>
+
+<tr><td data-label="资产"><b>姿态</b></td><td data-label="9 月 20 日">做相对不做单边</td><td data-label="10 月 11 日"><span class="pill dn">加码</span> 仓位不宜重，且要跑得快</td><td data-label="周期 · 确信度">至 11/3<br><span class="conf hi">确信度 高</span></td><td data-label="逻辑更新">当下 Risk on 处在<b>「夹缝」</b>中：中期选举后，前期宏观压制可能随时卷土重来，因此<b>不宜过度押注一个方向的单边</b></td></tr>
+</table>
+</section>
+
+<section class="sec" id="earn"><div class="kick">EARNINGS</div><h2>三季报日历：验证窗口和到期日撞在同一周</h2><p class="sub">日历与发布家数来自 Wall Street Horizon（TMX）三季度财报季前三周预览；「为什么重要」一栏是本刊按当期主线所做的归因</p>
+
+<div class="call red"><b>先看这个结论：</b>海外财报密度的峰值落在 <b>11/1 当周，2437 家</b>——正好跨过 <b>11/3</b>。本期所有被推到中选之后的矛盾（12 月加息那 84%、贝森特的财政整顿、战争是否重启），会和基本面验证<b>在同一周到达</b>。这不是巧合带来的风险，这是风险的集中安排。</div>
+
+<div class="charts">
+<div class="chart"><svg style="width:100%;max-width:640px;height:auto;display:block" viewBox="0 0 640 232" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="14" font-size="12.5" font-weight="700" fill="#0f2a4a">每周财报发布家数：峰值周跨过 11/3</text>
+<rect x="254" y="26" width="140" height="20" fill="#fdf2f1" stroke="#c8352b" stroke-width="1" rx="4"/>
+<text x="324" y="40" font-size="11" font-weight="700" text-anchor="middle" fill="#c8352b">11/3 中期选举在这一周</text>
+<line x1="324" y1="46" x2="324" y2="63" stroke="#c8352b" stroke-width="1.2" stroke-dasharray="3,3"/>
+<rect x="48" y="174.8" width="60" height="10.2" fill="#9aa3b2" rx="2"/><text x="78" y="168" font-size="11" font-weight="700" text-anchor="middle" fill="#6b7280">207</text>
+<rect x="130" y="148.4" width="60" height="36.6" fill="#9aa3b2" rx="2"/><text x="160" y="142" font-size="11" font-weight="700" text-anchor="middle" fill="#6b7280">744</text>
+<rect x="212" y="93.6" width="60" height="91.4" fill="#0f2a4a" rx="2"/><text x="242" y="87" font-size="11" font-weight="700" text-anchor="middle" fill="#0f2a4a">1857</text>
+<rect x="294" y="65" width="60" height="120" fill="#c8352b" rx="2"/><text x="324" y="58" font-size="13" font-weight="700" text-anchor="middle" fill="#c8352b">2437</text>
+<rect x="376" y="89.7" width="60" height="95.3" fill="#0f2a4a" rx="2"/><text x="406" y="83" font-size="11" font-weight="700" text-anchor="middle" fill="#0f2a4a">1935</text>
+<rect x="458" y="159.2" width="60" height="25.8" fill="#9aa3b2" rx="2"/><text x="488" y="153" font-size="11" font-weight="700" text-anchor="middle" fill="#6b7280">524</text>
+<rect x="540" y="151.2" width="60" height="33.8" fill="#9aa3b2" rx="2"/><text x="570" y="145" font-size="11" font-weight="700" text-anchor="middle" fill="#6b7280">686</text>
+<line x1="30" y1="185" x2="620" y2="185" stroke="#9aa3b2" stroke-width="1.2"/>
+<text x="78" y="202" font-size="10.5" text-anchor="middle" fill="#6b7280">10/11</text>
+<text x="160" y="202" font-size="10.5" text-anchor="middle" fill="#6b7280">10/18</text>
+<text x="242" y="202" font-size="10.5" text-anchor="middle" fill="#6b7280">10/25</text>
+<text x="324" y="202" font-size="11" font-weight="700" text-anchor="middle" fill="#c8352b">11/1</text>
+<text x="406" y="202" font-size="10.5" text-anchor="middle" fill="#6b7280">11/8</text>
+<text x="488" y="202" font-size="10.5" text-anchor="middle" fill="#6b7280">11/15</text>
+<text x="570" y="202" font-size="10.5" text-anchor="middle" fill="#6b7280">11/22</text>
+<text x="0" y="224" font-size="10.5" fill="#6b7280">本期覆盖的前三周（10/11–10/25）处在密度爬坡段；真正的峰值在中选那一周。</text>
+</svg></div>
+
+<div class="chart"><svg style="width:100%;max-width:400px;height:auto;display:block" viewBox="0 0 400 232" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="14" font-size="12.5" font-weight="700" fill="#0f2a4a">日均财报发布量：周四是每周的压力点</text>
+<rect x="30" y="140" width="52" height="45" fill="#7f9b4e" rx="2"/>
+<rect x="100" y="117" width="52" height="68" fill="#7f9b4e" rx="2"/>
+<rect x="170" y="85" width="52" height="100" fill="#7f9b4e" rx="2"/>
+<rect x="240" y="23" width="52" height="162" fill="#5f7a33" rx="2"/>
+<rect x="310" y="166" width="52" height="19" fill="#aebf8c" rx="2"/>
+<line x1="20" y1="185" x2="380" y2="185" stroke="#9aa3b2" stroke-width="1.2"/>
+<text x="56" y="202" font-size="11" text-anchor="middle" fill="#6b7280">周一</text>
+<text x="126" y="202" font-size="11" text-anchor="middle" fill="#6b7280">周二</text>
+<text x="196" y="202" font-size="11" text-anchor="middle" fill="#6b7280">周三</text>
+<text x="266" y="202" font-size="11" font-weight="700" text-anchor="middle" fill="#3f5520">周四</text>
+<text x="336" y="202" font-size="11" text-anchor="middle" fill="#6b7280">周五</text>
+<text x="0" y="224" font-size="10.5" fill="#6b7280">按原图相对高度还原，原图未标注数值。</text>
+</svg></div>
+</div>
+
+<div class="call"><b>两个调度层面的含义。</b>其一，<b>周四是每周的压力点</b>——而本周四正好是美国 CPI，财报密度和宏观数据叠在同一天。其二，周一的发布量低、周五最低，意味着<b>每周的真实信息都压在周二到周四</b>，周一的定价往往是在交易上周五的情绪而不是新信息。</div>
+
+<h3>三条和本期主线直接挂钩的验证线</h3>
+<div class="grid3">
+<div class="box hi"><h3>AI 产业链 <span class="st">科技盈利预期 +66.5%</span></h3><ul class="b">
+<li>阿斯麦 10/14 → 台积电 10/15 → 泛林、德州仪器 10/21 → 西部数据 10/22 → SK海力士、希捷 10/27 → 微软、谷歌、Meta、三星、KLA 10/28 → 亚马逊、英特尔、闪迪 10/29</li>
+<li class="green"><b>发布顺序本身就是传导链</b>：设备 → 代工 → 存储 → 云厂。上游先报，下游后报，中途任何一环指引转弱都会提前定价</li>
+<li class="red">这是「AI 利润够强能对冲高利率」这个命题唯一一次集中验证</li>
+</ul></div>
+<div class="box red"><h3>能源 <span class="st">盈利预期 +123%</span></h3><ul class="b">
+<li>瓦莱罗 10/22 → eni、SLB 10/23 → Phillips 66 10/28 → 壳牌、道达尔 10/29 → 雪佛龙、bp 10/30</li>
+<li class="red">全部压在 11/3 之前的最后两周，<b>而且全都落在休战窗口之内</b></li>
+<li><b>+123% 的预期需要油价待在高位才能兑现</b>——财报会把这个自我强化循环摆到台面上</li>
+</ul></div>
+<div class="box"><h3>银行与消费 <span class="st">12 月那 84% 的基本面依据</span></h3><ul class="b">
+<li>摩根大通、高盛、花旗、富国 10/13 → 美银、摩根士丹利、贝莱德 10/14 → 嘉信、美国合众、PNC 10/15 → 旅行者、Truist、Citizens 10/16</li>
+<li>大行打头阵，看<b>信贷质量、拨备和净息差</b>：美国经济到底强不强，决定 12 月加息的概率往哪边走</li>
+<li>这一周的读数会直接影响本周四 CPI 之后的利率定价</li>
+</ul></div>
+</div>
+
+<h3>逐日清单：哪天该盯什么</h3>
+<table class="t review">
+<tr><th style="width:13%">日期</th><th style="width:42%">重点公司</th><th>为什么这天重要</th></tr>
+
+<tr><td colspan="3" style="background:#0f2a4a;color:#fff;font-weight:700;font-size:13px">第一周 · 10/12–10/16 · 密度最低，但方向性读数最早出现</td></tr>
+<tr><td data-label="日期">10/12 周一</td><td data-label="重点公司">南亚科技、HCL</td><td data-label="为什么这天重要">开场清淡，亚洲科技先行</td></tr>
+<tr><td data-label="日期"><b>10/13 周二</b></td><td data-label="重点公司">摩根大通、高盛、花旗、富国、强生、联合健康、永旺、达美乐</td><td data-label="为什么这天重要">美国大行打头阵——信贷质量和消费的第一手读数，是 12 月加息那 84% 的基本面依据</td></tr>
+<tr><td data-label="日期"><b>10/14 周三</b></td><td data-label="重点公司"><b>阿斯麦</b>、美国银行、摩根士丹利、贝莱德、道富、韩美半导体、Progressive、Fastenal</td><td data-label="为什么这天重要"><b>阿斯麦是 AI 资本开支最上游的风向标</b>：设备订单领先于晶圆产能，更领先于云厂开支</td></tr>
+<tr><td data-label="日期"><b>10/15 周四</b></td><td data-label="重点公司"><b>台积电</b>、嘉信理财、普洛斯、纽约梅隆、美国合众、PNC、爱立信、达信、Nordea、盈透</td><td data-label="为什么这天重要"><b>台积电指引是 AI 需求的单点最强信号</b>，也是本轮「AI 利润对冲高利率」命题的第一次正式验证</td></tr>
+<tr><td data-label="日期">10/16 周五</td><td data-label="重点公司">信实工业、旅行者、Truist、M&amp;T、Citizens、Regions</td><td data-label="为什么这天重要">区域银行成色：净息差和拨备，是大行读数的交叉检验</td></tr>
+
+<tr><td colspan="3" style="background:#0f2a4a;color:#fff;font-weight:700;font-size:13px">第二周 · 10/19–10/23 · 1857 家，密度开始爬坡</td></tr>
+<tr><td data-label="日期">10/19 周一</td><td data-label="重点公司">拉吉希银行、五三银行、钢铁动力、UltraTech、Cliffs、BAWAG</td><td data-label="为什么这天重要">钢铁动力与 Cliffs 对应黑色「旧经济负反馈阴跌」那条线</td></tr>
+<tr><td data-label="日期">10/20 周二</td><td data-label="重点公司">奈飞、GE 航空、3M、雷神、通用汽车、ABB、诺斯罗普、第一资本、美洲电信、德意志交易所</td><td data-label="为什么这天重要">军工（雷神、诺斯罗普）是「战争被官方时间化」的另一面读数——地缘溢价有没有真的进订单</td></tr>
+<tr><td data-label="日期"><b>10/21 周三</b></td><td data-label="重点公司"><b>特斯拉、IBM</b>、泛林半导体、德州仪器、SAP、雅培、菲利普莫里斯、AT&amp;T、NextEra、Iberdrola、赛默飞、丹纳赫</td><td data-label="为什么这天重要">科技第一波。泛林（设备）+ 德州仪器（模拟芯片）可以读出<b>AI 之外的半导体需求真实度</b></td></tr>
+<tr><td data-label="日期"><b>10/22 周四</b></td><td data-label="重点公司">宝洁、Spotify、联合太平洋、黑石、<b>西部数据</b>、巴克莱、<b>瓦莱罗</b>、康卡斯特、纽蒙特、诺福克南方、洛马、霍尼韦尔</td><td data-label="为什么这天重要"><b>西部数据（存储）和瓦莱罗（炼厂）同日</b>：AI 链条最缺的环节，和成品油裂解利润，一天交卷</td></tr>
+<tr><td data-label="日期">10/23 周五</td><td data-label="重点公司">美国运通、法努克、eni、挪威海德鲁、ITW、SLB、沃尔沃、Infosys、Dr.Reddy's、博思艾伦</td><td data-label="为什么这天重要">油服（SLB）+ 能源（eni）：油价高位有没有转化成上游资本开支</td></tr>
+
+<tr><td colspan="3" style="background:#c8352b;color:#fff;font-weight:700;font-size:13px">第三周 · 10/26–10/30 · 本轮反弹最脆弱的一段</td></tr>
+<tr><td data-label="日期">10/26 周一</td><td data-label="重点公司">威瑞森、哈特福德、Welltower、楷登、纽柯、公共存储、Celestica、BioMarin</td><td data-label="为什么这天重要">纽柯对应黑色；楷登、Celestica 属 AI 硬件外围，是缩圈边界的试金石</td></tr>
+<tr><td data-label="日期"><b>10/27 周二</b></td><td data-label="重点公司"><b>SK海力士</b>、波音、Visa、康宁、可口可乐、Robinhood、汇丰、诺华、<b>希捷</b>、PayPal、WM</td><td data-label="为什么这天重要"><b>SK海力士 + 希捷</b>：存储供给侧的两张底牌，直接决定 AI 推理的成本曲线</td></tr>
+<tr><td data-label="日期"><b>10/28 周三</b></td><td data-label="重点公司"><b>微软、谷歌、Meta</b>、三星电子、GE Vernova、KLA、桑坦德、T-Mobile、空客、UBS、ServiceNow、Phillips 66</td><td data-label="为什么这天重要"><b>云厂资本开支三连发</b>，而且 10 月 FOMC 也在 10/28——<b>利率和 AI 开支在同一天定价</b></td></tr>
+<tr><td data-label="日期"><b>10/29 周四</b></td><td data-label="重点公司"><b>亚马逊、壳牌</b>、礼来、闪迪、英特尔、林德、万事达、道达尔、卡特彼勒、吉利德、默克、百威</td><td data-label="为什么这天重要"><b>亚马逊 + 壳牌同日</b>：AI 和能源两条主线在一天里同时交卷。卡特彼勒另给旧经济资本开支的读数</td></tr>
+<tr><td data-label="日期"><b>10/30 周五</b></td><td data-label="重点公司">艾伯维、通用动力、<b>雪佛龙</b>、再生元、阿斯利康、加拿大国家铁路、东京威力科创、高露洁、<b>bp</b>、松下、赛诺菲、NatWest</td><td data-label="为什么这天重要">能源收官（雪佛龙、bp）：<b>+123% 的能源盈利预期在这两天前后给出答案</b>，随后就是 11/3</td></tr>
+</table>
+
+<div class="call"><b>对 A 股的映射。</b>本期周报已经点明「三季报陆续考验基本面，CPI-PPI 剪刀差对中下游利润的挤压是最大的潜在雷区」。A 股三季报同样在 10 月底前集中披露，<b>和海外最密的 10/21–10/30 完全重叠</b>。再叠加「文件发布买预期、细则落地买事实」的节奏风险，<mark>10 月最后两周是本轮反弹最脆弱的时段</mark>——这与「暴跌轻仓抄底、反弹逢高跑路」是同一个结论的两种说法。</div>
+</section>
+
+<section class="sec" id="next"><div class="kick">NEXT WEEK</div><h2>下周关注：CPI 是开关，11/3 是到期日</h2><p class="sub">三个验证点决定休战窗口里能走多远</p>
+
+<svg style="width:100%;max-width:640px;height:auto;display:block;margin:6px 0 18px" viewBox="0 0 640 152" xmlns="http://www.w3.org/2000/svg">
+<rect x="296" y="42" width="190" height="20" fill="#fdf6e6" stroke="#c9a24a" stroke-width="1" rx="4"/>
+<text x="391" y="56" font-size="10.5" text-anchor="middle" fill="#8a6d2a">10/21–10/30 海外三季报最密集</text>
+<line x1="40" y1="78" x2="600" y2="78" stroke="#9aa3b2" stroke-width="2"/>
+<circle cx="40" cy="78" r="7" fill="#0f2a4a"/>
+<text x="40" y="34" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0f2a4a">10/9</text>
+<text x="40" y="100" font-size="10.5" text-anchor="middle" fill="#6b7280">本期</text>
+<circle cx="160" cy="78" r="7" fill="#c8352b"/>
+<text x="160" y="34" font-size="11.5" font-weight="700" text-anchor="middle" fill="#c8352b">本周四</text>
+<text x="160" y="100" font-size="10.5" text-anchor="middle" fill="#6b7280">美国 CPI</text>
+<text x="160" y="115" font-size="10.5" text-anchor="middle" fill="#6b7280">基准 3.6–3.8%</text>
+<circle cx="258" cy="78" r="6" fill="#c9a24a"/>
+<text x="258" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#8a6d2a">10/15</text>
+<text x="258" y="100" font-size="10.5" text-anchor="middle" fill="#6b7280">台积电</text>
+<circle cx="391" cy="78" r="7" fill="#c9a24a"/>
+<text x="391" y="34" font-size="11.5" font-weight="700" text-anchor="middle" fill="#8a6d2a">10/28–10/30</text>
+<text x="391" y="100" font-size="10.5" text-anchor="middle" fill="#6b7280">微软·谷歌·Meta + FOMC</text>
+<text x="391" y="115" font-size="10.5" text-anchor="middle" fill="#6b7280">亚马逊·壳牌 / 雪佛龙·bp</text>
+<circle cx="560" cy="78" r="9" fill="#c8352b"/>
+<text x="560" y="31" font-size="13" font-weight="700" text-anchor="middle" fill="#c8352b">11/3</text>
+<text x="560" y="100" font-size="10.5" text-anchor="middle" fill="#6b7280">中期选举 · 休战到期</text>
+<text x="560" y="115" font-size="10.5" font-weight="700" text-anchor="middle" fill="#c8352b">财报峰值周 2437 家</text>
+<rect x="398" y="130" width="242" height="18" fill="#fdf2f1" rx="3"/>
+<text x="519" y="143" font-size="10.5" text-anchor="middle" fill="#c8352b">五角大楼已指示重启军事行动准备</text>
+</svg>
+
+<div class="grid3">
+<div class="box red"><h3>验证点 1 · CPI</h3><ul class="b">
+<li>本周四美国 CPI。<b>基准落在 3.6–3.8%</b></li>
+<li class="red">若落 <b>3.7% 上方</b> → 12 月概率进一步上行 → 10Y 再冲 <b>5.35%</b> → 全球风险资产二次承压</li>
+<li>10 月不加息（22%）已定价完毕，CPI 影响的是 12 月那 84%</li>
+</ul></div>
+<div class="box hi"><h3>验证点 2 · 油价与海峡</h3><ul class="b">
+<li>伊朗是否<b>接受或接近接受七日方案</b></li>
+<li class="green">若海峡开放预期成形 → 油价下探 <b>95 下方</b> → 长端回落 → <b>科技 + 黄金共振，A 股补量上攻 3900</b></li>
+<li class="red">反向看四条引线：袭船频次、曼德海峡布雷、墨西哥湾飓风、铀浓缩底线</li>
+</ul></div>
+<div class="box"><h3>验证点 3 · A 股与三季报</h3><ul class="b">
+<li>上证 <b>3845</b> 能否放量收复，成交能否持续 <b>1.8 万亿</b>以上</li>
+<li class="red">细则落地阶段警惕<b>高开低走</b>（买预期转买事实）</li>
+<li class="red">三季报考验基本面，<b>CPI-PPI 剪刀差对中下游利润的挤压是最大潜在雷区</b>。海外最密的 10/21–10/30 与 A 股三季报披露期完全重叠</li>
+<li>先看 10/13 美国大行（信贷质量）和 10/15 台积电（AI 需求），这两个读数会提前定价后面两周</li>
+<li>中欧：欧版 301 立法进度；光伏 / 化工是否成为下一批摩擦候选</li>
+</ul></div>
+</div>
+
+<div class="call red" style="margin-top:18px"><b>最需警惕的错误：</b>把「被官方时间化的休战」当成地缘缓和，把「国家队入场」当成反转，把「纲领文件」当成放水。三件事的共同点是——<b>把一个带到期日的安排，当成了趋势的转向</b>。今年的主线是钱变贵和人工维稳，两者都是慢变量，不会因为两个交易日的 V 形而改变。</div>
+</section>
+
+<div class="colophon"><b>关于本刊</b>　RENA 宏观配置通讯为连续跟踪型宏观配置周报，每期开头先核对上期判断，再给本期判断。上一期为 <a href="w38.html" style="color:#0f2a4a">9 月 20 日</a>。</div>
+<div class="foot"><span>© 2026 RENA 宏观配置通讯 · VOL.41 · 内部研究交流，不构成投资建议</span><span>数据截至 2026-10-09 收盘</span></div>
+</main></div>
+<button class="fab" onclick="document.getElementById('toc').classList.toggle('open')">☰</button>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('on');});var a=map[e.target.id];if(a)a.classList.add('on');}});},{rootMargin:'-20% 0px -70% 0px'});
+  Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+  links.forEach(function(a){a.addEventListener('click',function(){document.getElementById('toc').classList.remove('open');var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el&&el.tagName==='DETAILS')el.open=true;});});
+  if(location.hash){var el=document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}
+})();
+</script>
+</body></html>
